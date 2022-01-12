@@ -9,11 +9,14 @@ import * as skeleton from '../../utils/loading.skeleton.helper';
 interface IOwnProps {
 	setCurrentPage: (currentPage: number) => void;
 	productsList: {
-		id: number;
-		name: string;
+		tags: string[];
 		price: number;
-		urlImage: string;
-		type: string;
+		name: string;
+		description: string;
+		slug: string;
+		added: number;
+		manufacturer: string;
+		itemType: string;
 	}[];
 	itemsTypeList: { id: number; type: string }[];
 }

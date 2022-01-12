@@ -39,10 +39,10 @@ export interface IResponseGenerator {
 }
 
 export interface ISearchProductsPayload {
-	page: number;
-	limit: number;
+	page: string;
+	limit: string;
 	sortVariable: string;
-	sortDirection: string;
+	sortType: string;
 }
 
 export interface ISearchProductsAction {

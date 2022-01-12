@@ -7,7 +7,11 @@ import CustomModal from '../../shared/components/customModal/CustomModal';
 import FilterSection from '../filterSection/FilterSection';
 import { useMobile } from '../../utils/useMobile';
 
-const MarketPageCustomizationSection = () => {
+interface IOwnProps {
+	setSortData: (variables: { sortVariable: string; sortType: string }) => void;
+}
+
+const MarketPageCustomizationSection: React.FC<IOwnProps> = ({ setSortData }) => {
 	const isMobileVersion = useMobile();
 	const brandsFilterOptionsList = [
 		{ id: 0, value: 'all' },
@@ -24,7 +28,7 @@ const MarketPageCustomizationSection = () => {
 	];
 	return (
 		<div className={`market-page-customization-section ${isMobileVersion ? 'global-flex-h-any-v-start ' : ''}`}>
-			<SortingSection />
+			<SortingSection setSortData={setSortData} />
 			<FilterSection
 				firstFilterTitle="Brands"
 				secondFilterTitle="Tags"

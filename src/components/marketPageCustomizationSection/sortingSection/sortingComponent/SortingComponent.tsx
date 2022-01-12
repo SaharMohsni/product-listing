@@ -7,7 +7,6 @@ import * as skeleton from '../../../../utils/loading.skeleton.helper';
 const SortingComponent = () => {
 	const [ sortingValue, setSortingValue ] = useState(1);
 	const handleChange = (e: any) => {
-		console.log('change');
 		setSortingValue(e.target.value);
 	};
 
@@ -20,7 +19,9 @@ const SortingComponent = () => {
 				<div className="sorting-component__data section-block box">
 					<Radio.Group onChange={(e) => handleChange(e)} value={sortingValue}>
 						<Space direction="vertical">
-							<Radio value={1}>Price low to high</Radio>
+							<Radio id="1" name="lowToHigh" value="1">
+								Price low to high
+							</Radio>
 							<Radio value={2}>Price high to low</Radio>
 							<Radio value={3}>New to old</Radio>
 							<Radio value={4}>Old to new</Radio>

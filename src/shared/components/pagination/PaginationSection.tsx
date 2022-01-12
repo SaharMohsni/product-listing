@@ -2,15 +2,21 @@ import React, { useState } from 'react';
 import { Pagination } from 'antd';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import './pagination-section.css';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { handleNavigationQuery } from '../../../utils/helper';
+import { LIMIT_PRODUCTS_BY_Page } from '../../../utils/constants';
 
 interface IOwnProps {
 	setCurrentPage: (currentPage: number) => void;
 }
 
 const PaginationSection: React.FC<IOwnProps> = ({ setCurrentPage }) => {
+	const navigate = useNavigate();
+	const location = useLocation();
+
 	const onChange = (page: number) => {
-		console.log('on change', page);
-		setCurrentPage(page);
+		let navigationQuery = handleNavigationQuery(location.search, page, LIMIT_PRODUCTS_BY_Page);
+		navigate(navigationQuery);
 	};
 	function itemRender(current: any, type: any, originalElement: any) {
 		if (type === 'prev') {

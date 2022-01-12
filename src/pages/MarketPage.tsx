@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './market-page.css';
 import ProductsStoreSection from '../components/productsStoreSection/ProductsStoreSection';
 import MarketPageCustomizationSection from '../components/marketPageCustomizationSection/MarketPageCustomizationSection';
-
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 import Basket from '../components/basket/Basket';
 import BasketDrawer from '../components/basketDrawer/BasketDrawer';
 import { useMobile } from '../utils/useMobile';
@@ -10,76 +11,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchProducts } from '../features/actions/products.actions';
 import { selectSearchProductsResult } from '../features/selectors/products.selectors';
 import { ProductsState } from '../features/types/products.types';
+import { getURLParams } from '../utils/helper';
 
 const MarketPage = () => {
-	const [ currentPage, setCurrentPage ] = useState(1);
-	const newProductsList = useSelector(selectSearchProductsResult);
-	console.log('productsList', newProductsList);
-	const dispatch = useDispatch();
+	// const router = useRouter();
 
+	const [ currentPage, setCurrentPage ] = useState(1);
+	const [ sortData, setSortData ] = useState({ sortVariable: '', sortType: '' });
+	const productsList = useSelector(selectSearchProductsResult);
+	const dispatch = useDispatch();
+	const location = useLocation();
 	useEffect(
 		() => {
-			let payload = {
-				page: currentPage,
-				limit: 16,
-				sortVariable: 'price,added',
-				sortDirection: 'asc,desc'
-			};
+			let payload = getURLParams(location);
 			dispatch(searchProducts(payload));
 		},
-		[ currentPage ]
+		[ location ]
 	);
-	const productsList = [
-		{
-			id: 0,
-			name: 'camera 1',
-			price: 1200,
-			urlImage: 'string',
-			type: 'electro'
-		},
-		{
-			id: 1,
-			name: 'camera 2',
-			price: 1200,
-			urlImage: 'string',
-			type: 'electro'
-		},
-		{
-			id: 2,
-			name: 'camera 3',
-			price: 1200,
-			urlImage: 'string',
-			type: 'electro'
-		},
-		{
-			id: 3,
-			name: 'camera 4',
-			price: 1200,
-			urlImage: 'string',
-			type: 'electro'
-		},
-		{
-			id: 4,
-			name: 'camera 5',
-			price: 1200,
-			urlImage: 'string',
-			type: 'electro'
-		},
-		{
-			id: 5,
-			name: 'camera 6',
-			price: 1200,
-			urlImage: 'string',
-			type: 'itemsTypeList: { id: number; type: string }[];'
-		}
-	];
+
 	const itemsTypeList = [ { id: 1, type: 'electro' }, { id: 2, type: 'fruits' }, { id: 3, type: 'clothes' } ];
 	const isMobileVersion = useMobile();
 
 	return (
 		<div className="market-page global-page-padding-left-right">
 			<div className={`${isMobileVersion ? 'global-flex-h-between-v-any' : ''}`}>
-				<MarketPageCustomizationSection />
+				<MarketPageCustomizationSection setSortData={setSortData} />
 				{isMobileVersion && (
 					<div>
 						<BasketDrawer />

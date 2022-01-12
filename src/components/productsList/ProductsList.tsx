@@ -3,18 +3,21 @@ import ProductCard from './productCard/ProductCard';
 import './product-list.css';
 interface IOwnProps {
 	productsList: {
-		id: number;
-		name: string;
+		tags: string[];
 		price: number;
-		urlImage: string;
-		type: string;
+		name: string;
+		description: string;
+		slug: string;
+		added: number;
+		manufacturer: string;
+		itemType: string;
 	}[];
 }
 
 const ProductsList: React.FC<IOwnProps> = ({ productsList }) => {
 	const renderProductsList = () => {
 		return productsList.map((product) => {
-			return <ProductCard product={product} />;
+			return <ProductCard product={product} key={Math.random()} />;
 		});
 	};
 	return <div className="product-list">{renderProductsList()}</div>;

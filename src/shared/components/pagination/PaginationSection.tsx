@@ -2,9 +2,15 @@ import React, { useState } from 'react';
 import { Pagination } from 'antd';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import './pagination-section.css';
-const PaginationSection = () => {
-	const onChange = () => {
-		console.log('on change');
+
+interface IOwnProps {
+	setCurrentPage: (currentPage: number) => void;
+}
+
+const PaginationSection: React.FC<IOwnProps> = ({ setCurrentPage }) => {
+	const onChange = (page: number) => {
+		console.log('on change', page);
+		setCurrentPage(page);
 	};
 	function itemRender(current: any, type: any, originalElement: any) {
 		if (type === 'prev') {
@@ -30,7 +36,7 @@ const PaginationSection = () => {
 			<Pagination
 				showSizeChanger={false}
 				responsive
-				onChange={onChange}
+				onChange={(page) => onChange(page)}
 				total={320}
 				pageSize={16}
 				itemRender={itemRender}

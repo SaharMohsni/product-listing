@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import './market-page.css';
 import ProductsStoreSection from '../components/productsStoreSection/ProductsStoreSection';
 import MarketPageCustomizationSection from '../components/marketPageCustomizationSection/MarketPageCustomizationSection';
@@ -7,8 +6,29 @@ import MarketPageCustomizationSection from '../components/marketPageCustomizatio
 import Basket from '../components/basket/Basket';
 import BasketDrawer from '../components/basketDrawer/BasketDrawer';
 import { useMobile } from '../utils/useMobile';
+import { useDispatch, useSelector } from 'react-redux';
+import { searchProducts } from '../features/actions/products.actions';
+import { selectSearchProductsResult } from '../features/selectors/products.selectors';
+import { ProductsState } from '../features/types/products.types';
 
 const MarketPage = () => {
+	const [ currentPage, setCurrentPage ] = useState(1);
+	const newProductsList = useSelector(selectSearchProductsResult);
+	console.log('productsList', newProductsList);
+	const dispatch = useDispatch();
+
+	useEffect(
+		() => {
+			let payload = {
+				page: currentPage,
+				limit: 16,
+				sortVariable: 'price,added',
+				sortDirection: 'asc,desc'
+			};
+			dispatch(searchProducts(payload));
+		},
+		[ currentPage ]
+	);
 	const productsList = [
 		{
 			id: 0,
@@ -66,7 +86,11 @@ const MarketPage = () => {
 					</div>
 				)}
 			</div>
-			<ProductsStoreSection productsList={productsList} itemsTypeList={itemsTypeList} />
+			<ProductsStoreSection
+				setCurrentPage={setCurrentPage}
+				productsList={productsList}
+				itemsTypeList={itemsTypeList}
+			/>
 
 			{!isMobileVersion && (
 				<div>

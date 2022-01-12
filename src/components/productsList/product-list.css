@@ -1,0 +1,18 @@
+.product-list {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	column-gap: 2%;
+	row-gap: 20px;
+	padding: 20px;
+	background-color: #ffff;
+}
+@media screen and (max-width: 1439px) {
+	.product-list {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+@media screen and (min-width: 320px) and (max-width: 520px) {
+	.product-list {
+		grid-template-columns: 1fr 1fr;
+	}
+}

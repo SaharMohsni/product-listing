@@ -1,0 +1,12 @@
+@media screen and (min-width: 320px) and (max-width: 992px) {
+	.basket-drawer {
+		width: 100px;
+	}
+	.basket-drawer .ant-space {
+		width: 100% !important;
+	}
+}
+.basket-drawer .ant-space-item {
+	margin-bottom: unset !important;
+	width: 100%;
+}

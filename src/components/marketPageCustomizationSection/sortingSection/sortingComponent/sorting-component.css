@@ -1,0 +1,11 @@
+.sorting-component {
+	Height: 214px;
+}
+
+.sorting-component__data {
+	height: 90%;
+}
+
+.ant-space {
+	gap: unset !important;
+}

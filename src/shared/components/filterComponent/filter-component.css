@@ -1,0 +1,24 @@
+.filter-component {
+	margin-top: 20px;
+	Height: 274px;
+}
+.filter-component__data {
+	height: 90%;
+}
+.filter-component_search-bar-container__search-bar {
+	Width: 248px;
+	Height: 38px;
+}
+.filter-component__filter-options-container {
+	margin-top: 15px;
+	height: 142px;
+}
+
+.ant-checkbox-group {
+	height: 100% !important;
+	display: flex !important;
+}
+
+.ant-checkbox-wrapper + .ant-checkbox-wrapper {
+	margin-left: 0 !important;
+}

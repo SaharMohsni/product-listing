@@ -1,8 +1,15 @@
 import React from 'react';
-import './App.css';
-
+import Layout from './app/Layout/Layout';
+import MarketPage from './pages/MarketPage';
+import './app/global-styles.css';
 function App() {
-	return <div className="App">product listing</div>;
+	return (
+		<div className="App">
+			<Layout>
+				<MarketPage />
+			</Layout>
+		</div>
+	);
 }
 
 export default App;

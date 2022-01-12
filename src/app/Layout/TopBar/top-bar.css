@@ -1,0 +1,49 @@
+.top-bar {
+	height: 76.64px;
+	background-color: hsl(194, 75%, 46%);
+	color: #ffffff;
+	width: 100%;
+}
+
+.top-bar__logo {
+	width: 55%;
+	height: 100%;
+}
+
+.top-bar__logo__text {
+	width: 141.25px;
+	height: 40.32px;
+	font-size: 30px;
+	font-style: italic;
+}
+.top-bar__basket {
+	width: 129px;
+	Height: 100%;
+	background-color: #147594;
+}
+.top-bar__basket__total-price {
+	padding-left: 10px;
+}
+.top-bar__basket__total-price__unit {
+	padding-right: 5px;
+}
+@media screen and (min-width: 320px) and (max-width: 992px) {
+	.top-bar__logo {
+		width: 40%;
+		height: 100%;
+		justify-content: flex-start;
+	}
+	.top-bar__logo__text {
+		width: unset;
+		height: unset;
+	}
+}
+.top-bar .ant-skeleton-active {
+	width: 129px !important;
+}
+.top-bar .ant-skeleton-content .ant-skeleton-paragraph {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-bottom: unset !important;
+}

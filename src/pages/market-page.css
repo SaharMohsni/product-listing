@@ -1,0 +1,21 @@
+.market-page {
+	height: calc(100% - 126.64px);
+	display: grid;
+	grid-template-columns: 23.325% 49.35% 23.325%;
+	column-gap: 2%;
+	padding-top: 27.36px;
+	padding-bottom: 27.36px;
+}
+@media screen and (width: 1440px) {
+	.market-page {
+		grid-template-columns: 296px 608px 296px;
+		column-gap: 16px;
+	}
+}
+@media screen and (min-width: 320px) and (max-width: 992px) {
+	.market-page {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+	}
+}

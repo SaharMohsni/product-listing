@@ -11,7 +11,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { searchProducts } from '../features/actions/products.actions';
 import { selectSearchProductsResult } from '../features/selectors/products.selectors';
 import { ProductsState } from '../features/types/products.types';
-import { getURLParams } from '../utils/helper';
+import { getURLSearchParams } from '../utils/helper';
+import { LIMIT_PRODUCTS_BY_Page } from '../utils/constants';
 
 const MarketPage = () => {
 	// const router = useRouter();
@@ -23,7 +24,7 @@ const MarketPage = () => {
 	const location = useLocation();
 	useEffect(
 		() => {
-			let payload = getURLParams(location);
+			let payload = getURLSearchParams(location, LIMIT_PRODUCTS_BY_Page);
 			dispatch(searchProducts(payload));
 		},
 		[ location ]

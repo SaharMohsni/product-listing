@@ -15,11 +15,11 @@ export const handleNavigationQuery = (search: string, page: number, limit: numbe
 	return `${serialize(query)}`;
 };
 
-export const getURLParams = (location: any) => {
+export const getURLSearchParams = (location: any, limit: number) => {
 	if (location.pathname === '/') {
 		return {
 			page: '1',
-			limit: '16',
+			limit: limit.toString(),
 			sortVariable: '',
 			sortType: ''
 		};
@@ -27,8 +27,8 @@ export const getURLParams = (location: any) => {
 		let cleanPathName = location.pathname.split('/');
 		let query = queryString.parse(cleanPathName[1]);
 		return {
-			page: '2',
-			limit: '16',
+			page: query.page,
+			limit: limit.toString(),
 			sortVariable: '',
 			sortType: ''
 		};

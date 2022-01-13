@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import queryString from 'query-string';
-import { isEmpty } from 'lodash';
+import { useNavigate } from 'react-router-dom';
 import './market-page.css';
 import ProductsStoreSection from '../components/productsStoreSection/ProductsStoreSection';
 import MarketPageCustomizationSection from '../components/marketPageCustomizationSection/MarketPageCustomizationSection';
@@ -23,11 +21,10 @@ const MarketPage = () => {
 	const brandsList = useSelector(selectBrandsList);
 
 	const dispatch = useDispatch();
-	const location = useLocation();
 	const navigate = useNavigate();
 	useEffect(
 		() => {
-			let navigationQuery = handleNavigationQuery(location.search, searchParams);
+			let navigationQuery = handleNavigationQuery(searchParams);
 			navigate(navigationQuery);
 			dispatch(searchProducts(searchParams));
 			dispatch(fetchCompanies());

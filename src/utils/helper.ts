@@ -11,7 +11,7 @@ export const serialize = function(obj: any) {
 	return str.join('&');
 };
 
-export const handleNavigationQuery = (search: string, params: ISearchProductsPayload) => {
+export const handleNavigationQuery = (params: ISearchProductsPayload) => {
 	let { page, sortVariable, sortType } = params;
 	let query = params;
 	if (!isEmpty(params) && (isEmpty(sortVariable) || isEmpty(sortType))) {

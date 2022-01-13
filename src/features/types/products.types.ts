@@ -49,6 +49,7 @@ export interface ISearchProductsPayload {
 	limit?: string;
 	sortVariable?: string;
 	sortType?: string;
+	searchedBrandsList?: string[];
 }
 
 export interface ISearchProductsAction {

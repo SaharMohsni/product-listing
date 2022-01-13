@@ -14,8 +14,8 @@ interface IOwnProps {
 const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList }) => {
 	const [ filterValue, setFilterValue ] = useState(1);
 	const handleChange = (e: any) => {
-		console.log('change');
-		setFilterValue(e.target.value);
+		console.log('change', e);
+		// setFilterValue(e.target.value);
 	};
 	const onSearch = () => {
 		console.log('search');

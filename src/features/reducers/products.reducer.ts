@@ -15,7 +15,8 @@ export const initialState: ProductsState = {
 			page: '1',
 			limit: LIMIT_PRODUCTS_BY_Page.toString(),
 			sortVariable: '',
-			sortType: ''
+			sortType: '',
+			searchedBrandsList: []
 		},
 		loading: {
 			fetchingProduct: false,

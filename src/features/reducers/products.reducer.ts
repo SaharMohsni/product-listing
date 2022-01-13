@@ -1,4 +1,6 @@
 import produce from 'immer';
+import { LIMIT_PRODUCTS_BY_Page } from '../../utils/constants';
+import { handleSearchParams } from '../../utils/reducer.helper';
 import ActionTypes from '../constants/products.constants';
 import { ProductsActions, ProductsState } from '../types/products.types';
 
@@ -6,13 +8,21 @@ import { ProductsActions, ProductsState } from '../types/products.types';
 export const initialState: ProductsState = {
 	data: { productsList: [] },
 	local: {
+		searchParams: {
+			page: '1',
+			limit: LIMIT_PRODUCTS_BY_Page.toString(),
+			sortVariable: '',
+			sortType: ''
+		},
 		loading: {
 			fetchingProduct: false,
-			fetchingProductByPage: false
+			fetchingProductByPage: false,
+			getSearchParams: false
 		},
 		errors: {
 			fetchingProduct: '',
-			fetchingProductByPage: ''
+			fetchingProductByPage: '',
+			getSearchParams: ''
 		}
 	}
 };
@@ -36,6 +46,24 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 					draft.local.errors.fetchingProductByPage = action.errors.response.data;
 				} catch (e) {
 					draft.local.errors.fetchingProductByPage = 'Server error';
+				}
+				break;
+			//Search products by page with sort and filter
+			case ActionTypes.GET_SEARCH_PARAMS.request:
+				draft.local.loading.getSearchParams = true;
+				draft.local.errors.getSearchParams = '';
+				break;
+			case ActionTypes.GET_SEARCH_PARAMS.success:
+				draft.local.loading.getSearchParams = false;
+				draft.local.errors.getSearchParams = '';
+				draft.local.searchParams = handleSearchParams(state.local.searchParams, action.payload);
+				break;
+			case ActionTypes.GET_SEARCH_PARAMS.failure:
+				draft.local.loading.getSearchParams = false;
+				try {
+					draft.local.errors.getSearchParams = action.errors.response.data;
+				} catch (e) {
+					draft.local.errors.getSearchParams = 'Server error';
 				}
 				break;
 		}

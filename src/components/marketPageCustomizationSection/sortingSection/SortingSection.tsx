@@ -9,11 +9,7 @@ import CustomModal from '../../../shared/components/customModal/CustomModal';
 import { useMobile } from '../../../utils/useMobile';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
 
-interface IOwnProps {
-	setSortData: (variables: { sortVariable: string; sortType: string }) => void;
-}
-
-const SortingSection: React.FC<IOwnProps> = ({ setSortData }) => {
+const SortingSection = () => {
 	const [ sortModalVisible, setSortModalVisible ] = useState(false);
 	const isMobileVersion = useMobile();
 	const showSortModal = () => {
@@ -21,7 +17,6 @@ const SortingSection: React.FC<IOwnProps> = ({ setSortData }) => {
 	};
 	const handleSubmit = () => {
 		console.log('action submitted');
-		// setSortData({});
 	};
 	const handleCancel = () => {
 		setSortModalVisible(false);

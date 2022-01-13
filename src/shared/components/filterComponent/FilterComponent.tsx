@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Checkbox, Skeleton } from 'antd';
 import './filter-component.css';
-import { Input, Space } from 'antd';
+import { Input } from 'antd';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
 
 const { Search } = Input;

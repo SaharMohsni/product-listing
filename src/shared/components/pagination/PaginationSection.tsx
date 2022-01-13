@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Pagination } from 'antd';
+import { useDispatch } from 'react-redux';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import './pagination-section.css';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { handleNavigationQuery } from '../../../utils/helper';
-import { LIMIT_PRODUCTS_BY_Page } from '../../../utils/constants';
+
+import { getSearchParams } from '../../../features/actions/products.actions';
 
 const PaginationSection = () => {
-	const navigate = useNavigate();
-	const location = useLocation();
+	const dispatch = useDispatch();
 
 	const onChange = (page: number) => {
-		let navigationQuery = handleNavigationQuery(location.search, page, LIMIT_PRODUCTS_BY_Page);
-		navigate(navigationQuery);
+		dispatch(getSearchParams({ page: page.toString() }));
 	};
 	function itemRender(current: any, type: any, originalElement: any) {
 		if (type === 'prev') {

@@ -7,13 +7,16 @@ interface Data {
 }
 
 interface Local {
+	searchParams: ISearchProductsPayload;
 	loading: {
-		fetchingProduct: Boolean;
-		fetchingProductByPage: Boolean;
+		fetchingProduct: boolean;
+		fetchingProductByPage: boolean;
+		getSearchParams: boolean;
 	};
 	errors: {
-		fetchingProduct: String;
-		fetchingProductByPage: String;
+		fetchingProduct: string;
+		fetchingProductByPage: string;
+		getSearchParams: string;
 	};
 }
 interface IProductsState {
@@ -39,13 +42,17 @@ export interface IResponseGenerator {
 }
 
 export interface ISearchProductsPayload {
-	page: string | null | string[];
-	limit: string;
-	sortVariable: string;
-	sortType: string;
+	page?: string | null | string[];
+	limit?: string;
+	sortVariable?: string;
+	sortType?: string;
 }
 
 export interface ISearchProductsAction {
+	type: string;
+	payload: ISearchProductsPayload;
+}
+export interface IGetSearchParamsAction {
 	type: string;
 	payload: ISearchProductsPayload;
 }

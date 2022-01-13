@@ -1,5 +1,10 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
-import { IGetSearchParamsAction, IResponseGenerator, ISearchProductsAction } from '../types/products.types';
+import {
+	IFetchCompaniesAction,
+	IGetSearchParamsAction,
+	IResponseGenerator,
+	ISearchProductsAction
+} from '../types/products.types';
 import * as api from '../services/products.services';
 import ActionTypes from '../constants/products.constants';
 
@@ -33,4 +38,20 @@ export function* getSearchParams(action: IGetSearchParamsAction) {
 
 export function* getSearchParamsWatcher() {
 	yield takeEvery(ActionTypes.GET_SEARCH_PARAMS.request, getSearchParams);
+}
+
+export function* fetchCompanies(action: IFetchCompaniesAction) {
+	try {
+		const results: IResponseGenerator = yield call(api.fetchCompanies);
+		yield put({
+			type: ActionTypes.FETCH_COMPANIES.success,
+			data: results
+		});
+	} catch (e) {
+		yield put({ type: ActionTypes.FETCH_COMPANIES.failure, e });
+	}
+}
+
+export function* fetchCompaniesWatcher() {
+	yield takeEvery(ActionTypes.FETCH_COMPANIES.request, fetchCompanies);
 }

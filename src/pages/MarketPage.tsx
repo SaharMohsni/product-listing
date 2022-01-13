@@ -9,7 +9,7 @@ import Basket from '../components/basket/Basket';
 import BasketDrawer from '../components/basketDrawer/BasketDrawer';
 import { useMobile } from '../utils/useMobile';
 import { useDispatch, useSelector } from 'react-redux';
-import { searchProducts } from '../features/actions/products.actions';
+import { fetchCompanies, searchProducts } from '../features/actions/products.actions';
 import { selectSearchParams, selectSearchProductsResult } from '../features/selectors/products.selectors';
 import { handleNavigationQuery } from '../utils/helper';
 
@@ -24,6 +24,7 @@ const MarketPage = () => {
 			let navigationQuery = handleNavigationQuery(location.search, searchParams);
 			navigate(navigationQuery);
 			dispatch(searchProducts(searchParams));
+			dispatch(fetchCompanies());
 		},
 		[ searchParams ]
 	);

@@ -6,7 +6,10 @@ import { ProductsActions, ProductsState } from '../types/products.types';
 
 // The initial state of the reducer
 export const initialState: ProductsState = {
-	data: { productsList: [] },
+	data: {
+		productsList: [],
+		brandsList: []
+	},
 	local: {
 		searchParams: {
 			page: '1',
@@ -17,12 +20,14 @@ export const initialState: ProductsState = {
 		loading: {
 			fetchingProduct: false,
 			fetchingProductByPage: false,
-			getSearchParams: false
+			getSearchParams: false,
+			fetchingCompanies: false
 		},
 		errors: {
 			fetchingProduct: '',
 			fetchingProductByPage: '',
-			getSearchParams: ''
+			getSearchParams: '',
+			fetchingCompanies: ''
 		}
 	}
 };
@@ -64,6 +69,24 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 					draft.local.errors.getSearchParams = action.errors.response.data;
 				} catch (e) {
 					draft.local.errors.getSearchParams = 'Server error';
+				}
+				break;
+			//Fetch companies
+			case ActionTypes.FETCH_COMPANIES.request:
+				draft.local.loading.fetchingCompanies = true;
+				draft.local.errors.fetchingCompanies = '';
+				break;
+			case ActionTypes.FETCH_COMPANIES.success:
+				draft.local.loading.fetchingCompanies = false;
+				draft.local.errors.fetchingCompanies = '';
+				draft.data.brandsList = action.data;
+				break;
+			case ActionTypes.FETCH_COMPANIES.failure:
+				draft.local.loading.fetchingCompanies = false;
+				try {
+					draft.local.errors.fetchingCompanies = action.errors.response.data;
+				} catch (e) {
+					draft.local.errors.fetchingCompanies = 'Server error';
 				}
 				break;
 		}

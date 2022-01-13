@@ -10,6 +10,9 @@ const URL = {
 				payload.sortType
 			)}`;
 		}
+	},
+	companies: {
+		fetchCompanies: () => `/companies`
 	}
 };
 

@@ -4,16 +4,16 @@ import './market-page-customization-section.css';
 
 import FilterSection from '../filterSection/FilterSection';
 import { useMobile } from '../../utils/useMobile';
+import { formatData } from './helper';
+import { IBrand } from '../../features/types/products.types';
 
-const MarketPageCustomizationSection = () => {
+interface IOwnProps {
+	brandsList: IBrand[];
+}
+
+const MarketPageCustomizationSection: React.FC<IOwnProps> = ({ brandsList }) => {
 	const isMobileVersion = useMobile();
-	const brandsFilterOptionsList = [
-		{ id: 0, value: 'all' },
-		{ id: 1, value: 'Konopelski Group' },
-		{ id: 2, value: 'Rice Inc' },
-		{ id: 3, value: 'Feil, Dooley and Reinger' },
-		{ id: 4, value: 'Feil, Dooley and Reinger' }
-	];
+	const brandsFilterOptionsList = formatData(brandsList);
 	const tagsFilterOptionsList = [
 		{ id: 0, value: 'all' },
 		{ id: 1, value: 'Beach' },

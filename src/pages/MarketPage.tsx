@@ -10,12 +10,18 @@ import BasketDrawer from '../components/basketDrawer/BasketDrawer';
 import { useMobile } from '../utils/useMobile';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompanies, searchProducts } from '../features/actions/products.actions';
-import { selectSearchParams, selectSearchProductsResult } from '../features/selectors/products.selectors';
+import {
+	selectBrandsList,
+	selectSearchParams,
+	selectSearchProductsResult
+} from '../features/selectors/products.selectors';
 import { handleNavigationQuery } from '../utils/helper';
 
 const MarketPage = () => {
 	const productsList = useSelector(selectSearchProductsResult);
 	const searchParams = useSelector(selectSearchParams);
+	const brandsList = useSelector(selectBrandsList);
+
 	const dispatch = useDispatch();
 	const location = useLocation();
 	const navigate = useNavigate();
@@ -35,7 +41,7 @@ const MarketPage = () => {
 	return (
 		<div className="market-page global-page-padding-left-right">
 			<div className={`${isMobileVersion ? 'global-flex-h-between-v-any' : ''}`}>
-				<MarketPageCustomizationSection />
+				<MarketPageCustomizationSection brandsList={brandsList} />
 				{isMobileVersion && (
 					<div>
 						<BasketDrawer />

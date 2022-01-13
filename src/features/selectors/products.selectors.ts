@@ -10,3 +10,8 @@ export const selectSearchParams = createSelector(
 	(state: any): object => state.products,
 	(products: any): ISearchProductsPayload => products.local.searchParams
 );
+
+export const selectBrandsList = createSelector(
+	(state: any): object => state.products,
+	(products: any): [] => products.data.brandsList
+);

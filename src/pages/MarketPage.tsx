@@ -17,7 +17,6 @@ import { LIMIT_PRODUCTS_BY_Page } from '../utils/constants';
 const MarketPage = () => {
 	// const router = useRouter();
 
-	const [ currentPage, setCurrentPage ] = useState(1);
 	const [ sortData, setSortData ] = useState({ sortVariable: '', sortType: '' });
 	const productsList = useSelector(selectSearchProductsResult);
 	const dispatch = useDispatch();
@@ -43,11 +42,7 @@ const MarketPage = () => {
 					</div>
 				)}
 			</div>
-			<ProductsStoreSection
-				setCurrentPage={setCurrentPage}
-				productsList={productsList}
-				itemsTypeList={itemsTypeList}
-			/>
+			<ProductsStoreSection productsList={productsList} itemsTypeList={itemsTypeList} />
 
 			{!isMobileVersion && (
 				<div>

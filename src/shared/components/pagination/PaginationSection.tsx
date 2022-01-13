@@ -6,11 +6,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { handleNavigationQuery } from '../../../utils/helper';
 import { LIMIT_PRODUCTS_BY_Page } from '../../../utils/constants';
 
-interface IOwnProps {
-	setCurrentPage: (currentPage: number) => void;
-}
-
-const PaginationSection: React.FC<IOwnProps> = ({ setCurrentPage }) => {
+const PaginationSection = () => {
 	const navigate = useNavigate();
 	const location = useLocation();
 

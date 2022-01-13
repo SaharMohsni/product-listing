@@ -7,7 +7,6 @@ import PaginationSection from '../../shared/components/pagination/PaginationSect
 import * as skeleton from '../../utils/loading.skeleton.helper';
 
 interface IOwnProps {
-	setCurrentPage: (currentPage: number) => void;
 	productsList: {
 		tags: string[];
 		price: number;
@@ -21,7 +20,7 @@ interface IOwnProps {
 	itemsTypeList: { id: number; type: string }[];
 }
 
-const ProductsStoreSection: React.FC<IOwnProps> = ({ setCurrentPage, productsList, itemsTypeList }) => {
+const ProductsStoreSection: React.FC<IOwnProps> = ({ productsList, itemsTypeList }) => {
 	const [ activeTagKey, setActiveTagKey ] = useState(-1);
 	return (
 		<div className="products-store-section">
@@ -47,7 +46,7 @@ const ProductsStoreSection: React.FC<IOwnProps> = ({ setCurrentPage, productsLis
 			</div>
 			<Skeleton {...skeleton.fullRowItemSkeleton(false)}>
 				<div className="products-store-section__pagination-container">
-					<PaginationSection setCurrentPage={setCurrentPage} />
+					<PaginationSection />
 				</div>
 			</Skeleton>
 		</div>

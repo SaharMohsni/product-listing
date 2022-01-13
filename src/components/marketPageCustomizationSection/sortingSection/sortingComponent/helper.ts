@@ -6,7 +6,7 @@ export const handleRadioButtonValues = (value: string) => {
 			return { sortVariable: 'price', sortType: 'desc' };
 
 		case '2':
-			return { sortVariable: 'added', sortType: 'desc' };
+			return { sortVariable: 'added', sortType: 'asc' };
 
 		case '3':
 			return { sortVariable: 'added', sortType: 'desc' };

@@ -1,12 +1,16 @@
 import React from 'react';
 import { Pagination } from 'antd';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import './pagination-section.css';
 
 import { getSearchParams } from '../../../features/actions/products.actions';
+import { selectSearchParams } from '../../../features/selectors/products.selectors';
+import { handlePaginationValue } from './helper';
 
 const PaginationSection = () => {
+	const searchParams = useSelector(selectSearchParams);
+
 	const dispatch = useDispatch();
 
 	const onChange = (page: number) => {
@@ -40,6 +44,7 @@ const PaginationSection = () => {
 				total={320}
 				pageSize={16}
 				itemRender={itemRender}
+				defaultCurrent={handlePaginationValue(searchParams)}
 			/>
 		</div>
 	);

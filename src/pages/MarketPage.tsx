@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import queryString from 'query-string';
 import './market-page.css';
 import ProductsStoreSection from '../components/productsStoreSection/ProductsStoreSection';
 import MarketPageCustomizationSection from '../components/marketPageCustomizationSection/MarketPageCustomizationSection';
@@ -7,13 +8,13 @@ import Basket from '../components/basket/Basket';
 import BasketDrawer from '../components/basketDrawer/BasketDrawer';
 import { useMobile } from '../utils/useMobile';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCompanies, searchProducts } from '../features/actions/products.actions';
+import { fetchCompanies, getSearchParams, searchProducts } from '../features/actions/products.actions';
 import {
 	selectBrandsList,
 	selectSearchParams,
 	selectSearchProductsResult
 } from '../features/selectors/products.selectors';
-import { handleNavigationQuery } from '../utils/helper';
+import { generateQueryFromPathname, handleNavigationQuery } from '../utils/helper';
 
 const MarketPage = () => {
 	const productsList = useSelector(selectSearchProductsResult);
@@ -22,6 +23,13 @@ const MarketPage = () => {
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
+	const location = useLocation();
+
+	let query = generateQueryFromPathname(location.pathname);
+	useEffect(() => {
+		dispatch(getSearchParams(query));
+	}, []);
+
 	useEffect(
 		() => {
 			let navigationQuery = handleNavigationQuery(searchParams);

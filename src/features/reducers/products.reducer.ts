@@ -12,7 +12,7 @@ export const initialState: ProductsState = {
 	},
 	local: {
 		searchParams: {
-			page: '1',
+			page: '',
 			limit: LIMIT_PRODUCTS_BY_Page.toString(),
 			sortVariable: '',
 			sortType: '',

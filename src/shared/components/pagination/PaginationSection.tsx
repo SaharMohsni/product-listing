@@ -44,7 +44,7 @@ const PaginationSection = () => {
 				total={320}
 				pageSize={16}
 				itemRender={itemRender}
-				defaultCurrent={handlePaginationValue(searchParams)}
+				current={handlePaginationValue(searchParams)}
 			/>
 		</div>
 	);

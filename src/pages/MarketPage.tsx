@@ -14,7 +14,7 @@ import {
 	selectSearchParams,
 	selectSearchProductsResult
 } from '../features/selectors/products.selectors';
-import { generateQueryFromPathname, handleNavigationQuery } from '../utils/helper';
+import { generateQueryFromPathname, handleNavigationQuery, convertObjectKey } from '../utils/helper';
 
 const MarketPage = () => {
 	const productsList = useSelector(selectSearchProductsResult);
@@ -27,7 +27,8 @@ const MarketPage = () => {
 
 	let query = generateQueryFromPathname(location.pathname);
 	useEffect(() => {
-		dispatch(getSearchParams(query));
+		dispatch(getSearchParams(convertObjectKey(query)));
+		dispatch(fetchCompanies());
 	}, []);
 
 	useEffect(
@@ -35,7 +36,6 @@ const MarketPage = () => {
 			let navigationQuery = handleNavigationQuery(searchParams);
 			navigate(navigationQuery);
 			dispatch(searchProducts(searchParams));
-			dispatch(fetchCompanies());
 		},
 		[ searchParams ]
 	);

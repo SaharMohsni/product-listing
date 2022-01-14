@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+
 import { Button,Skeleton } from 'antd';
 import { FilterOutlined } from '@ant-design/icons';
 import './filter-section.css';
@@ -9,6 +10,7 @@ import CustomModal from '../../shared/components/customModal/CustomModal';
 import * as skeleton from '../../utils/loading.skeleton.helper';
 import { useMobile } from '../../utils/useMobile';
 import { handleSearch } from '../../shared/components/filterComponent/helper';
+import { getSearchParams } from '../../features/actions/products.actions';
 interface IOwnProps {
 	firstFilterTitle: string;
 	secondFilterTitle: string;
@@ -16,15 +18,21 @@ interface IOwnProps {
 	secondFilterOptionsList: { id: number; value: string }[];
 }
 
-const FilterSection: React.FC<IOwnProps> = ({ firstFilterTitle,secondFilterTitle, firstFilterOptionsList, secondFilterOptionsList }) => {
-	const [ filterValue, setFilterValue ] = useState(1);
+const FilterSection: React.FC<IOwnProps> = ({ firstFilterTitle,secondFilterTitle, firstFilterOptionsList, secondFilterOptionsList}) => {
 	const [ firstFilterSearchedValue, setFirstFilterSearchedValue ] = useState('');
 	const [ secondFilterSearchedValue, setSecondFilterSearchedValue ] = useState('');
 	const [ filterModalVisible, setFilterModalVisible ] = useState(false);
 	const isMobileVersion = useMobile()
-// useEffect(() => {
-// 	handleSearchBrand(firstFilterOptionsList, firstFilterSearchedValue)
-// }, [firstFilterSearchedValue])
+
+
+
+
+// const handleBrandsChange = (obj:any) => {
+// 	return dispatch(getSearchParams(obj));
+// }
+// const handleTagsChange = (e:any) => {
+// 	dispatch(getSearchParams({ searchedBrandsList: e }));
+// }
 
 	const renderFilterSection = () => {
 	    const showFilterModal = () => {
@@ -53,15 +61,15 @@ const FilterSection: React.FC<IOwnProps> = ({ firstFilterTitle,secondFilterTitle
 	              handleSubmit= {handleSubmit}
 	              handleCancel = {handleCancel}
 	            >
-	                <FilterComponent title={firstFilterTitle} optionsList={firstFilterOptionsList} setSearchedValue = {setFirstFilterSearchedValue}  />
-		            <FilterComponent title={secondFilterTitle} optionsList={secondFilterOptionsList} setSearchedValue={setSecondFilterSearchedValue}/>
+	                <FilterComponent  title={firstFilterTitle} optionsList={firstFilterOptionsList} setSearchedValue = {setFirstFilterSearchedValue} filterKey = "manufacturer"/>
+		            <FilterComponent  title={secondFilterTitle} optionsList={secondFilterOptionsList} setSearchedValue={setSecondFilterSearchedValue} filterKey="manufacturer"/>
 	            </CustomModal>}
 	          </div>
 	        )
 	    }
 	    else return (
 	        <>
-	            <FilterComponent title="Brands" optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)} setSearchedValue = {setFirstFilterSearchedValue}  />
+	            <FilterComponent title="Brands" optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)} setSearchedValue = {setFirstFilterSearchedValue} filterKey="manufacturer"  />
 		        {/* <FilterComponent title="Tags" optionsList={secondFilterOptionsList} /> */}
 	        </>
 	    )

@@ -5,3 +5,11 @@ export const handleSearch = (data: any, searchedValue: string) => {
 		});
 	});
 };
+
+export const getCheckboxCurrentValues = (searchParams: any, filterKey: string) => {
+	let res = searchParams[filterKey].data;
+	if (typeof res === 'string') {
+		return [ res ];
+	}
+	return res;
+};

@@ -1,4 +1,4 @@
-import { addSortToUrl } from '../../utils/service.helper';
+import { addFilterToUrl, addSortToUrl } from '../../utils/service.helper';
 import { ISearchProductsPayload } from '../types/products.types';
 
 const URL = {
@@ -8,7 +8,7 @@ const URL = {
 			return `/items?_page=${payload.page}&_limit=${payload.limit}${addSortToUrl(
 				payload.sortVariable,
 				payload.sortType
-			)}`;
+			)}${addFilterToUrl(payload.manufacturer)}`;
 		}
 	},
 	companies: {

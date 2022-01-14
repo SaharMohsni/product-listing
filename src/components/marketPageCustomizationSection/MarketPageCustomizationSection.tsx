@@ -20,6 +20,7 @@ const MarketPageCustomizationSection: React.FC<IOwnProps> = ({ brandsList }) => 
 		{ id: 2, value: 'People' },
 		{ id: 3, value: 'Bicycle' }
 	];
+
 	return (
 		<div className={`market-page-customization-section ${isMobileVersion ? 'global-flex-h-any-v-start ' : ''}`}>
 			<SortingSection />

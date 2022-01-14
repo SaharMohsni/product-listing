@@ -4,7 +4,6 @@ import './filter-component.css';
 import { Input } from 'antd';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
 
-
 const { Search } = Input;
 
 interface IOwnProps {
@@ -13,7 +12,6 @@ interface IOwnProps {
 	setSearchedValue: (value: string) => void;
 }
 const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList, setSearchedValue }) => {
-	console.log('🚀 ~ file: FilterComponent.tsx ~ line 16 ~ optionsList', optionsList);
 	const handleChange = (e: any) => {
 		console.log('change', e);
 		// setFilterValue(e.target.value);
@@ -21,7 +19,6 @@ const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList, setSearchedV
 
 	const handleSearchInputChange = (e: any) => {
 		setSearchedValue(e.target.value);
-		console.log('search', e.target.value);
 	};
 	return (
 		<div className="filter-component ">

@@ -1,24 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Checkbox, Skeleton } from 'antd';
 import './filter-component.css';
 import { Input } from 'antd';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
+
 
 const { Search } = Input;
 
 interface IOwnProps {
 	title: string;
 	optionsList: { id: number; value: string }[];
+	setSearchedValue: (value: string) => void;
 }
-
-const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList }) => {
-	const [ filterValue, setFilterValue ] = useState(1);
+const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList, setSearchedValue }) => {
+	console.log('🚀 ~ file: FilterComponent.tsx ~ line 16 ~ optionsList', optionsList);
 	const handleChange = (e: any) => {
 		console.log('change', e);
 		// setFilterValue(e.target.value);
 	};
-	const onSearch = () => {
-		console.log('search');
+
+	const handleSearchInputChange = (e: any) => {
+		setSearchedValue(e.target.value);
+		console.log('search', e.target.value);
 	};
 	return (
 		<div className="filter-component ">
@@ -31,6 +34,7 @@ const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList }) => {
 						<Input
 							className="filter-component_search-bar-container__search-bar"
 							placeholder={`search ${title}`}
+							onChange={handleSearchInputChange}
 						/>
 					</div>
 					<div className="filter-component__filter-options-container box ">
@@ -39,7 +43,7 @@ const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList }) => {
 							onChange={(e) => handleChange(e)}
 							className="global-flex-column-h-start-v-start "
 						>
-							{optionsList.map((option) => {
+							{optionsList.map((option: any) => {
 								return <Checkbox value={option.id}>{option.value}</Checkbox>;
 							})}
 						</Checkbox.Group>

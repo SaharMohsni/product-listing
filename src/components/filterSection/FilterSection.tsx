@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Button,Skeleton } from 'antd';
 import { FilterOutlined } from '@ant-design/icons';
 import './filter-section.css';
@@ -8,6 +8,7 @@ import CustomModal from '../../shared/components/customModal/CustomModal';
 
 import * as skeleton from '../../utils/loading.skeleton.helper';
 import { useMobile } from '../../utils/useMobile';
+import { handleSearch } from '../../shared/components/filterComponent/helper';
 interface IOwnProps {
 	firstFilterTitle: string;
 	secondFilterTitle: string;
@@ -17,9 +18,13 @@ interface IOwnProps {
 
 const FilterSection: React.FC<IOwnProps> = ({ firstFilterTitle,secondFilterTitle, firstFilterOptionsList, secondFilterOptionsList }) => {
 	const [ filterValue, setFilterValue ] = useState(1);
+	const [ firstFilterSearchedValue, setFirstFilterSearchedValue ] = useState('');
+	const [ secondFilterSearchedValue, setSecondFilterSearchedValue ] = useState('');
 	const [ filterModalVisible, setFilterModalVisible ] = useState(false);
 	const isMobileVersion = useMobile()
-
+// useEffect(() => {
+// 	handleSearchBrand(firstFilterOptionsList, firstFilterSearchedValue)
+// }, [firstFilterSearchedValue])
 
 	const renderFilterSection = () => {
 	    const showFilterModal = () => {
@@ -48,16 +53,16 @@ const FilterSection: React.FC<IOwnProps> = ({ firstFilterTitle,secondFilterTitle
 	              handleSubmit= {handleSubmit}
 	              handleCancel = {handleCancel}
 	            >
-	                <FilterComponent title={firstFilterTitle} optionsList={firstFilterOptionsList} />
-		            <FilterComponent title={secondFilterTitle} optionsList={secondFilterOptionsList} />
+	                <FilterComponent title={firstFilterTitle} optionsList={firstFilterOptionsList} setSearchedValue = {setFirstFilterSearchedValue}  />
+		            <FilterComponent title={secondFilterTitle} optionsList={secondFilterOptionsList} setSearchedValue={setSecondFilterSearchedValue}/>
 	            </CustomModal>}
 	          </div>
 	        )
 	    }
 	    else return (
 	        <>
-	            <FilterComponent title="Brands" optionsList={firstFilterOptionsList} />
-		        <FilterComponent title="Tags" optionsList={secondFilterOptionsList} />
+	            <FilterComponent title="Brands" optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)} setSearchedValue = {setFirstFilterSearchedValue}  />
+		        {/* <FilterComponent title="Tags" optionsList={secondFilterOptionsList} /> */}
 	        </>
 	    )
 	}

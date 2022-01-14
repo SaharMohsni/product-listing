@@ -75,3 +75,8 @@ export interface IBrand {
 	account: number;
 	contact: string;
 }
+
+export interface ISetLocalState {
+	success: boolean;
+	message: string;
+}

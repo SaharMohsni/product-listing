@@ -11,7 +11,7 @@ const store = configureStore({});
 const baseUrl = window.location.pathname;
 ReactDOM.render(
 	<Provider store={store}>
-		<Router basename="/market">
+		<Router>
 			<App />
 		</Router>
 	</Provider>,

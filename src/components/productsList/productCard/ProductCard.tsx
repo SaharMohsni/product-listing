@@ -1,22 +1,21 @@
 import React from 'react';
 import { Button, Skeleton } from 'antd';
+import { useDispatch, useSelector } from 'react-redux';
 import './product-card.css';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
+import { addProduct } from '../../../features/actions/products.actions';
+import { IProduct } from '../../../features/types/products.types';
 
 interface IOwnProps {
-	product: {
-		tags: string[];
-		price: number;
-		name: string;
-		description: string;
-		slug: string;
-		added: number;
-		manufacturer: string;
-		itemType: string;
-	};
+	product: IProduct;
 }
 
 const ProductCard: React.FC<IOwnProps> = ({ product }) => {
+	const dispatch = useDispatch();
+
+	const handleAdd = () => {
+		dispatch(addProduct(product));
+	};
 	return (
 		<div className="product-card global-flex-column-h-any-v-between" key={Math.random()}>
 			<Skeleton avatar={{ shape: 'square' }} {...skeleton.imageSkeleton(false)}>
@@ -33,7 +32,7 @@ const ProductCard: React.FC<IOwnProps> = ({ product }) => {
 					<span className="product-price__price">{product.price}</span>
 				</div>
 				<div className="product-card__name product-name">{product.name}</div>
-				<Button type="primary" className="product-card__button">
+				<Button type="primary" className="product-card__button" onClick={handleAdd}>
 					Add
 				</Button>
 			</Skeleton>

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { ISearchProductsPayload } from '../types/products.types';
+import { IBasket, ISearchProductsPayload } from '../types/products.types';
 
 export const selectSearchProductsResult = createSelector(
 	(state: any): object => state.products,
@@ -26,4 +26,8 @@ export const selectTags = createSelector(
 export const selectProductsTypes = createSelector(
 	(state: any): object => state.products,
 	(products: any): [] => products.data.productsTypes
+);
+export const basket = createSelector(
+	(state: any): object => state.products,
+	(products: any): IBasket => products.data.basket
 );

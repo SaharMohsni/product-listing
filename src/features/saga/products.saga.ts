@@ -13,7 +13,6 @@ export function* searchProducts(action: ISearchProductsAction) {
 	try {
 		const results: IResponseGenerator = yield call(api.searchProducts, action.payload);
 		const productsCount: IResponseGenerator = yield call(api.getProductsCount);
-
 		yield put({
 			type: ActionTypes.SEARCH_PRODUCTS.success,
 			data: results,

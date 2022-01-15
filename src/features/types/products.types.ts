@@ -7,7 +7,7 @@ interface Data {
 	brandsList: {};
 	tags: [];
 	productsTypes: [];
-	basket: [];
+	basket: {};
 	itemsCount: number;
 }
 
@@ -106,4 +106,14 @@ export interface IProduct {
 	added: number;
 	manufacturer: number;
 	itemType: string;
+}
+
+export interface IInBasketProduct {
+	productData: IProduct;
+	quantity: number;
+}
+
+export interface IBasket {
+	productsList: IInBasketProduct[];
+	totalPrice: number;
 }

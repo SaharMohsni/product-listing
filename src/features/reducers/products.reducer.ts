@@ -1,6 +1,6 @@
 import produce from 'immer';
 import { LIMIT_PRODUCTS_BY_Page } from '../../utils/constants';
-import { handleSearchParams } from '../../utils/reducer.helper';
+import { handleAddProduct, handleSearchParams } from '../../utils/reducer.helper';
 import ActionTypes from '../constants/products.constants';
 import { ProductsActions, ProductsState } from '../types/products.types';
 
@@ -12,7 +12,10 @@ export const initialState: ProductsState = {
 		brandsList: [],
 		tags: [],
 		productsTypes: [],
-		basket: []
+		basket: {
+			productsList: [],
+			totalPrice: 0
+		}
 	},
 	local: {
 		searchParams: {
@@ -148,7 +151,7 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 			case ActionTypes.ADD_PRODUCT.success:
 				draft.local.loading.addingProduct = false;
 				draft.local.errors.addingProduct = '';
-				draft.data.basket = action.data;
+				draft.data.basket = handleAddProduct(state.data.basket, action.payload);
 				break;
 			case ActionTypes.ADD_PRODUCT.failure:
 				draft.local.loading.addingProduct = false;

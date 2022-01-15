@@ -1,17 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import './products-store-section.css';
 import { Skeleton } from 'antd';
 import TagFilter from '../../shared/components/tagFilter/TagFilter';
 import ProductsList from '../productsList/ProductsList';
 import PaginationSection from '../../shared/components/pagination/PaginationSection';
 import * as skeleton from '../../utils/loading.skeleton.helper';
+import { selectProductsTypes, selectSearchParams } from '../../features/selectors/products.selectors';
+import { formatData } from '../../utils/helper';
 
-interface IOwnProps {
-	itemsTypeList: { id: number; type: string }[];
-}
-
-const ProductsStoreSection: React.FC<IOwnProps> = ({ itemsTypeList }) => {
-	const [ activeTagKey, setActiveTagKey ] = useState(-1);
+const ProductsStoreSection = () => {
+	const searchParams = useSelector(selectSearchParams);
+	const [ activeTagKey, setActiveTagKey ] = useState('');
+	const itemsTypeList = useSelector(selectProductsTypes);
+	useEffect(
+		() => {
+			if (searchParams.itemType) {
+				setActiveTagKey(searchParams.itemType);
+			}
+		},
+		[ searchParams ]
+	);
 	return (
 		<div className="products-store-section">
 			<Skeleton {...skeleton.labelSkeleton(false)}>
@@ -19,13 +29,13 @@ const ProductsStoreSection: React.FC<IOwnProps> = ({ itemsTypeList }) => {
 			</Skeleton>
 			<Skeleton {...skeleton.tagSkeleton(false)}>
 				<div className="products-store-section__tags-filter-list global-flex-h-any-v-center">
-					{itemsTypeList.map((itemType) => {
+					{formatData(itemsTypeList).map((itemType: any) => {
 						return (
 							<TagFilter
 								itemType={itemType}
 								key={itemType.id}
 								activeTagKey={activeTagKey}
-								// setActiveTagKey={setActiveTagKey}
+								setActiveTagKey={setActiveTagKey}
 							/>
 						);
 					})}

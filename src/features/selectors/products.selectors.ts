@@ -20,3 +20,7 @@ export const selectTags = createSelector(
 	(state: any): object => state.products,
 	(products: any): [] => products.data.tags
 );
+export const selectProductsTypes = createSelector(
+	(state: any): object => state.products,
+	(products: any): [] => products.data.productsTypes
+);

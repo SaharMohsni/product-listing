@@ -5,8 +5,8 @@ import './market-page-customization-section.css';
 
 import FilterSection from '../filterSection/FilterSection';
 import { useMobile } from '../../utils/useMobile';
-import { formatData } from './helper';
 import { selectBrandsList, selectTags } from '../../features/selectors/products.selectors';
+import { formatData } from '../../utils/helper';
 
 const MarketPageCustomizationSection = () => {
 	const brandsList = useSelector(selectBrandsList);

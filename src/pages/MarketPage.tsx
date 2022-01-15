@@ -41,7 +41,6 @@ const MarketPage = () => {
 		[ searchParams ]
 	);
 
-	const itemsTypeList = [ { id: 1, type: 'electro' }, { id: 2, type: 'fruits' }, { id: 3, type: 'clothes' } ];
 	const isMobileVersion = useMobile();
 
 	return (
@@ -54,7 +53,7 @@ const MarketPage = () => {
 					</div>
 				)}
 			</div>
-			<ProductsStoreSection itemsTypeList={itemsTypeList} />
+			<ProductsStoreSection />
 
 			{!isMobileVersion && (
 				<div>

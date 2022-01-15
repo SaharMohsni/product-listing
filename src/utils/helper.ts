@@ -54,3 +54,13 @@ export const serialize = function(obj: any) {
 export const handleNavigationQuery = (params: ISearchProductsPayload) => {
 	return `${serialize(params)}`;
 };
+
+export const formatData = (data: any) => {
+	return data.map((el: any) => {
+		if (isString(el)) {
+			let slug = el.split(' ').join('-');
+			return { id: slug, value: el };
+		}
+		return { id: el.slug, value: el.name };
+	});
+};

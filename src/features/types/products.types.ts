@@ -57,7 +57,7 @@ export interface ISearchProductsPayload {
 	sortType?: string;
 	manufacturer?: object;
 	tags?: object;
-	itemType?: object;
+	itemType?: string;
 }
 
 export interface ISearchProductsAction {

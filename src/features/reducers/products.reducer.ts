@@ -20,7 +20,7 @@ export const initialState: ProductsState = {
 			sortType: '',
 			manufacturer: {},
 			tags: {},
-			itemType: {}
+			itemType: ''
 		},
 
 		loading: {

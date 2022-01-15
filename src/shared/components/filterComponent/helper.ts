@@ -1,5 +1,3 @@
-import { StringGradients } from 'antd/lib/progress/progress';
-import { isEmpty } from 'lodash';
 import { isString } from '../../../utils/helper';
 
 export const handleSearch = (data: any, searchedValue: string) => {

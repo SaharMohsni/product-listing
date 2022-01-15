@@ -1,15 +1,19 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { getSearchParams } from '../../../features/actions/products.actions';
+
 import './tag-filter.css';
 interface IOwnProps {
-	itemType: { id: number; type: string };
-	activeTagKey: number;
-	// setActiveTagKey: () => void;
+	itemType: { id: string; value: string };
+	activeTagKey: string;
+	setActiveTagKey: (value: string) => void;
 }
 
-const TagFilter: React.FC<IOwnProps> = ({ itemType, activeTagKey }) => {
+const TagFilter: React.FC<IOwnProps> = ({ itemType, activeTagKey, setActiveTagKey }) => {
+	const dispatch = useDispatch();
 	const handleActivationTag = () => {
-		// setActiveTagKey();
-		console.log(itemType.id);
+		setActiveTagKey(itemType.id);
+		dispatch(getSearchParams({ itemType: itemType.id }));
 	};
 	return (
 		<div
@@ -17,7 +21,7 @@ const TagFilter: React.FC<IOwnProps> = ({ itemType, activeTagKey }) => {
 				'active-tag'} tag-filter-section global-flex-h-center-v-center`}
 			onClick={handleActivationTag}
 		>
-			{itemType.type}
+			{itemType.value}
 		</div>
 	);
 };

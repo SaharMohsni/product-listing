@@ -2,8 +2,13 @@
 	width: 61px;
 	height: 30px;
 	margin-left: 5px;
-	background-color: #1ea4ce;
-	color: #ffff;
+	background-color: #f2f0fd;
+	color: #1ea4ce;
 	padding: 6px 16px;
 	border-radius: 2px;
+	cursor: pointer;
+}
+.active-tag {
+	background-color: #1ea4ce;
+	color: #ffff;
 }

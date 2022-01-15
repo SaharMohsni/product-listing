@@ -6,6 +6,7 @@ export const addSortToUrl = (variable: string | undefined, sortType: string | un
 };
 
 export const addFilterToUrl = (variable: any | undefined) => {
+	console.log('🚀 ~ file: service.helper.ts ~ line 9 ~ addFilterToUrl ~ variable', variable);
 	let str = [];
 	if (variable) {
 		for (var el in variable.data) {
@@ -23,4 +24,10 @@ export const addFilterByArrayListToUrl = (variable: any | undefined) => {
 		}
 	}
 	return str.join('&');
+};
+
+export const addFilterByStringToUrl = (variable: any | undefined) => {
+	if (!isEmpty(variable)) {
+		return `itemType=${variable}`;
+	} else return '';
 };

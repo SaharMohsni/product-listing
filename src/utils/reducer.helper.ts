@@ -1,7 +1,7 @@
 import { ISearchProductsPayload } from '../features/types/products.types';
 
 export const handleSearchParams = (localSearchParams: ISearchProductsPayload, params: ISearchProductsPayload) => {
-	let { page, limit, sortVariable, sortType, manufacturer, tags } = localSearchParams;
+	let { page, limit, sortVariable, sortType, manufacturer, tags, itemType } = localSearchParams;
 	return {
 		...localSearchParams,
 		page: params.page ? params.page : page,
@@ -9,6 +9,7 @@ export const handleSearchParams = (localSearchParams: ISearchProductsPayload, pa
 		sortVariable: params.sortVariable ? params.sortVariable : sortVariable,
 		sortType: params.sortType ? params.sortType : sortType,
 		manufacturer: params.manufacturer ? params.manufacturer : manufacturer,
-		tags: params.tags ? params.tags : tags
+		tags: params.tags ? params.tags : tags,
+		itemType: params.itemType ? params.itemType : itemType
 	};
 };

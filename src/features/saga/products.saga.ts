@@ -1,10 +1,9 @@
 import { takeEvery, put, call } from 'redux-saga/effects';
 import {
-	IFetchCompaniesAction,
 	IGetSearchParamsAction,
 	IResponseGenerator,
 	ISearchProductsAction,
-	IFetchTagsAction
+	IFetchActionWithoutPayload
 } from '../types/products.types';
 import * as api from '../services/products.services';
 import ActionTypes from '../constants/products.constants';
@@ -40,7 +39,7 @@ export function* getSearchParamsWatcher() {
 	yield takeEvery(ActionTypes.GET_SEARCH_PARAMS.request, getSearchParams);
 }
 
-export function* fetchCompanies(action: IFetchCompaniesAction) {
+export function* fetchCompanies(action: IFetchActionWithoutPayload) {
 	try {
 		const results: IResponseGenerator = yield call(api.fetchCompanies);
 		yield put({
@@ -57,7 +56,7 @@ export function* fetchCompaniesWatcher() {
 }
 let tagsFakeData = [ 'Beach', 'Ocean', 'Water', 'Animal', 'Bear', 'Road', 'Rocks', 'Rust' ];
 
-export function* fetchTags(action: IFetchTagsAction) {
+export function* fetchTags(action: IFetchActionWithoutPayload) {
 	// const results: IResponseGenerator = yield call(api.fetchTags);
 
 	try {
@@ -75,9 +74,8 @@ export function* fetchTagsWatcher() {
 }
 let typesFakeData = [ 'mug', 'shirt', 'clothes' ];
 
-export function* fetchProductsTypes(action: IFetchTagsAction) {
+export function* fetchProductsTypes(action: IFetchActionWithoutPayload) {
 	// const results: IResponseGenerator = yield call(api.fetchProductsTypes);
-
 	try {
 		yield put({
 			type: ActionTypes.FETCH_PRODUCTS_TYPES.success,
@@ -89,5 +87,5 @@ export function* fetchProductsTypes(action: IFetchTagsAction) {
 }
 
 export function* fetchProductsTypesWatcher() {
-	yield takeEvery(ActionTypes.FETCH_PRODUCTS_TYPES.request, fetchTags);
+	yield takeEvery(ActionTypes.FETCH_PRODUCTS_TYPES.request, fetchProductsTypes);
 }

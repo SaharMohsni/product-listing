@@ -65,16 +65,14 @@ export interface ISearchProductsAction {
 	payload: ISearchProductsPayload;
 }
 
-export interface IFetchCompaniesAction {
+export interface IFetchActionWithoutPayload {
 	type: string;
 }
 export interface IGetSearchParamsAction {
 	type: string;
 	payload: ISearchProductsPayload;
 }
-export interface IFetchTagsAction {
-	type: string;
-}
+
 export interface IBrand {
 	slug: string;
 	name: string;

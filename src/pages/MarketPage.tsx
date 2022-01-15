@@ -7,7 +7,13 @@ import Basket from '../components/basket/Basket';
 import BasketDrawer from '../components/basketDrawer/BasketDrawer';
 import { useMobile } from '../utils/useMobile';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCompanies, getSearchParams, searchProducts, fetchTags } from '../features/actions/products.actions';
+import {
+	fetchCompanies,
+	getSearchParams,
+	searchProducts,
+	fetchTags,
+	fetchProductsTypes
+} from '../features/actions/products.actions';
 import { selectSearchParams } from '../features/selectors/products.selectors';
 import { generateQueryFromPathname, handleNavigationQuery, convertObjectKey } from '../utils/helper';
 
@@ -23,6 +29,7 @@ const MarketPage = () => {
 		dispatch(getSearchParams(convertObjectKey(query)));
 		dispatch(fetchCompanies());
 		dispatch(fetchTags());
+		dispatch(fetchProductsTypes());
 	}, []);
 
 	useEffect(

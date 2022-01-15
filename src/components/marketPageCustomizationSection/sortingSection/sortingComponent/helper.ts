@@ -1,16 +1,18 @@
 import { isEmpty } from 'lodash';
 import { ISearchProductsPayload } from '../../../../features/types/products.types';
-export const handleRadioButtonValues = (value: string) => {
+import { ASC_PRICE, DESC_PRICE, NEW_ADDED, OLD_ADDED } from '../../../../utils/constants';
+
+export const handleRadioButtonValues = (value: number) => {
 	switch (value) {
-		case '0':
+		case ASC_PRICE:
 			return { sortVariable: 'price', sortType: 'asc' };
-		case '1':
+		case DESC_PRICE:
 			return { sortVariable: 'price', sortType: 'desc' };
 
-		case '2':
+		case NEW_ADDED:
 			return { sortVariable: 'added', sortType: 'asc' };
 
-		case '3':
+		case OLD_ADDED:
 			return { sortVariable: 'added', sortType: 'desc' };
 		default:
 			return { sortVariable: '', sortType: '' };

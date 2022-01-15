@@ -58,7 +58,6 @@ export function* fetchCompanies(action: IFetchActionWithoutPayload) {
 export function* fetchCompaniesWatcher() {
 	yield takeEvery(ActionTypes.FETCH_COMPANIES.request, fetchCompanies);
 }
-let tagsFakeData = [ 'Beach', 'Ocean', 'Water', 'Animal', 'Bear', 'Road', 'Rocks', 'Rust' ];
 
 export function* fetchTags(action: IFetchActionWithoutPayload) {
 	const results: IResponseGenerator = yield call(api.fetchTags);
@@ -76,14 +75,13 @@ export function* fetchTags(action: IFetchActionWithoutPayload) {
 export function* fetchTagsWatcher() {
 	yield takeEvery(ActionTypes.FETCH_TAGS.request, fetchTags);
 }
-let typesFakeData = [ 'mug', 'shirt', 'clothes' ];
 
 export function* fetchProductsTypes(action: IFetchActionWithoutPayload) {
-	// const results: IResponseGenerator = yield call(api.fetchProductsTypes);
+	const results: IResponseGenerator = yield call(api.fetchProductsTypes);
 	try {
 		yield put({
 			type: ActionTypes.FETCH_PRODUCTS_TYPES.success,
-			data: typesFakeData
+			data: results
 		});
 	} catch (e) {
 		yield put({ type: ActionTypes.FETCH_PRODUCTS_TYPES.failure, e });

@@ -7,31 +7,43 @@ server.use(middlewares);
 
 server.use(jsonServer.bodyParser);
 
-var tags = [];
+const db = router.db.getState();
+const items = db.items;
+
+var itemsTags = [];
+var itemsTypes = [];
 
 const getAllTags = () => {
-	const db = router.db.getState();
-	var items = db.items;
- 
 	items.forEach((element) => {
 		element.tags.forEach((tag) => {
-			!tags.includes(tag) && tags.push(tag);
+			!itemsTags.includes(tag) && itemsTags.push(tag);
 		});
+	});
+};
+
+const getAllTypes = () => {
+	items.forEach((element) => { 
+			!itemsTypes.includes(element.itemType) && itemsTypes.push(element.itemType);
 	});
 };
 
 (function() {
 	getAllTags();
+  getAllTypes()
 })();
 
 server.get('/total-items-count', (req, res, next) => {
-	const db = router.db.getState();
-	var itemsCount = db.items.length;
+  var itemsCount = db.items.length;
 	res.jsonp(itemsCount);
 });
 
+
+server.get('/products-types', (req, res) => {
+	res.jsonp(itemsTypes);
+});
+
 server.get('/tags', (req, res) => {
-	res.jsonp(tags);
+	res.jsonp(itemsTags);
 });
 
 server.use(router);

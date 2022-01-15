@@ -4,8 +4,9 @@ import * as actions from '../actions/products.actions';
 /* --- STATE --- */
 interface Data {
 	productsList: [];
-	brandsList: [];
-	tags: string[];
+	brandsList: {};
+	tags: [];
+	productsTypes: [];
 }
 
 interface Local {
@@ -16,6 +17,7 @@ interface Local {
 		getSearchParams: boolean;
 		fetchingCompanies: boolean;
 		fetchingTags: boolean;
+		fetchingProductsTypes: boolean;
 	};
 	errors: {
 		fetchingProduct: string;
@@ -23,6 +25,7 @@ interface Local {
 		getSearchParams: string;
 		fetchingCompanies: string;
 		fetchingTags: string;
+		fetchingProductsTypes: string;
 	};
 }
 interface IProductsState {
@@ -54,6 +57,7 @@ export interface ISearchProductsPayload {
 	sortType?: string;
 	manufacturer?: object;
 	tags?: object;
+	itemType?: object;
 }
 
 export interface ISearchProductsAction {

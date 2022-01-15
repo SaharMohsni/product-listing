@@ -9,7 +9,8 @@ export const initialState: ProductsState = {
 	data: {
 		productsList: [],
 		brandsList: [],
-		tags: []
+		tags: [],
+		productsTypes: []
 	},
 	local: {
 		searchParams: {
@@ -18,7 +19,8 @@ export const initialState: ProductsState = {
 			sortVariable: '',
 			sortType: '',
 			manufacturer: {},
-			tags: {}
+			tags: {},
+			itemType: {}
 		},
 
 		loading: {
@@ -26,14 +28,16 @@ export const initialState: ProductsState = {
 			fetchingProductByPage: false,
 			getSearchParams: false,
 			fetchingCompanies: false,
-			fetchingTags: false
+			fetchingTags: false,
+			fetchingProductsTypes: false
 		},
 		errors: {
 			fetchingProduct: '',
 			fetchingProductByPage: '',
 			getSearchParams: '',
 			fetchingCompanies: '',
-			fetchingTags: ''
+			fetchingTags: '',
+			fetchingProductsTypes: ''
 		}
 	}
 };
@@ -111,6 +115,24 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 					draft.local.errors.fetchingTags = action.errors.response.data;
 				} catch (e) {
 					draft.local.errors.fetchingTags = 'Server error';
+				}
+				break;
+			//Fetch products types
+			case ActionTypes.FETCH_PRODUCTS_TYPES.request:
+				draft.local.loading.fetchingProductsTypes = true;
+				draft.local.errors.fetchingProductsTypes = '';
+				break;
+			case ActionTypes.FETCH_PRODUCTS_TYPES.success:
+				draft.local.loading.fetchingProductsTypes = false;
+				draft.local.errors.fetchingProductsTypes = '';
+				draft.data.productsTypes = action.data;
+				break;
+			case ActionTypes.FETCH_PRODUCTS_TYPES.failure:
+				draft.local.loading.fetchingProductsTypes = false;
+				try {
+					draft.local.errors.fetchingProductsTypes = action.errors.response.data;
+				} catch (e) {
+					draft.local.errors.fetchingProductsTypes = 'Server error';
 				}
 				break;
 		}

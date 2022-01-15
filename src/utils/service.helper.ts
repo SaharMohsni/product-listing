@@ -6,7 +6,6 @@ export const addSortToUrl = (variable: string | undefined, sortType: string | un
 };
 
 export const addFilterToUrl = (variable: any | undefined) => {
-	console.log('🚀 ~ file: service.helper.ts ~ line 9 ~ addFilterToUrl ~ variable', variable);
 	let str = [];
 	if (variable) {
 		for (var el in variable.data) {

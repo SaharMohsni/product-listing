@@ -8,6 +8,7 @@ import { ProductsActions, ProductsState } from '../types/products.types';
 export const initialState: ProductsState = {
 	data: {
 		productsList: [],
+		itemsCount: 0,
 		brandsList: [],
 		tags: [],
 		productsTypes: [],
@@ -57,6 +58,7 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 				draft.local.loading.fetchingProductByPage = false;
 				draft.local.errors.fetchingProductByPage = '';
 				draft.data.productsList = action.data;
+				draft.data.itemsCount = action.productsCount;
 				break;
 			case ActionTypes.SEARCH_PRODUCTS.failure:
 				draft.local.loading.fetchingProductByPage = false;

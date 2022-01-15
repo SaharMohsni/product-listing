@@ -9,6 +9,7 @@ import { ISearchProductsPayload } from '../types/products.types';
 const URL = {
 	baseApiUrl: () => 'http://localhost:4000',
 	products: {
+		itemsCount: '/total-items-count',
 		searchProducts: (payload: ISearchProductsPayload) => {
 			return `/items?_page=${payload.page}&_limit=16${addSortToUrl(
 				payload.sortVariable,

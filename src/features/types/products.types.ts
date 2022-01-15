@@ -8,6 +8,7 @@ interface Data {
 	tags: [];
 	productsTypes: [];
 	basket: [];
+	itemsCount: number;
 }
 
 interface Local {

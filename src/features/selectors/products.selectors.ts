@@ -5,7 +5,10 @@ export const selectSearchProductsResult = createSelector(
 	(state: any): object => state.products,
 	(products: any): [] => products.data.productsList
 );
-
+export const selectSearchProductsCount = createSelector(
+	(state: any): object => state.products,
+	(products: any): number => products.data.itemsCount
+);
 export const selectSearchParams = createSelector(
 	(state: any): object => state.products,
 	(products: any): ISearchProductsPayload => products.local.searchParams

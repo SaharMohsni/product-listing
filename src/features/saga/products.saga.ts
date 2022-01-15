@@ -12,9 +12,12 @@ import ActionTypes from '../constants/products.constants';
 export function* searchProducts(action: ISearchProductsAction) {
 	try {
 		const results: IResponseGenerator = yield call(api.searchProducts, action.payload);
+		const productsCount: IResponseGenerator = yield call(api.getProductsCount);
+
 		yield put({
 			type: ActionTypes.SEARCH_PRODUCTS.success,
-			data: results
+			data: results,
+			productsCount
 		});
 	} catch (e) {
 		yield put({ type: ActionTypes.SEARCH_PRODUCTS.failure, e });

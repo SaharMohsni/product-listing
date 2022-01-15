@@ -5,7 +5,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import './pagination-section.css';
 
 import { getSearchParams } from '../../../features/actions/products.actions';
-import { selectSearchParams } from '../../../features/selectors/products.selectors';
+import { selectSearchParams, selectSearchProductsCount } from '../../../features/selectors/products.selectors';
 import { handlePaginationValue } from './helper';
 
 const PaginationSection = () => {
@@ -16,6 +16,10 @@ const PaginationSection = () => {
 	const onChange = (page: number) => {
 		dispatch(getSearchParams({ page: page.toString() }));
 	};
+
+	const productsCount = useSelector(selectSearchProductsCount);
+	console.log('productsCount', productsCount);
+
 	function itemRender(current: any, type: any, originalElement: any) {
 		if (type === 'prev') {
 			return (
@@ -41,7 +45,7 @@ const PaginationSection = () => {
 				showSizeChanger={false}
 				responsive
 				onChange={(page) => onChange(page)}
-				total={320}
+				total={productsCount}
 				pageSize={16}
 				itemRender={itemRender}
 				current={handlePaginationValue(searchParams)}

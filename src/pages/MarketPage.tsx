@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import queryString from 'query-string';
 import './market-page.css';
 import ProductsStoreSection from '../components/productsStoreSection/ProductsStoreSection';
 import MarketPageCustomizationSection from '../components/marketPageCustomizationSection/MarketPageCustomizationSection';
@@ -9,17 +8,8 @@ import BasketDrawer from '../components/basketDrawer/BasketDrawer';
 import { useMobile } from '../utils/useMobile';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCompanies, getSearchParams, searchProducts, fetchTags } from '../features/actions/products.actions';
-import {
-	selectBrandsList,
-	selectSearchParams,
-	selectSearchProductsResult
-} from '../features/selectors/products.selectors';
-import {
-	generateQueryFromPathname,
-	handleNavigationQuery,
-	convertObjectKey,
-	handleNavigationPathName
-} from '../utils/helper';
+import { selectSearchParams } from '../features/selectors/products.selectors';
+import { generateQueryFromPathname, handleNavigationQuery, convertObjectKey } from '../utils/helper';
 
 const MarketPage = () => {
 	const searchParams = useSelector(selectSearchParams);

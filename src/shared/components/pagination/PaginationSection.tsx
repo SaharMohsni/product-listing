@@ -18,8 +18,6 @@ const PaginationSection = () => {
 	};
 
 	const productsCount = useSelector(selectSearchProductsCount);
-	console.log('productsCount', productsCount);
-
 	function itemRender(current: any, type: any, originalElement: any) {
 		if (type === 'prev') {
 			return (

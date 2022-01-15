@@ -8,7 +8,7 @@ import './filter-component.css';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
 import { getSearchParams } from '../../../features/actions/products.actions';
 import { selectSearchParams } from '../../../features/selectors/products.selectors';
-import { getCheckboxCurrentValues } from './helper';
+import { createCheckedAllDataStructure, formatFilterDataStructure, getCheckboxCurrentValues } from './helper';
 
 interface IOwnProps {
 	title: string;
@@ -17,15 +17,18 @@ interface IOwnProps {
 	filterKey: string;
 }
 const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList, setSearchedValue, filterKey }) => {
-	const location = useLocation();
+	const [ checkAll, setCheckAll ] = useState(false);
 	const dispatch = useDispatch();
 	const searchParams = useSelector(selectSearchParams);
-	const [ currentValue, setCurrentValue ] = useState('');
 
 	const handleChange = (e: any) => {
-		let filterData = {
-			[filterKey]: { key: filterKey, data: e }
-		};
+		let filterData = formatFilterDataStructure(filterKey, e);
+		return dispatch(getSearchParams(filterData));
+	};
+	const onCheckAllChange = (e: any) => {
+		setCheckAll(e.target.checked);
+		let afterCheckAllData = e.target.checked ? createCheckedAllDataStructure(optionsList) : [];
+		let filterData = formatFilterDataStructure(filterKey, afterCheckAllData);
 		return dispatch(getSearchParams(filterData));
 	};
 
@@ -47,6 +50,9 @@ const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList, setSearchedV
 						/>
 					</div>
 					<div className="filter-component__filter-options-container box ">
+						<Checkbox onChange={onCheckAllChange} checked={checkAll}>
+							All
+						</Checkbox>
 						<Checkbox.Group
 							style={{ width: '100%' }}
 							onChange={(e) => handleChange(e)}

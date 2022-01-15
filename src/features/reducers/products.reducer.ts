@@ -8,27 +8,32 @@ import { ProductsActions, ProductsState } from '../types/products.types';
 export const initialState: ProductsState = {
 	data: {
 		productsList: [],
-		brandsList: []
+		brandsList: [],
+		tags: []
 	},
 	local: {
 		searchParams: {
 			page: '',
-			limit: LIMIT_PRODUCTS_BY_Page.toString(),
+			limit: '',
 			sortVariable: '',
 			sortType: '',
-			manufacturer: {}
+			manufacturer: {},
+			tags: {}
 		},
+
 		loading: {
 			fetchingProduct: false,
 			fetchingProductByPage: false,
 			getSearchParams: false,
-			fetchingCompanies: false
+			fetchingCompanies: false,
+			fetchingTags: false
 		},
 		errors: {
 			fetchingProduct: '',
 			fetchingProductByPage: '',
 			getSearchParams: '',
-			fetchingCompanies: ''
+			fetchingCompanies: '',
+			fetchingTags: ''
 		}
 	}
 };
@@ -88,6 +93,24 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 					draft.local.errors.fetchingCompanies = action.errors.response.data;
 				} catch (e) {
 					draft.local.errors.fetchingCompanies = 'Server error';
+				}
+				break;
+			//Fetch tags
+			case ActionTypes.FETCH_TAGS.request:
+				draft.local.loading.fetchingTags = true;
+				draft.local.errors.fetchingTags = '';
+				break;
+			case ActionTypes.FETCH_TAGS.success:
+				draft.local.loading.fetchingTags = false;
+				draft.local.errors.fetchingTags = '';
+				draft.data.tags = action.data;
+				break;
+			case ActionTypes.FETCH_TAGS.failure:
+				draft.local.loading.fetchingTags = false;
+				try {
+					draft.local.errors.fetchingTags = action.errors.response.data;
+				} catch (e) {
+					draft.local.errors.fetchingTags = 'Server error';
 				}
 				break;
 		}

@@ -12,3 +12,8 @@ export const fetchCompanies = async (): Promise<any> => {
 	const result = await axios.get(URL.baseApiUrl() + URL.companies.fetchCompanies(), requestHeader({}));
 	return result.data;
 };
+
+export const fetchTags = async (): Promise<any> => {
+	const result = await axios.get(URL.baseApiUrl() + URL.tags.fetchTags(), requestHeader({}));
+	return result.data;
+};

@@ -7,12 +7,15 @@ export const generateQueryFromPathname = (pathName: string) => {
 	return queryString.parse(getURLCleanPath(pathName));
 };
 
+export const isString = (data: any) => typeof data === 'string';
+export const isObject = (data: any) => typeof data === 'object';
+
 export const createNewStructureData = (queryValues: any) => {
 	let objectKey = {};
 	let key = '';
 	for (var el of queryValues) {
 		for (var subEl of el) {
-			if (typeof subEl === 'object') {
+			if (isObject(subEl)) {
 				key = el[0];
 				objectKey = { key: el[0], data: el[1] };
 			}
@@ -33,53 +36,21 @@ export const convertObjectKey = (query: any) => {
 };
 export const serialize = function(obj: any) {
 	var str = [];
-
 	for (var p in obj)
 		if (obj.hasOwnProperty(p)) {
-			if (typeof obj[p] !== 'string') {
-				for (var el in obj[p].data) {
-					str.push(encodeURIComponent(p) + '=' + obj[p].data[el]);
+			if (!isEmpty(obj[p])) {
+				if (!isString(obj[p])) {
+					for (var el in obj[p].data) {
+						str.push(encodeURIComponent(p) + '=' + obj[p].data[el]);
+					}
+				} else {
+					str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
 				}
-			} else {
-				str.push(encodeURIComponent(p) + '=' + encodeURIComponent(obj[p]));
 			}
 		}
 	return str.join('&');
 };
 
 export const handleNavigationQuery = (params: ISearchProductsPayload) => {
-	let { page, sortVariable, sortType, manufacturer } = params;
-	let query = params;
-	if (isEmpty(page) && isEmpty(sortVariable) && isEmpty(manufacturer)) {
-		query = {};
-	} else if (isEmpty(page)) {
-		if (!isEmpty(sortVariable) && !isEmpty(manufacturer)) {
-			query = {
-				page: '1',
-				sortVariable: sortVariable,
-				sortType: sortType,
-				manufacturer: manufacturer
-			};
-		} else if (!isEmpty(sortVariable) && manufacturer && isEmpty(manufacturer)) {
-			query = { page: '1', sortVariable: sortVariable, sortType: sortType };
-		} else if (!isEmpty(manufacturer) && isEmpty(sortVariable)) {
-			query = { page: '1', manufacturer: manufacturer };
-		}
-	} else if (!isEmpty(page)) {
-		if (isEmpty(sortVariable) && isEmpty(manufacturer)) {
-			query = {
-				page: page
-			};
-		} else if (isEmpty(sortVariable) && !isEmpty(manufacturer)) {
-			query = { page: '1', manufacturer: manufacturer };
-		} else if (!isEmpty(sortVariable) && isEmpty(manufacturer)) {
-			query = { page: '1', sortVariable: sortVariable };
-		}
-	} else {
-		query = {
-			...params
-		};
-	}
-
-	return `${serialize(query)}`;
+	return `${serialize(params)}`;
 };

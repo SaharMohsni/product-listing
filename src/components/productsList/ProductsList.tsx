@@ -1,20 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+
 import ProductCard from './productCard/ProductCard';
 import './product-list.css';
-interface IOwnProps {
-	productsList: {
-		tags: string[];
-		price: number;
-		name: string;
-		description: string;
-		slug: string;
-		added: number;
-		manufacturer: string;
-		itemType: string;
-	}[];
-}
+import { selectSearchProductsResult } from '../../features/selectors/products.selectors';
 
-const ProductsList: React.FC<IOwnProps> = ({ productsList }) => {
+const ProductsList = () => {
+	const productsList = useSelector(selectSearchProductsResult);
 	const renderProductsList = () => {
 		return productsList.map((product) => {
 			return <ProductCard product={product} key={Math.random()} />;

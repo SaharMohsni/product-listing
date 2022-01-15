@@ -15,3 +15,8 @@ export const selectBrandsList = createSelector(
 	(state: any): object => state.products,
 	(products: any): [] => products.data.brandsList
 );
+
+export const selectTags = createSelector(
+	(state: any): object => state.products,
+	(products: any): [] => products.data.tags
+);

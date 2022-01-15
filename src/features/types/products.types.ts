@@ -5,6 +5,7 @@ import * as actions from '../actions/products.actions';
 interface Data {
 	productsList: [];
 	brandsList: [];
+	tags: string[];
 }
 
 interface Local {
@@ -14,12 +15,14 @@ interface Local {
 		fetchingProductByPage: boolean;
 		getSearchParams: boolean;
 		fetchingCompanies: boolean;
+		fetchingTags: boolean;
 	};
 	errors: {
 		fetchingProduct: string;
 		fetchingProductByPage: string;
 		getSearchParams: string;
 		fetchingCompanies: string;
+		fetchingTags: string;
 	};
 }
 interface IProductsState {
@@ -50,6 +53,7 @@ export interface ISearchProductsPayload {
 	sortVariable?: string;
 	sortType?: string;
 	manufacturer?: object;
+	tags?: object;
 }
 
 export interface ISearchProductsAction {
@@ -64,7 +68,9 @@ export interface IGetSearchParamsAction {
 	type: string;
 	payload: ISearchProductsPayload;
 }
-
+export interface IFetchTagsAction {
+	type: string;
+}
 export interface IBrand {
 	slug: string;
 	name: string;

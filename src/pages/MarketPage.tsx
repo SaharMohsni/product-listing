@@ -8,18 +8,21 @@ import Basket from '../components/basket/Basket';
 import BasketDrawer from '../components/basketDrawer/BasketDrawer';
 import { useMobile } from '../utils/useMobile';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCompanies, getSearchParams, searchProducts } from '../features/actions/products.actions';
+import { fetchCompanies, getSearchParams, searchProducts, fetchTags } from '../features/actions/products.actions';
 import {
 	selectBrandsList,
 	selectSearchParams,
 	selectSearchProductsResult
 } from '../features/selectors/products.selectors';
-import { generateQueryFromPathname, handleNavigationQuery, convertObjectKey } from '../utils/helper';
+import {
+	generateQueryFromPathname,
+	handleNavigationQuery,
+	convertObjectKey,
+	handleNavigationPathName
+} from '../utils/helper';
 
 const MarketPage = () => {
-	const productsList = useSelector(selectSearchProductsResult);
 	const searchParams = useSelector(selectSearchParams);
-	const brandsList = useSelector(selectBrandsList);
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -29,6 +32,7 @@ const MarketPage = () => {
 	useEffect(() => {
 		dispatch(getSearchParams(convertObjectKey(query)));
 		dispatch(fetchCompanies());
+		dispatch(fetchTags());
 	}, []);
 
 	useEffect(
@@ -46,14 +50,14 @@ const MarketPage = () => {
 	return (
 		<div className="market-page global-page-padding-left-right">
 			<div className={`${isMobileVersion ? 'global-flex-h-between-v-any' : ''}`}>
-				<MarketPageCustomizationSection brandsList={brandsList} />
+				<MarketPageCustomizationSection />
 				{isMobileVersion && (
 					<div>
 						<BasketDrawer />
 					</div>
 				)}
 			</div>
-			<ProductsStoreSection productsList={productsList} itemsTypeList={itemsTypeList} />
+			<ProductsStoreSection itemsTypeList={itemsTypeList} />
 
 			{!isMobileVersion && (
 				<div>

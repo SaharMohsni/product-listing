@@ -7,3 +7,4 @@ export const getSearchParams = (payload: ISearchProductsPayload) => {
 	return action(ActionTypes.GET_SEARCH_PARAMS.request, payload);
 };
 export const fetchCompanies = () => action(ActionTypes.FETCH_COMPANIES.request);
+export const fetchTags = () => action(ActionTypes.FETCH_TAGS.request);

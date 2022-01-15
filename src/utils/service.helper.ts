@@ -14,3 +14,13 @@ export const addFilterToUrl = (variable: any | undefined) => {
 	}
 	return str.join('&');
 };
+
+export const addFilterByArrayListToUrl = (variable: any | undefined) => {
+	let str = [];
+	if (variable) {
+		for (var el in variable.data) {
+			str.push(variable.key + '_like=' + variable.data[el]);
+		}
+	}
+	return str.join('&');
+};

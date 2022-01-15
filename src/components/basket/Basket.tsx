@@ -26,7 +26,7 @@ const Basket = () => {
 				<div className="basket__total-price-container global-flex-h-end-v-center">
 					<div className="basket__total-price-container__total-price product-price global-flex-h-center-v-center">
 						<span>$</span>
-						<span>14250</span>
+						<span>{basketProducts.totalPrice}</span>
 					</div>
 				</div>
 			</div>

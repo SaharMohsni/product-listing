@@ -5,6 +5,7 @@ import { ISearchProductsPayload } from '../types/products.types';
 
 export const searchProducts = async (body: ISearchProductsPayload): Promise<any> => {
 	const result = await axios.get(URL.baseApiUrl() + URL.products.searchProducts(body), requestHeader({}));
+	console.log('walid', result);
 	return result.data;
 };
 

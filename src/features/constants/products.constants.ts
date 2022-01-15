@@ -7,11 +7,13 @@ const GET_SEARCH_PARAMS = generateActionTypes(root, 'GET_SEARCH_PARAMS');
 const FETCH_COMPANIES = generateActionTypes(root, 'FETCH_COMPANIES');
 const FETCH_TAGS = generateActionTypes(root, 'FETCH_TAGS');
 const FETCH_PRODUCTS_TYPES = generateActionTypes(root, 'FETCH_PRODUCTS_TYPES');
+const ADD_PRODUCT = generateActionTypes(root, 'ADD_PRODUCT');
 const constants = {
 	SEARCH_PRODUCTS,
 	GET_SEARCH_PARAMS,
 	FETCH_COMPANIES,
 	FETCH_TAGS,
-	FETCH_PRODUCTS_TYPES
+	FETCH_PRODUCTS_TYPES,
+	ADD_PRODUCT
 };
 export default constants;

@@ -5,7 +5,8 @@ import {
 	getSearchParamsWatcher,
 	fetchCompaniesWatcher,
 	fetchTagsWatcher,
-	fetchProductsTypesWatcher
+	fetchProductsTypesWatcher,
+	addProductWatcher
 } from './products.saga';
 
 // single entry point to start all Sagas at once
@@ -15,6 +16,7 @@ export default function* rootSaga() {
 		getSearchParamsWatcher(),
 		fetchCompaniesWatcher(),
 		fetchTagsWatcher(),
-		fetchProductsTypesWatcher()
+		fetchProductsTypesWatcher(),
+		addProductWatcher()
 	]);
 }

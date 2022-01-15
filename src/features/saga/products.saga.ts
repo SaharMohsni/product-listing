@@ -3,7 +3,8 @@ import {
 	IGetSearchParamsAction,
 	IResponseGenerator,
 	ISearchProductsAction,
-	IFetchActionWithoutPayload
+	IFetchActionWithoutPayload,
+	IAddProductAction
 } from '../types/products.types';
 import * as api from '../services/products.services';
 import ActionTypes from '../constants/products.constants';
@@ -57,12 +58,12 @@ export function* fetchCompaniesWatcher() {
 let tagsFakeData = [ 'Beach', 'Ocean', 'Water', 'Animal', 'Bear', 'Road', 'Rocks', 'Rust' ];
 
 export function* fetchTags(action: IFetchActionWithoutPayload) {
-	// const results: IResponseGenerator = yield call(api.fetchTags);
+	const results: IResponseGenerator = yield call(api.fetchTags);
 
 	try {
 		yield put({
 			type: ActionTypes.FETCH_TAGS.success,
-			data: tagsFakeData
+			data: results
 		});
 	} catch (e) {
 		yield put({ type: ActionTypes.FETCH_TAGS.failure, e });
@@ -88,4 +89,19 @@ export function* fetchProductsTypes(action: IFetchActionWithoutPayload) {
 
 export function* fetchProductsTypesWatcher() {
 	yield takeEvery(ActionTypes.FETCH_PRODUCTS_TYPES.request, fetchProductsTypes);
+}
+
+export function* addProduct(action: IAddProductAction) {
+	try {
+		yield put({
+			type: ActionTypes.ADD_PRODUCT.success,
+			payload: action.payload
+		});
+	} catch (e) {
+		yield put({ type: ActionTypes.ADD_PRODUCT.failure, e });
+	}
+}
+
+export function* addProductWatcher() {
+	yield takeEvery(ActionTypes.ADD_PRODUCT.request, addProduct);
 }

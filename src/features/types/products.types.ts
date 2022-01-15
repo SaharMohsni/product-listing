@@ -7,6 +7,7 @@ interface Data {
 	brandsList: {};
 	tags: [];
 	productsTypes: [];
+	basket: [];
 }
 
 interface Local {
@@ -18,6 +19,7 @@ interface Local {
 		fetchingCompanies: boolean;
 		fetchingTags: boolean;
 		fetchingProductsTypes: boolean;
+		addingProduct: boolean;
 	};
 	errors: {
 		fetchingProduct: string;
@@ -26,6 +28,7 @@ interface Local {
 		fetchingCompanies: string;
 		fetchingTags: string;
 		fetchingProductsTypes: string;
+		addingProduct: string;
 	};
 }
 interface IProductsState {
@@ -73,6 +76,11 @@ export interface IGetSearchParamsAction {
 	payload: ISearchProductsPayload;
 }
 
+export interface IAddProductAction {
+	type: string;
+	payload: IProduct;
+}
+
 export interface IBrand {
 	slug: string;
 	name: string;
@@ -87,4 +95,14 @@ export interface IBrand {
 export interface ISetLocalState {
 	success: boolean;
 	message: string;
+}
+export interface IProduct {
+	tags: string[];
+	price: number;
+	name: string;
+	description: string;
+	slug: string;
+	added: number;
+	manufacturer: number;
+	itemType: string;
 }

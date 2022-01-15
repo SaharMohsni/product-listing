@@ -10,7 +10,8 @@ export const initialState: ProductsState = {
 		productsList: [],
 		brandsList: [],
 		tags: [],
-		productsTypes: []
+		productsTypes: [],
+		basket: []
 	},
 	local: {
 		searchParams: {
@@ -29,7 +30,8 @@ export const initialState: ProductsState = {
 			getSearchParams: false,
 			fetchingCompanies: false,
 			fetchingTags: false,
-			fetchingProductsTypes: false
+			fetchingProductsTypes: false,
+			addingProduct: false
 		},
 		errors: {
 			fetchingProduct: '',
@@ -37,7 +39,8 @@ export const initialState: ProductsState = {
 			getSearchParams: '',
 			fetchingCompanies: '',
 			fetchingTags: '',
-			fetchingProductsTypes: ''
+			fetchingProductsTypes: '',
+			addingProduct: ''
 		}
 	}
 };
@@ -133,6 +136,24 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 					draft.local.errors.fetchingProductsTypes = action.errors.response.data;
 				} catch (e) {
 					draft.local.errors.fetchingProductsTypes = 'Server error';
+				}
+				break;
+			//add product to basket
+			case ActionTypes.ADD_PRODUCT.request:
+				draft.local.loading.addingProduct = true;
+				draft.local.errors.addingProduct = '';
+				break;
+			case ActionTypes.ADD_PRODUCT.success:
+				draft.local.loading.addingProduct = false;
+				draft.local.errors.addingProduct = '';
+				draft.data.basket = action.data;
+				break;
+			case ActionTypes.ADD_PRODUCT.failure:
+				draft.local.loading.addingProduct = false;
+				try {
+					draft.local.errors.addingProduct = action.errors.response.data;
+				} catch (e) {
+					draft.local.errors.addingProduct = 'Server error';
 				}
 				break;
 		}

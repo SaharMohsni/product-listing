@@ -22,21 +22,20 @@ const getAllTags = () => {
 };
 
 const getAllTypes = () => {
-	items.forEach((element) => { 
-			!itemsTypes.includes(element.itemType) && itemsTypes.push(element.itemType);
+	items.forEach((element) => {
+		!itemsTypes.includes(element.itemType) && itemsTypes.push(element.itemType);
 	});
 };
 
 (function() {
 	getAllTags();
-  getAllTypes()
+	getAllTypes();
 })();
 
 server.get('/total-items-count', (req, res, next) => {
-  var itemsCount = db.items.length;
+	var itemsCount = db.items.length;
 	res.jsonp(itemsCount);
 });
-
 
 server.get('/products-types', (req, res) => {
 	res.jsonp(itemsTypes);

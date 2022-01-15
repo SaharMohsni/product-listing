@@ -17,3 +17,8 @@ export const fetchTags = async (): Promise<any> => {
 	const result = await axios.get(URL.baseApiUrl() + URL.tags.fetchTags(), requestHeader({}));
 	return result.data;
 };
+
+export const fetchProductsTypes = async (): Promise<any> => {
+	const result = await axios.get(URL.baseApiUrl() + URL.productsTypes.fetchProductsTypes(), requestHeader({}));
+	return result.data;
+};

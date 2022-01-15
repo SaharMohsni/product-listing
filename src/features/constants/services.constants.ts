@@ -17,6 +17,9 @@ const URL = {
 	},
 	tags: {
 		fetchTags: () => `/tags`
+	},
+	productsTypes: {
+		fetchProductsTypes: () => `/products-types`
 	}
 };
 

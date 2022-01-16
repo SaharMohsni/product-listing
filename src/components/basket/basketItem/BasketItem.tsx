@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { CloseOutlined } from '@ant-design/icons';
 import { decrementProductQuantity, incrementProductQuantity } from '../../../features/actions/products.actions';
 import { IInBasketProduct } from '../../../features/types/products.types';
 import './basket-item.css';
@@ -9,6 +10,7 @@ interface IOwnProps {
 }
 
 const BasketItem: React.FC<IOwnProps> = ({ item }) => {
+	const [ isHovered, setIsHovered ] = useState(false);
 	const dispatch = useDispatch();
 	const handleIncrementProductQuantity = () => {
 		dispatch(incrementProductQuantity(item.productData.slug));
@@ -17,7 +19,7 @@ const BasketItem: React.FC<IOwnProps> = ({ item }) => {
 		dispatch(decrementProductQuantity(item.productData.slug));
 	};
 	return (
-		<div className="basket-item global-flex-h-between-v-center">
+		<div className={` basket-item global-flex-h-between-v-center`}>
 			<div className="basket-item__details">
 				<div className="basket-item__details__name product-name">{item.productData.name}</div>
 				<div className="basket-item__details__price-details product-price">

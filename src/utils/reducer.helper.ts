@@ -1,3 +1,4 @@
+import { entries, isEmpty } from 'lodash';
 import { IInBasketProduct, IProduct, ISearchProductsPayload } from '../features/types/products.types';
 
 export const handleSearchParams = (localSearchParams: ISearchProductsPayload, params: ISearchProductsPayload) => {
@@ -65,15 +66,17 @@ export const handleIncrementQuantity = (localState: any, payload: string) => {
 
 export const handleDecrementQuantity = (localState: any, payload: string) => {
 	let newProductsList = localState.productsList.map((product: IInBasketProduct) => {
-		let newProductData = {};
+		let newProductData = { quantity: 0 };
 		if (product.productData.slug === payload) {
-			newProductData = { ...product, quantity: decrementQuantity(product.quantity) };
+			let newQuantity = decrementQuantity(product.quantity);
+			newProductData = { ...product, quantity: newQuantity };
 		} else {
 			newProductData = product;
 		}
 
 		return newProductData;
 	});
-	let totPrice = handleBasketTotalPrice(newProductsList);
-	return { productsList: newProductsList, totalPrice: totPrice };
+	let data = newProductsList.filter((el: any) => el.quantity !== 0);
+	let totPrice = handleBasketTotalPrice(data);
+	return { productsList: data, totalPrice: totPrice };
 };

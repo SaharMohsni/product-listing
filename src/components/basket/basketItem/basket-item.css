@@ -1,6 +1,7 @@
 .basket-item {
 	padding: 10px 0;
 	border-bottom: solid 1px #f4f4f4;
+	width: 100%;
 }
 .basket-item:first-child {
 	padding-top: 10px !important;

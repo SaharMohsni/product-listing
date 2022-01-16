@@ -24,20 +24,7 @@ const BasketDrawer = () => {
 					</div>
 				</Skeleton>
 			</Space>
-			<Drawer
-				title={`Details`}
-				placement="right"
-				onClose={onClose}
-				visible={visible}
-				extra={
-					<Space className="action-buttons">
-						<Button onClick={onClose}>Cancel</Button>
-						<Button type="primary" onClick={onClose}>
-							Submit
-						</Button>
-					</Space>
-				}
-			>
+			<Drawer title={`Details`} placement="right" onClose={onClose} visible={visible}>
 				<Basket />
 			</Drawer>
 		</div>

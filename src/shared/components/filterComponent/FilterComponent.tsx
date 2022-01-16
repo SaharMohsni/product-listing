@@ -50,7 +50,7 @@ const FilterComponent: React.FC<IOwnProps> = ({ loading, title, optionsList, set
 							onChange={handleSearchInputChange}
 						/>
 					</div>
-					<div className="filter-component__filter-options-container box ">
+					<div className="filter-component__filter-options-container box global-scroll">
 						<Checkbox onChange={onCheckAllChange} checked={checkAll}>
 							All
 						</Checkbox>

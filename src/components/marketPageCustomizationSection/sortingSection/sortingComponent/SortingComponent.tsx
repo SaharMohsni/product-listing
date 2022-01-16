@@ -25,7 +25,7 @@ const SortingComponent = () => {
 				<div className="section-block-header">Sorting</div>
 			</Skeleton>
 			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading.fetchingProductByPage)}>
-				<div className="sorting-component__data section-block box">
+				<div className="sorting-component__data section-block box global-scroll">
 					<Radio.Group onChange={(e) => handleChange(e)} value={handleRadioGroupValue(searchParams)}>
 						<Space direction="vertical">
 							<Radio value={ASC_PRICE}>{sortDataMessages[ASC_PRICE]}</Radio>

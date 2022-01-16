@@ -11,6 +11,7 @@
 }
 .products-store-section__tags-filter-list {
 	margin-bottom: 18px;
+	overflow-x: auto !important;
 }
 .products-store-section .ant-skeleton-content {
 	width: 50% !important;

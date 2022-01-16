@@ -30,7 +30,7 @@ const ProductsStoreSection = () => {
 				<div className="products-store-section__header">Products</div>
 			</Skeleton>
 			<Skeleton {...skeleton.tagSkeleton(loading.fetchingProductByPage)}>
-				<div className="products-store-section__tags-filter-list global-flex-h-any-v-center">
+				<div className="products-store-section__tags-filter-list global-scroll global-flex-h-any-v-center">
 					{formatData(itemsTypeList).map((itemType: any) => {
 						return (
 							<TagFilter

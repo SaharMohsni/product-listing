@@ -3,7 +3,8 @@
 }
 @media screen and (width: 1440px) {
 	.product-card {
-		height: 227px;
+		height: 225px;
+		width: 124px;
 	}
 }
 @media screen and (max-width: 1120px) {
@@ -16,7 +17,16 @@
 	border: 1.17666px solid #f3f0fe;
 	border-radius: 12px;
 	margin-bottom: 8px;
-	height: 60%;
+	height: 50%;
+}
+.product-card__price {
+	height: 10%;
+}
+.product-card__name {
+	height: 20%;
+}
+.product-card__button {
+	height: 20%;
 }
 
 @media screen and (min-width: 320px) and (max-width: 992px) {

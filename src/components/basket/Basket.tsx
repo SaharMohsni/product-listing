@@ -19,7 +19,7 @@ const Basket = () => {
 				<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No products in your basket "/>
 			) : (
 					<>
-					<div className="basket__products">
+					<div className="basket__products global-scroll">
 						{basketProducts.productsList.map((item) => {
 							return <BasketItem item={item} key={Math.random()} />;
 						})}

@@ -6,6 +6,9 @@
 		border: solid 1px #1ea4ce;
 	}
 }
+.basket__products {
+	height: 800px;
+}
 .basket__total-price-container {
 	margin-top: 13px;
 }

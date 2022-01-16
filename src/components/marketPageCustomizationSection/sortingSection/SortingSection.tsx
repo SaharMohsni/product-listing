@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+
 import { Button, Skeleton } from 'antd';
 import { ColumnHeightOutlined } from '@ant-design/icons';
 import './sorting-section.css';
@@ -8,10 +10,13 @@ import CustomModal from '../../../shared/components/customModal/CustomModal';
 
 import { useMobile } from '../../../utils/useMobile';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
+import { selectLoading } from '../../../features/selectors/products.selectors';
 
 const SortingSection = () => {
 	const [ sortModalVisible, setSortModalVisible ] = useState(false);
 	const isMobileVersion = useMobile();
+	const loading = useSelector(selectLoading);
+
 	const showSortModal = () => {
 		setSortModalVisible(true);
 	};
@@ -26,7 +31,7 @@ const SortingSection = () => {
 		if (isMobileVersion) {
 			return (
 				<div className="sorting-section__on-mobile custom-button-on-mobile">
-					<Skeleton {...skeleton.fullRowItemSkeleton(false)}>
+					<Skeleton {...skeleton.fullRowItemSkeleton(loading.fetchingProductByPage)}>
 						<Button type="primary" onClick={showSortModal}>
 							Sort
 							<ColumnHeightOutlined />

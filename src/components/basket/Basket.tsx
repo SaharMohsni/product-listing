@@ -5,12 +5,13 @@ import { useSelector } from 'react-redux';
 import './basket.css';
 import BasketItem from './basketItem/BasketItem';
 import * as skeleton from '../../utils/loading.skeleton.helper';
-import { selectBasket } from '../../features/selectors/products.selectors';
+import { selectBasket, selectLoading } from '../../features/selectors/products.selectors';
 const Basket = () => {
 	const basketProducts = useSelector(selectBasket);
+	const loading = useSelector(selectLoading);
 
 	return (
-		<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(false)}>
+		<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading.fetchingProductByPage)}>
 			<div className="basket section-block ">
 				<div className="basket__products">
 					{basketProducts.productsList.map((item) => {

@@ -7,10 +7,11 @@ import * as skeleton from '../../../../utils/loading.skeleton.helper';
 import { ASC_PRICE, DESC_PRICE, NEW_ADDED, OLD_ADDED, sortDataMessages } from '../../../../utils/constants';
 import { handleRadioButtonValues, handleRadioGroupValue } from './helper';
 import { getSearchParams } from '../../../../features/actions/products.actions';
-import { selectSearchParams } from '../../../../features/selectors/products.selectors';
+import { selectLoading, selectSearchParams } from '../../../../features/selectors/products.selectors';
 
 const SortingComponent = () => {
 	const searchParams = useSelector(selectSearchParams);
+	const loading = useSelector(selectLoading);
 
 	const dispatch = useDispatch();
 	const handleChange = (e: any) => {
@@ -20,10 +21,10 @@ const SortingComponent = () => {
 
 	return (
 		<div className="sorting-component ">
-			<Skeleton {...skeleton.labelSkeleton(false)}>
+			<Skeleton {...skeleton.labelSkeleton(loading.fetchingProductByPage)}>
 				<div className="section-block-header">Sorting</div>
 			</Skeleton>
-			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(false)}>
+			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading.fetchingProductByPage)}>
 				<div className="sorting-component__data section-block box">
 					<Radio.Group onChange={(e) => handleChange(e)} value={handleRadioGroupValue(searchParams)}>
 						<Space direction="vertical">

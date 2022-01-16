@@ -11,12 +11,13 @@ import { selectSearchParams } from '../../../features/selectors/products.selecto
 import { createCheckedAllDataStructure, formatFilterDataStructure, getCheckboxCurrentValues } from './helper';
 
 interface IOwnProps {
+	loading: boolean;
 	title: string;
 	optionsList: { id: number; value: string }[];
 	setSearchedValue: (value: string) => void;
 	filterKey: string;
 }
-const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList, setSearchedValue, filterKey }) => {
+const FilterComponent: React.FC<IOwnProps> = ({ loading, title, optionsList, setSearchedValue, filterKey }) => {
 	const [ checkAll, setCheckAll ] = useState(false);
 	const dispatch = useDispatch();
 	const searchParams = useSelector(selectSearchParams);
@@ -37,10 +38,10 @@ const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList, setSearchedV
 	};
 	return (
 		<div className="filter-component ">
-			<Skeleton {...skeleton.labelSkeleton(false)}>
+			<Skeleton {...skeleton.labelSkeleton(loading)}>
 				<div className="section-block-header">{title}</div>
 			</Skeleton>
-			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(false)}>
+			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading)}>
 				<div className="filter-component__data section-block">
 					<div className="filter-component_search-bar-container">
 						<Input

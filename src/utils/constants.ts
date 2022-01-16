@@ -11,3 +11,13 @@ export const sortDataMessages = {
 	[NEW_ADDED]: 'New to old',
 	[OLD_ADDED]: 'Old to new'
 };
+export const fakeData = Array.from({ length: 16 }).map(() => {}).map((el, i) => ({
+	tags: [ '' ],
+	price: i,
+	name: 'string',
+	description: 'string',
+	slug: 'string',
+	added: i,
+	manufacturer: i,
+	itemType: 'string'
+}));

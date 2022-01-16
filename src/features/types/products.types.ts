@@ -14,7 +14,6 @@ interface Data {
 interface Local {
 	searchParams: ISearchProductsPayload;
 	loading: {
-		fetchingProduct: boolean;
 		fetchingProductByPage: boolean;
 		getSearchParams: boolean;
 		fetchingCompanies: boolean;
@@ -25,7 +24,6 @@ interface Local {
 		calculateTotalCost: boolean;
 	};
 	errors: {
-		fetchingProduct: string;
 		fetchingProductByPage: string;
 		getSearchParams: string;
 		fetchingCompanies: string;

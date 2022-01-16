@@ -34,7 +34,6 @@ export const initialState: ProductsState = {
 		},
 
 		loading: {
-			fetchingProduct: false,
 			fetchingProductByPage: false,
 			getSearchParams: false,
 			fetchingCompanies: false,
@@ -45,7 +44,6 @@ export const initialState: ProductsState = {
 			calculateTotalCost: false
 		},
 		errors: {
-			fetchingProduct: '',
 			fetchingProductByPage: '',
 			getSearchParams: '',
 			fetchingCompanies: '',

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {  useSelector } from 'react-redux';
 
 import { Button,Skeleton } from 'antd';
 import { FilterOutlined } from '@ant-design/icons';
@@ -10,6 +11,7 @@ import CustomModal from '../../shared/components/customModal/CustomModal';
 import * as skeleton from '../../utils/loading.skeleton.helper';
 import { useMobile } from '../../utils/useMobile';
 import { handleSearch } from '../../shared/components/filterComponent/helper';
+import { selectLoading } from '../../features/selectors/products.selectors';
 interface IOwnProps {
 	firstFilterTitle: string;
 	secondFilterTitle: string;
@@ -22,6 +24,7 @@ const FilterSection: React.FC<IOwnProps> = ({ firstFilterTitle,secondFilterTitle
 	const [ secondFilterSearchedValue, setSecondFilterSearchedValue ] = useState('');
 	const [ filterModalVisible, setFilterModalVisible ] = useState(false);
 	const isMobileVersion = useMobile()
+	const loading = useSelector(selectLoading);
 
 	const renderFilterSection = () => {
 	    const showFilterModal = () => {
@@ -36,30 +39,32 @@ const FilterSection: React.FC<IOwnProps> = ({ firstFilterTitle,secondFilterTitle
             }
 	    if(isMobileVersion) {
 	        return (
-	            <div className='filter-section__on-mobile custom-button-on-mobile'>
-						<Skeleton {...skeleton.fullRowItemSkeleton(false)}>
-	            <Button type="primary" onClick={showFilterModal}>
-	              Filter
+				<div className="filter-section__on-mobile custom-button-on-mobile">
+	<Skeleton {...skeleton.fullRowItemSkeleton(false)}>
+	<Button type="primary" onClick={showFilterModal}>
+	              <span>Filter</span>
                   <FilterOutlined />
 	            </Button>
 				</Skeleton>
-	            { filterModalVisible && <CustomModal
+	            { filterModalVisible && (<CustomModal
 	              title="Filter"
 	              modalVisible = {filterModalVisible}
 	              setModalVisible= {showFilterModal}
 	              handleSubmit= {handleSubmit}
 	              handleCancel = {handleCancel}
 	            >
-	                <FilterComponent  title={firstFilterTitle} optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)} setSearchedValue = {setFirstFilterSearchedValue} filterKey = "manufacturer"/>
-		            <FilterComponent  title={secondFilterTitle} optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)} setSearchedValue={setSecondFilterSearchedValue} filterKey="tags"/>
-	            </CustomModal>}
-	          </div>
+	                <FilterComponent  loading= {loading.fetchingProductByPage} title={firstFilterTitle} optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)} setSearchedValue = {setFirstFilterSearchedValue} filterKey = "manufacturer"/>
+		            <FilterComponent  loading = {loading.fetchingProductByPage} title={secondFilterTitle} optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)} setSearchedValue={setSecondFilterSearchedValue} filterKey="tags"/>
+	            </CustomModal>) }
+
+				</div>
+
 	        )
 	    }
-	    else return (
+	     return (
 	        <>
-	            <FilterComponent title="Brands" optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)} setSearchedValue = {setFirstFilterSearchedValue} filterKey="manufacturer"  />
-		        <FilterComponent title="Tags" optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)} setSearchedValue = {setSecondFilterSearchedValue} filterKey="tags"/>
+	            <FilterComponent loading= {loading.fetchingProductByPage} title="Brands" optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)} setSearchedValue = {setFirstFilterSearchedValue} filterKey="manufacturer"  />
+		        <FilterComponent loading = {loading.fetchingProductByPage} title="Tags" optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)} setSearchedValue = {setSecondFilterSearchedValue} filterKey="tags"/>
 	        </>
 	    )
 	}

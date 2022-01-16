@@ -39,3 +39,8 @@ export const selectBasketProducts = createSelector(
 	(state: any): object => state.products,
 	(products: any): any => products.data.basket.productsList
 );
+
+export const selectLoading = createSelector(
+	(state: any): object => state.products,
+	(products: any): any => products.local.loading
+);

@@ -22,6 +22,7 @@ interface Local {
 		addingProduct: boolean;
 		incrementQuantity: boolean;
 		calculateTotalCost: boolean;
+		decrementQuantity: boolean;
 	};
 	errors: {
 		fetchingProductByPage: string;
@@ -32,6 +33,7 @@ interface Local {
 		addingProduct: string;
 		incrementQuantity: string;
 		calculateTotalCost: string;
+		decrementQuantity: string;
 	};
 }
 interface IProductsState {

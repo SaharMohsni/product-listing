@@ -4,7 +4,8 @@ import {
 	handleAddProduct,
 	handleBasketTotalPrice,
 	handleIncrementQuantity,
-	handleSearchParams
+	handleSearchParams,
+	handleDecrementQuantity
 } from '../../utils/reducer.helper';
 import ActionTypes from '../constants/products.constants';
 import { ProductsActions, ProductsState } from '../types/products.types';
@@ -41,7 +42,8 @@ export const initialState: ProductsState = {
 			fetchingProductsTypes: false,
 			addingProduct: false,
 			incrementQuantity: false,
-			calculateTotalCost: false
+			calculateTotalCost: false,
+			decrementQuantity: false
 		},
 		errors: {
 			fetchingProductByPage: '',
@@ -51,7 +53,8 @@ export const initialState: ProductsState = {
 			fetchingProductsTypes: '',
 			addingProduct: '',
 			incrementQuantity: '',
-			calculateTotalCost: ''
+			calculateTotalCost: '',
+			decrementQuantity: ''
 		}
 	}
 };
@@ -186,6 +189,26 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 					draft.local.errors.incrementQuantity = action.errors.response.data;
 				} catch (e) {
 					draft.local.errors.incrementQuantity = 'Server error';
+				}
+				break;
+			//decrement product quantity
+			case ActionTypes.DECREMENT_PRODUCT_QUANTITY.request:
+				draft.local.loading.decrementQuantity = true;
+				draft.local.errors.decrementQuantity = '';
+				break;
+			case ActionTypes.DECREMENT_PRODUCT_QUANTITY.success:
+				draft.local.loading.decrementQuantity = false;
+				draft.local.errors.decrementQuantity = '';
+				const { productsList, totalPrice } = handleDecrementQuantity(state.data.basket, action.payload);
+				draft.data.basket.productsList = productsList;
+				draft.data.basket.totalPrice = totalPrice;
+				break;
+			case ActionTypes.DECREMENT_PRODUCT_QUANTITY.failure:
+				draft.local.loading.decrementQuantity = false;
+				try {
+					draft.local.errors.decrementQuantity = action.errors.response.data;
+				} catch (e) {
+					draft.local.errors.decrementQuantity = 'Server error';
 				}
 				break;
 		}

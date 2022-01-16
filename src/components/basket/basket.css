@@ -1,5 +1,6 @@
 .basket {
 	border: solid 8px #1ea4ce;
+	height: 338.25px;
 }
 @media screen and (min-width: 320px) and (max-width: 992px) {
 	.basket {
@@ -7,7 +8,7 @@
 	}
 }
 .basket__products {
-	height: 800px;
+	height: 80%;
 }
 .basket__total-price-container {
 	margin-top: 13px;

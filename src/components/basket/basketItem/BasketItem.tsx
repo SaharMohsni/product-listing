@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { incrementProductQuantity } from '../../../features/actions/products.actions';
+import { decrementProductQuantity, incrementProductQuantity } from '../../../features/actions/products.actions';
 import { IInBasketProduct } from '../../../features/types/products.types';
 import './basket-item.css';
 
@@ -12,6 +12,9 @@ const BasketItem: React.FC<IOwnProps> = ({ item }) => {
 	const dispatch = useDispatch();
 	const handleIncrementProductQuantity = () => {
 		dispatch(incrementProductQuantity(item.productData.slug));
+	};
+	const handleDecrementProductQuantity = () => {
+		dispatch(decrementProductQuantity(item.productData.slug));
 	};
 	return (
 		<div className="basket-item global-flex-h-between-v-center">
@@ -34,7 +37,10 @@ const BasketItem: React.FC<IOwnProps> = ({ item }) => {
 				<div className="basket-item__quantity-details__quantity global-flex-h-center-v-center">
 					{item.quantity}
 				</div>
-				<button className="basket-item__quantity-details__decrement-btn global-flex-h-center-v-center">
+				<button
+					className="basket-item__quantity-details__decrement-btn global-flex-h-center-v-center"
+					onClick={handleDecrementProductQuantity}
+				>
 					-
 				</button>
 			</div>

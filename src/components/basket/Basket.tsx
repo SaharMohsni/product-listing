@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Skeleton, Empty } from 'antd';
 import { useSelector } from 'react-redux';
 
@@ -24,12 +24,14 @@ const Basket = () => {
 							return <BasketItem item={item} key={Math.random()} />;
 						})}
 					</div>
+					<Skeleton {...skeleton.fullRowItemSkeleton(loading.incrementQuantity || loading.decrementQuantity)}>
 					<div className="basket__total-price-container global-flex-h-end-v-center">
 						<div className="basket__total-price-container__total-price product-price global-flex-h-center-v-center">
 							<span>$</span>
 							<span>{basketProducts.totalPrice}</span>
 						</div>
 					</div>
+					</Skeleton>
 					</>
 				)}
 				</div>

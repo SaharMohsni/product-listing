@@ -16,3 +16,7 @@ export const addProduct = (payload: IProduct) => {
 export const incrementProductQuantity = (payload: string) => {
 	return action(ActionTypes.INCREMENT_PRODUCT_QUANTITY.request, payload);
 };
+
+export const decrementProductQuantity = (payload: string) => {
+	return action(ActionTypes.DECREMENT_PRODUCT_QUANTITY.request, payload);
+};

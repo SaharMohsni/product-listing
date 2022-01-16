@@ -121,3 +121,18 @@ export function* incrementProductQuantity(action: IActionWithPayload) {
 export function* incrementProductQuantityWatcher() {
 	yield takeEvery(ActionTypes.INCREMENT_PRODUCT_QUANTITY.request, incrementProductQuantity);
 }
+
+export function* decrementProductQuantity(action: IActionWithPayload) {
+	try {
+		yield put({
+			type: ActionTypes.DECREMENT_PRODUCT_QUANTITY.success,
+			payload: action.payload
+		});
+	} catch (e) {
+		yield put({ type: ActionTypes.DECREMENT_PRODUCT_QUANTITY.failure, e });
+	}
+}
+
+export function* decrementProductQuantityWatcher() {
+	yield takeEvery(ActionTypes.DECREMENT_PRODUCT_QUANTITY.request, decrementProductQuantity);
+}

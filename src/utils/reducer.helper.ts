@@ -17,6 +17,13 @@ export const handleSearchParams = (localSearchParams: ISearchProductsPayload, pa
 export const calculateProductCost = (quantity: number, unitPrice: number) => {
 	return Number((quantity * unitPrice).toFixed(3));
 };
+export const handleBasketTotalPrice = (productsList: any) => {
+	let totalPrice = 0;
+	productsList.forEach((product: IInBasketProduct) => {
+		totalPrice += calculateProductCost(product.quantity, product.productData.price);
+	});
+	return Number(totalPrice.toFixed(3));
+};
 
 export const handleAddProduct = (localState: any, data: IProduct) => {
 	let productsList = [
@@ -35,6 +42,12 @@ export const handleAddProduct = (localState: any, data: IProduct) => {
 const incrementQuantity = (quantity: number) => {
 	return (quantity += 1);
 };
+const decrementQuantity = (quantity: number) => {
+	if (quantity > 0) {
+		return (quantity -= 1);
+	}
+	return 0;
+};
 export const handleIncrementQuantity = (localState: any, payload: string) => {
 	let newProductsList = localState.productsList.map((product: IInBasketProduct) => {
 		let newProductData = {};
@@ -50,10 +63,17 @@ export const handleIncrementQuantity = (localState: any, payload: string) => {
 	return { newProductsList, totPrice };
 };
 
-export const handleBasketTotalPrice = (productsList: any) => {
-	let totalPrice = 0;
-	productsList.forEach((product: IInBasketProduct) => {
-		totalPrice += calculateProductCost(product.quantity, product.productData.price);
+export const handleDecrementQuantity = (localState: any, payload: string) => {
+	let newProductsList = localState.productsList.map((product: IInBasketProduct) => {
+		let newProductData = {};
+		if (product.productData.slug === payload) {
+			newProductData = { ...product, quantity: decrementQuantity(product.quantity) };
+		} else {
+			newProductData = product;
+		}
+
+		return newProductData;
 	});
-	return Number(totalPrice.toFixed(3));
+	let totPrice = handleBasketTotalPrice(newProductsList);
+	return { productsList: newProductsList, totalPrice: totPrice };
 };

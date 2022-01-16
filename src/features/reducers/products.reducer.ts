@@ -166,7 +166,7 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 			//Increment product quantity
 			case ActionTypes.INCREMENT_PRODUCT_QUANTITY.request:
 				draft.local.loading.incrementQuantity = true;
-				draft.local.errors.addingProduct = '';
+				draft.local.errors.incrementQuantity = '';
 				break;
 			case ActionTypes.INCREMENT_PRODUCT_QUANTITY.success:
 				draft.local.loading.incrementQuantity = false;

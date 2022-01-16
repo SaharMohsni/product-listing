@@ -3,6 +3,7 @@ import { IInBasketProduct, IProduct, ISearchProductsPayload } from '../features/
 
 export const handleSearchParams = (localSearchParams: ISearchProductsPayload, params: ISearchProductsPayload) => {
 	let { page, limit, sortVariable, sortType, manufacturer, tags, itemType } = localSearchParams;
+
 	return {
 		...localSearchParams,
 		page: params.page ? params.page : page,

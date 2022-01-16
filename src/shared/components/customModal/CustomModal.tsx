@@ -5,32 +5,17 @@ import './custom-modal.css';
 
 interface IOwnProps {
 	title: string;
+	loading: boolean;
 	modalVisible: boolean;
-	setModalVisible: (status: boolean) => void;
 	handleSubmit(): void;
 	handleCancel(): void;
 }
-const CustomModal: React.FC<IOwnProps> = ({
-	children,
-	title,
-	modalVisible,
-	setModalVisible,
-	handleSubmit,
-	handleCancel
-}) => {
-	const [ confirmLoading, setConfirmLoading ] = useState(false);
-
+const CustomModal: React.FC<IOwnProps> = ({ children, title, modalVisible, handleSubmit, handleCancel, loading }) => {
 	const handleSubmitAction = () => {
-		setConfirmLoading(true);
 		handleSubmit();
-		setTimeout(() => {
-			setModalVisible(false);
-			setConfirmLoading(false);
-		}, 2000);
 	};
 
 	const handleCancelAction = () => {
-		console.log('Clicked cancel button');
 		handleCancel();
 	};
 
@@ -40,7 +25,7 @@ const CustomModal: React.FC<IOwnProps> = ({
 				title={title}
 				visible={modalVisible}
 				onOk={handleSubmitAction}
-				confirmLoading={confirmLoading}
+				confirmLoading={loading}
 				onCancel={handleCancelAction}
 			>
 				{children}

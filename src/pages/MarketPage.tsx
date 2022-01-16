@@ -22,7 +22,7 @@ const MarketPage = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
-
+	const isMobileVersion = useMobile();
 	let query = generateQueryFromPathname(location.pathname);
 	useEffect(() => {
 		dispatch(getSearchParams(convertObjectKey(query)));
@@ -33,14 +33,14 @@ const MarketPage = () => {
 
 	useEffect(
 		() => {
-			let navigationQuery = handleNavigationQuery(searchParams);
-			navigate(navigationQuery);
-			dispatch(searchProducts(searchParams));
+			if (!isMobileVersion) {
+				let navigationQuery = handleNavigationQuery(searchParams);
+				navigate(navigationQuery);
+				dispatch(searchProducts(searchParams));
+			}
 		},
 		[ searchParams ]
 	);
-
-	const isMobileVersion = useMobile();
 
 	return (
 		<div className="market-page global-page-padding-left-right">

@@ -90,6 +90,7 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 				draft.local.loading.getSearchParams = false;
 				draft.local.errors.getSearchParams = '';
 				draft.local.searchParams = handleSearchParams(state.local.searchParams, action.payload);
+
 				break;
 			case ActionTypes.GET_SEARCH_PARAMS.failure:
 				draft.local.loading.getSearchParams = false;

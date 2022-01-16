@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 import { Button, Skeleton } from 'antd';
 import { ColumnHeightOutlined } from '@ant-design/icons';
@@ -10,22 +11,35 @@ import CustomModal from '../../../shared/components/customModal/CustomModal';
 
 import { useMobile } from '../../../utils/useMobile';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
-import { selectLoading } from '../../../features/selectors/products.selectors';
+import { selectErrors, selectLoading, selectSearchParams } from '../../../features/selectors/products.selectors';
+import { handleNavigationQuery } from '../../../utils/helper';
+import { searchProducts } from '../../../features/actions/products.actions';
+import { constants } from 'buffer';
+import { isEmpty } from 'lodash';
 
 const SortingSection = () => {
 	const [ sortModalVisible, setSortModalVisible ] = useState(false);
 	const isMobileVersion = useMobile();
 	const loading = useSelector(selectLoading);
+	const errors = useSelector(selectErrors);
+
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const searchParams = useSelector(selectSearchParams);
 
 	const showSortModal = () => {
 		setSortModalVisible(true);
 	};
 	const handleSubmit = () => {
-		console.log('action submitted');
+		let navigationQuery = handleNavigationQuery(searchParams);
+		navigate(navigationQuery);
+		dispatch(searchProducts(searchParams));
+		if (!loading.getSearchParams && isEmpty(errors.fetchingProductByPage)) {
+			setSortModalVisible(false);
+		}
 	};
 	const handleCancel = () => {
 		setSortModalVisible(false);
-		console.log('action canceled', sortModalVisible);
 	};
 	const renderSortingSection = () => {
 		if (isMobileVersion) {
@@ -41,7 +55,7 @@ const SortingSection = () => {
 						<CustomModal
 							title="Sorting"
 							modalVisible={sortModalVisible}
-							setModalVisible={showSortModal}
+							loading={loading.fetchingProductByPage}
 							handleSubmit={handleSubmit}
 							handleCancel={handleCancel}
 						>

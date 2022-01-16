@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import {  useSelector } from 'react-redux';
+import {  useSelector,useDispatch } from 'react-redux';
+import { useNavigate} from 'react-router-dom';
 
 import { Button,Skeleton } from 'antd';
 import { FilterOutlined } from '@ant-design/icons';
@@ -11,7 +12,10 @@ import CustomModal from '../../shared/components/customModal/CustomModal';
 import * as skeleton from '../../utils/loading.skeleton.helper';
 import { useMobile } from '../../utils/useMobile';
 import { handleSearch } from '../../shared/components/filterComponent/helper';
-import { selectLoading } from '../../features/selectors/products.selectors';
+import { selectErrors, selectLoading, selectSearchParams } from '../../features/selectors/products.selectors';
+import { handleNavigationQuery } from '../../utils/helper';
+import { searchProducts } from '../../features/actions/products.actions';
+import { isEmpty } from 'lodash';
 interface IOwnProps {
 	firstFilterTitle: string;
 	secondFilterTitle: string;
@@ -25,17 +29,25 @@ const FilterSection: React.FC<IOwnProps> = ({ firstFilterTitle,secondFilterTitle
 	const [ filterModalVisible, setFilterModalVisible ] = useState(false);
 	const isMobileVersion = useMobile()
 	const loading = useSelector(selectLoading);
+	const errors = useSelector(selectErrors);
+	const searchParams = useSelector(selectSearchParams);
 
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const renderFilterSection = () => {
 	    const showFilterModal = () => {
 	        setFilterModalVisible(true);
 	      };
           const handleSubmit = () => {
-            console.log("action submitted")
+			let navigationQuery = handleNavigationQuery(searchParams);
+			navigate(navigationQuery);
+			dispatch(searchProducts(searchParams));
+			if (!loading.getSearchParams && isEmpty(errors.fetchingProductByPage)) {
+				setFilterModalVisible(false);
+			}
             } 
             const handleCancel = () => {
                 setFilterModalVisible(false)
-              console.log("action canceled", filterModalVisible)
             }
 	    if(isMobileVersion) {
 	        return (
@@ -49,9 +61,9 @@ const FilterSection: React.FC<IOwnProps> = ({ firstFilterTitle,secondFilterTitle
 	            { filterModalVisible && (<CustomModal
 	              title="Filter"
 	              modalVisible = {filterModalVisible}
-	              setModalVisible= {showFilterModal}
 	              handleSubmit= {handleSubmit}
 	              handleCancel = {handleCancel}
+				  loading={loading.fetchingProductByPage}
 	            >
 	                <FilterComponent  loading= {loading.fetchingProductByPage} title={firstFilterTitle} optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)} setSearchedValue = {setFirstFilterSearchedValue} filterKey = "manufacturer"/>
 		            <FilterComponent  loading = {loading.fetchingProductByPage} title={secondFilterTitle} optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)} setSearchedValue={setSecondFilterSearchedValue} filterKey="tags"/>

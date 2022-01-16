@@ -1,4 +1,8 @@
-import React from 'react';
+/**
+ *
+ * Products list
+ *
+ */
 import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { Empty } from 'antd';

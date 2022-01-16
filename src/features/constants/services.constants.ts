@@ -1,3 +1,9 @@
+/**
+ *
+ * Services constants : URL
+ *
+ */
+
 import { ISearchProductsPayload } from '../types/products.types';
 import {
 	addFilterByArrayListToUrl,
@@ -23,10 +29,10 @@ const URL = {
 		fetchCompanies: () => `/companies`
 	},
 	tags: {
-		fetchTags: () => `/tags`
+		fetchTags: () => `/tags` //added
 	},
 	productsTypes: {
-		fetchProductsTypes: () => `/products-types`
+		fetchProductsTypes: () => `/products-types` //added
 	}
 };
 

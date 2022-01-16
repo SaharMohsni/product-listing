@@ -1,3 +1,9 @@
+/**
+ *
+ * Tag filter component
+ *
+ */
+
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { getSearchParams } from '../../../features/actions/products.actions';

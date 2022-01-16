@@ -1,3 +1,9 @@
+/**
+ *
+ * Global helper
+ *
+ */
+
 import { ISearchProductsPayload } from '../features/types/products.types';
 import { isEmpty } from 'lodash';
 import queryString from 'query-string';

@@ -1,3 +1,8 @@
+/**
+ *
+ * Product card
+ *
+ */
 import React, { useState, useEffect } from 'react';
 import { Button, Skeleton } from 'antd';
 import { isEmpty } from 'lodash';

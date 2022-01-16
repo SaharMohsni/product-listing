@@ -1,5 +1,8 @@
+/**
+ * Products selectors
+ */
 import { createSelector } from 'reselect';
-import { IBasket, IInBasketProduct, ISearchProductsPayload } from '../types/products.types';
+import { IBasket, ISearchProductsPayload } from '../types/products.types';
 
 export const selectSearchProductsResult = createSelector(
 	(state: any): object => state.products,

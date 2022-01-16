@@ -1,15 +1,20 @@
-import { combineReducers } from "redux";
-import { connectRouter } from "connected-react-router"; 
-import history from "../../utils/history";
-import productsReducer from "./products.reducer";
+/**
+ *
+ * Root reducer
+ *
+ */
+import { combineReducers } from 'redux';
+import { connectRouter } from 'connected-react-router';
+import history from '../../utils/history';
+import productsReducer from './products.reducer';
 
 const createReducer = (injectedReducers = {}): object | any => {
-  const rootReducer = combineReducers({
-    products :productsReducer,
-    router: connectRouter(history),
-    ...injectedReducers,
-  });
+	const rootReducer = combineReducers({
+		products: productsReducer,
+		router: connectRouter(history),
+		...injectedReducers
+	});
 
-  return rootReducer;
+	return rootReducer;
 };
 export default createReducer;

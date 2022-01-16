@@ -1,5 +1,7 @@
+/**
+ * Combine  Sagas  watcher
+ */
 import { all } from 'redux-saga/effects';
-
 import {
 	searchProductsWatcher,
 	getSearchParamsWatcher,

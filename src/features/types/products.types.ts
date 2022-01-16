@@ -1,3 +1,6 @@
+/**
+ * Products types
+ */
 import { ActionType } from 'typesafe-actions';
 import * as actions from '../actions/products.actions';
 

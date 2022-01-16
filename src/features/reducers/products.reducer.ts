@@ -1,14 +1,18 @@
+/**
+ *
+ * Products reducer
+ *
+ */
+
 import produce from 'immer';
-import { LIMIT_PRODUCTS_BY_Page } from '../../utils/constants';
+import ActionTypes from '../constants/products.constants';
+import { ProductsActions, ProductsState } from '../types/products.types';
 import {
 	handleAddProduct,
-	handleBasketTotalPrice,
 	handleIncrementQuantity,
 	handleSearchParams,
 	handleDecrementQuantity
 } from '../../utils/reducer.helper';
-import ActionTypes from '../constants/products.constants';
-import { ProductsActions, ProductsState } from '../types/products.types';
 
 // The initial state of the reducer
 export const initialState: ProductsState = {

@@ -1,4 +1,9 @@
-import React from 'react';
+/**
+ *
+ * The component responsible of all the search customization : filter by company , filter by tags and sorting
+ *
+ */
+
 import { useSelector } from 'react-redux';
 import SortingSection from './sortingSection/SortingSection';
 import './market-page-customization-section.css';

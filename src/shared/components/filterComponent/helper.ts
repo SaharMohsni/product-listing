@@ -1,3 +1,9 @@
+/**
+ *
+ * Filter component helper
+ *
+ */
+
 import { isString } from '../../../utils/helper';
 
 export const handleSearch = (data: any, searchedValue: string) => {

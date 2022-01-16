@@ -1,4 +1,10 @@
-import React, { useEffect } from 'react';
+/**
+ *
+ * Market page
+ *
+ */
+
+import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './market-page.css';
 import ProductsStoreSection from '../components/productsStoreSection/ProductsStoreSection';

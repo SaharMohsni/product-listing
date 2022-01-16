@@ -1,6 +1,6 @@
 /**
  *
- * Sorting section : containing the sorting component and replaced by modal on mobile version
+ * Sorting section : containing the sorting component and rendered on a modal on mobile version
  *
  */
 

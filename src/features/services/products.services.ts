@@ -1,3 +1,6 @@
+/**
+ * Products services
+ */
 import axios from 'axios';
 import { requestHeader } from '../../utils/requestHeader';
 import URL from '../constants/services.constants';
@@ -18,11 +21,13 @@ export const fetchCompanies = async (): Promise<any> => {
 	return result.data;
 };
 
+// service added
 export const fetchTags = async (): Promise<any> => {
 	const result = await axios.get(URL.baseApiUrl() + URL.tags.fetchTags(), requestHeader({}));
 	return result.data;
 };
 
+// service added
 export const fetchProductsTypes = async (): Promise<any> => {
 	const result = await axios.get(URL.baseApiUrl() + URL.productsTypes.fetchProductsTypes(), requestHeader({}));
 	return result.data;

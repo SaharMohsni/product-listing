@@ -1,4 +1,8 @@
-import { entries, isEmpty } from 'lodash';
+/**
+ *
+ * Reducer helper
+ *
+ */
 import { IInBasketProduct, IProduct, ISearchProductsPayload } from '../features/types/products.types';
 
 export const handleSearchParams = (localSearchParams: ISearchProductsPayload, params: ISearchProductsPayload) => {

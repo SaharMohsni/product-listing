@@ -1,10 +1,10 @@
+import { ISearchProductsPayload } from '../types/products.types';
 import {
 	addFilterByArrayListToUrl,
 	addFilterByStringToUrl,
 	addFilterToUrl,
 	addSortToUrl
 } from '../../utils/service.helper';
-import { ISearchProductsPayload } from '../types/products.types';
 
 const URL = {
 	baseApiUrl: () => 'http://localhost:4000',

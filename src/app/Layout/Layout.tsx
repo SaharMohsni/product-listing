@@ -1,3 +1,9 @@
+/**
+ *
+ * Page layout
+ *
+ */
+
 import React from 'react';
 import Footer from './Footer/Footer';
 import TopBar from './TopBar/TopBar';

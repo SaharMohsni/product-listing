@@ -1,7 +1,11 @@
-import React, { useState, useEffect } from 'react';
+/**
+ *
+ * Sorting component
+ *
+ */
+
 import { Radio, Space, Skeleton } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
-
 import './sorting-component.css';
 import * as skeleton from '../../../../utils/loading.skeleton.helper';
 import { ASC_PRICE, DESC_PRICE, NEW_ADDED, OLD_ADDED, sortDataMessages } from '../../../../utils/constants';

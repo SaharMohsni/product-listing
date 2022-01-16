@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-
 import './products-store-section.css';
 import { Skeleton } from 'antd';
 import TagFilter from '../../shared/components/tagFilter/TagFilter';
@@ -12,7 +11,6 @@ import { formatData } from '../../utils/helper';
 
 const ProductsStoreSection = () => {
 	const loading = useSelector(selectLoading);
-
 	const searchParams = useSelector(selectSearchParams);
 	const [ activeTagKey, setActiveTagKey ] = useState('');
 	const itemsTypeList = useSelector(selectProductsTypes);

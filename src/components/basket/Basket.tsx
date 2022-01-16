@@ -1,4 +1,8 @@
-import React from 'react';
+/**
+ *
+ * The basket component
+ *
+ */
 import { Skeleton, Empty } from 'antd';
 import { useSelector } from 'react-redux';
 

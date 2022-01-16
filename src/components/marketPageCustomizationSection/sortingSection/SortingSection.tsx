@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+/**
+ *
+ * Sorting section : containing the sorting component and replaced by modal on mobile version
+ *
+ */
+
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
 import { Button, Skeleton } from 'antd';
 import { ColumnHeightOutlined } from '@ant-design/icons';
 import './sorting-section.css';
 import SortingComponent from './sortingComponent/SortingComponent';
-
 import CustomModal from '../../../shared/components/customModal/CustomModal';
-
 import { useMobile } from '../../../utils/useMobile';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
 import { selectErrors, selectLoading, selectSearchParams } from '../../../features/selectors/products.selectors';
 import { handleNavigationQuery } from '../../../utils/helper';
 import { searchProducts } from '../../../features/actions/products.actions';
-import { constants } from 'buffer';
 import { isEmpty } from 'lodash';
 
 const SortingSection = () => {

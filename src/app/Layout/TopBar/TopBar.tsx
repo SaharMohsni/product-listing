@@ -1,4 +1,9 @@
-import React, { lazy } from 'react';
+/**
+ *
+ * Page topBar
+ *
+ */
+
 import { ShoppingOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { Skeleton } from 'antd';

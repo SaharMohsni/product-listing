@@ -1,3 +1,8 @@
+/**
+ *
+ * Sorting local helper
+ *
+ */
 import { isEmpty } from 'lodash';
 import { ISearchProductsPayload } from '../../../../features/types/products.types';
 import { ASC_PRICE, DESC_PRICE, NEW_ADDED, OLD_ADDED } from '../../../../utils/constants';

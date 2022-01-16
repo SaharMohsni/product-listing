@@ -21,6 +21,7 @@ interface Local {
 		fetchingTags: boolean;
 		fetchingProductsTypes: boolean;
 		addingProduct: boolean;
+		incrementQuantity: boolean;
 	};
 	errors: {
 		fetchingProduct: string;
@@ -30,6 +31,7 @@ interface Local {
 		fetchingTags: string;
 		fetchingProductsTypes: string;
 		addingProduct: string;
+		incrementQuantity: string;
 	};
 }
 interface IProductsState {
@@ -69,7 +71,7 @@ export interface ISearchProductsAction {
 	payload: ISearchProductsPayload;
 }
 
-export interface IFetchActionWithoutPayload {
+export interface IActionWithoutPayload {
 	type: string;
 }
 export interface IGetSearchParamsAction {
@@ -80,6 +82,10 @@ export interface IGetSearchParamsAction {
 export interface IAddProductAction {
 	type: string;
 	payload: IProduct;
+}
+export interface IActionWithPayload {
+	type: string;
+	payload: any;
 }
 
 export interface IBrand {

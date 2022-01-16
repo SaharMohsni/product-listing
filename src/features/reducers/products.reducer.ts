@@ -1,6 +1,6 @@
 import produce from 'immer';
 import { LIMIT_PRODUCTS_BY_Page } from '../../utils/constants';
-import { handleAddProduct, handleSearchParams } from '../../utils/reducer.helper';
+import { handleAddProduct, handleIncrementQuantity, handleSearchParams } from '../../utils/reducer.helper';
 import ActionTypes from '../constants/products.constants';
 import { ProductsActions, ProductsState } from '../types/products.types';
 
@@ -35,7 +35,8 @@ export const initialState: ProductsState = {
 			fetchingCompanies: false,
 			fetchingTags: false,
 			fetchingProductsTypes: false,
-			addingProduct: false
+			addingProduct: false,
+			incrementQuantity: false
 		},
 		errors: {
 			fetchingProduct: '',
@@ -44,7 +45,8 @@ export const initialState: ProductsState = {
 			fetchingCompanies: '',
 			fetchingTags: '',
 			fetchingProductsTypes: '',
-			addingProduct: ''
+			addingProduct: '',
+			incrementQuantity: ''
 		}
 	}
 };
@@ -159,6 +161,24 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 					draft.local.errors.addingProduct = action.errors.response.data;
 				} catch (e) {
 					draft.local.errors.addingProduct = 'Server error';
+				}
+				break;
+			//Increment product quantity
+			case ActionTypes.INCREMENT_PRODUCT_QUANTITY.request:
+				draft.local.loading.incrementQuantity = true;
+				draft.local.errors.addingProduct = '';
+				break;
+			case ActionTypes.INCREMENT_PRODUCT_QUANTITY.success:
+				draft.local.loading.incrementQuantity = false;
+				draft.local.errors.incrementQuantity = '';
+				draft.data.basket = handleIncrementQuantity(state.data.basket, action.payload);
+				break;
+			case ActionTypes.INCREMENT_PRODUCT_QUANTITY.failure:
+				draft.local.loading.incrementQuantity = false;
+				try {
+					draft.local.errors.incrementQuantity = action.errors.response.data;
+				} catch (e) {
+					draft.local.errors.incrementQuantity = 'Server error';
 				}
 				break;
 		}

@@ -3,8 +3,9 @@ import {
 	IGetSearchParamsAction,
 	IResponseGenerator,
 	ISearchProductsAction,
-	IFetchActionWithoutPayload,
-	IAddProductAction
+	IActionWithoutPayload,
+	IAddProductAction,
+	IActionWithPayload
 } from '../types/products.types';
 import * as api from '../services/products.services';
 import ActionTypes from '../constants/products.constants';
@@ -42,7 +43,7 @@ export function* getSearchParamsWatcher() {
 	yield takeEvery(ActionTypes.GET_SEARCH_PARAMS.request, getSearchParams);
 }
 
-export function* fetchCompanies(action: IFetchActionWithoutPayload) {
+export function* fetchCompanies(action: IActionWithoutPayload) {
 	try {
 		const results: IResponseGenerator = yield call(api.fetchCompanies);
 		yield put({
@@ -58,7 +59,7 @@ export function* fetchCompaniesWatcher() {
 	yield takeEvery(ActionTypes.FETCH_COMPANIES.request, fetchCompanies);
 }
 
-export function* fetchTags(action: IFetchActionWithoutPayload) {
+export function* fetchTags(action: IActionWithoutPayload) {
 	const results: IResponseGenerator = yield call(api.fetchTags);
 
 	try {
@@ -75,7 +76,7 @@ export function* fetchTagsWatcher() {
 	yield takeEvery(ActionTypes.FETCH_TAGS.request, fetchTags);
 }
 
-export function* fetchProductsTypes(action: IFetchActionWithoutPayload) {
+export function* fetchProductsTypes(action: IActionWithoutPayload) {
 	const results: IResponseGenerator = yield call(api.fetchProductsTypes);
 	try {
 		yield put({
@@ -104,4 +105,19 @@ export function* addProduct(action: IAddProductAction) {
 
 export function* addProductWatcher() {
 	yield takeEvery(ActionTypes.ADD_PRODUCT.request, addProduct);
+}
+
+export function* incrementProductQuantity(action: IActionWithPayload) {
+	try {
+		yield put({
+			type: ActionTypes.INCREMENT_PRODUCT_QUANTITY.success,
+			payload: action.payload
+		});
+	} catch (e) {
+		yield put({ type: ActionTypes.INCREMENT_PRODUCT_QUANTITY.failure, e });
+	}
+}
+
+export function* incrementProductQuantityWatcher() {
+	yield takeEvery(ActionTypes.INCREMENT_PRODUCT_QUANTITY.request, incrementProductQuantity);
 }

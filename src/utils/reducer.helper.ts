@@ -31,3 +31,10 @@ export const handleAddProduct = (localState: any, data: IProduct) => {
 		totalPrice
 	};
 };
+
+export const handleIncrementQuantity = (localState: any, payload: string) => {
+	let newState = { ...localState };
+	let product = newState.productsList[payload];
+	product.quantity += 1;
+	return newState;
+};

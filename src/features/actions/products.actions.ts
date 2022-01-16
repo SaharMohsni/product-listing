@@ -13,3 +13,6 @@ export const fetchProductsTypes = () => action(ActionTypes.FETCH_PRODUCTS_TYPES.
 export const addProduct = (payload: IProduct) => {
 	return action(ActionTypes.ADD_PRODUCT.request, payload);
 };
+export const incrementProductQuantity = (payload: string) => {
+	return action(ActionTypes.INCREMENT_PRODUCT_QUANTITY.request, payload);
+};

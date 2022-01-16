@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { IBasket, ISearchProductsPayload } from '../types/products.types';
+import { IBasket, IInBasketProduct, ISearchProductsPayload } from '../types/products.types';
 
 export const selectSearchProductsResult = createSelector(
 	(state: any): object => state.products,
@@ -27,11 +27,15 @@ export const selectProductsTypes = createSelector(
 	(state: any): object => state.products,
 	(products: any): [] => products.data.productsTypes
 );
-export const basket = createSelector(
+export const selectBasket = createSelector(
 	(state: any): object => state.products,
 	(products: any): IBasket => products.data.basket
 );
-export const basketTotalPrice = createSelector(
+export const selectBasketTotalPrice = createSelector(
 	(state: any): object => state.products,
 	(products: any): number => products.data.basket.totalPrice
+);
+export const selectBasketProducts = createSelector(
+	(state: any): object => state.products,
+	(products: any): any => products.data.basket.productsList
 );

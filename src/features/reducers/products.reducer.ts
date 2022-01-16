@@ -1,6 +1,11 @@
 import produce from 'immer';
 import { LIMIT_PRODUCTS_BY_Page } from '../../utils/constants';
-import { handleAddProduct, handleIncrementQuantity, handleSearchParams } from '../../utils/reducer.helper';
+import {
+	handleAddProduct,
+	handleBasketTotalPrice,
+	handleIncrementQuantity,
+	handleSearchParams
+} from '../../utils/reducer.helper';
 import ActionTypes from '../constants/products.constants';
 import { ProductsActions, ProductsState } from '../types/products.types';
 
@@ -36,7 +41,8 @@ export const initialState: ProductsState = {
 			fetchingTags: false,
 			fetchingProductsTypes: false,
 			addingProduct: false,
-			incrementQuantity: false
+			incrementQuantity: false,
+			calculateTotalCost: false
 		},
 		errors: {
 			fetchingProduct: '',
@@ -46,7 +52,8 @@ export const initialState: ProductsState = {
 			fetchingTags: '',
 			fetchingProductsTypes: '',
 			addingProduct: '',
-			incrementQuantity: ''
+			incrementQuantity: '',
+			calculateTotalCost: ''
 		}
 	}
 };
@@ -171,7 +178,9 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 			case ActionTypes.INCREMENT_PRODUCT_QUANTITY.success:
 				draft.local.loading.incrementQuantity = false;
 				draft.local.errors.incrementQuantity = '';
-				draft.data.basket = handleIncrementQuantity(state.data.basket, action.payload);
+				const { newProductsList, totPrice } = handleIncrementQuantity(state.data.basket, action.payload);
+				draft.data.basket.productsList = newProductsList;
+				draft.data.basket.totalPrice = totPrice;
 				break;
 			case ActionTypes.INCREMENT_PRODUCT_QUANTITY.failure:
 				draft.local.loading.incrementQuantity = false;

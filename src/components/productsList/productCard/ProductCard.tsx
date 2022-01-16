@@ -1,23 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Skeleton } from 'antd';
+import { isEmpty } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import './product-card.css';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
 import { addProduct } from '../../../features/actions/products.actions';
-import { IProduct } from '../../../features/types/products.types';
+import { IInBasketProduct, IProduct } from '../../../features/types/products.types';
+import { selectBasketProducts } from '../../../features/selectors/products.selectors';
 
 interface IOwnProps {
 	product: IProduct;
 }
 
 const ProductCard: React.FC<IOwnProps> = ({ product }) => {
+	const [ disableButton, setDisableButton ] = useState(false);
 	const dispatch = useDispatch();
+	const basketProductsData = useSelector(selectBasketProducts);
+
+	useEffect(
+		() => {
+			handleDisableAddButton();
+		},
+		[ basketProductsData ]
+	);
 
 	const handleAdd = () => {
 		dispatch(addProduct(product));
+		setDisableButton(true);
 	};
+	const handleDisableAddButton = () => {
+		let findedProduct: never[] = basketProductsData.filter(
+			(basketProduct: IInBasketProduct) => basketProduct.productData.slug === product.slug
+		);
+		if (!isEmpty(findedProduct)) {
+			setDisableButton(true);
+		}
+	};
+
 	return (
-		<div className="product-card global-flex-column-h-any-v-between" key={Math.random()}>
+		<div className="product-card global-flex-column-h-any-v-between" key={product.slug}>
 			<Skeleton avatar={{ shape: 'square' }} {...skeleton.imageSkeleton(false)}>
 				<div className="product-card__image global-flex-h-center-v-center">
 					<img
@@ -32,7 +53,7 @@ const ProductCard: React.FC<IOwnProps> = ({ product }) => {
 					<span className="product-price__price">{product.price}</span>
 				</div>
 				<div className="product-card__name product-name">{product.name}</div>
-				<Button type="primary" className="product-card__button" onClick={handleAdd}>
+				<Button type="primary" className="product-card__button" onClick={handleAdd} disabled={disableButton}>
 					Add
 				</Button>
 			</Skeleton>

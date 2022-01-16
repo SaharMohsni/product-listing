@@ -60,7 +60,11 @@ const FilterComponent: React.FC<IOwnProps> = ({ title, optionsList, setSearchedV
 							value={getCheckboxCurrentValues(searchParams, filterKey)}
 						>
 							{optionsList.map((option: any) => {
-								return <Checkbox value={option.id}>{option.value}</Checkbox>;
+								return (
+									<Checkbox key={option.id} value={option.id}>
+										{option.value}
+									</Checkbox>
+								);
 							})}
 						</Checkbox.Group>
 					</div>

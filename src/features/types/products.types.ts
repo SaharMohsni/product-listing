@@ -7,7 +7,7 @@ interface Data {
 	brandsList: {};
 	tags: [];
 	productsTypes: [];
-	basket: {};
+	basket: IBasket;
 	itemsCount: number;
 }
 
@@ -22,6 +22,7 @@ interface Local {
 		fetchingProductsTypes: boolean;
 		addingProduct: boolean;
 		incrementQuantity: boolean;
+		calculateTotalCost: boolean;
 	};
 	errors: {
 		fetchingProduct: string;
@@ -32,6 +33,7 @@ interface Local {
 		fetchingProductsTypes: string;
 		addingProduct: string;
 		incrementQuantity: string;
+		calculateTotalCost: string;
 	};
 }
 interface IProductsState {

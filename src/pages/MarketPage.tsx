@@ -19,7 +19,6 @@ import { generateQueryFromPathname, handleNavigationQuery, convertObjectKey } fr
 
 const MarketPage = () => {
 	const searchParams = useSelector(selectSearchParams);
-
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();

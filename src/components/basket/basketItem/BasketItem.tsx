@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { incrementProductQuantity } from '../../../features/actions/products.actions';
 import { IInBasketProduct } from '../../../features/types/products.types';
 import './basket-item.css';
 
@@ -8,6 +9,10 @@ interface IOwnProps {
 }
 
 const BasketItem: React.FC<IOwnProps> = ({ item }) => {
+	const dispatch = useDispatch();
+	const handleIncrementProductQuantity = () => {
+		dispatch(incrementProductQuantity(item.productData.slug));
+	};
 	return (
 		<div className="basket-item global-flex-h-between-v-center">
 			<div className="basket-item__details">
@@ -20,7 +25,10 @@ const BasketItem: React.FC<IOwnProps> = ({ item }) => {
 				</div>
 			</div>
 			<div className="basket-item__quantity-details global-flex-h-between-v-center">
-				<button className="basket-item__quantity-details__increment-btn global-flex-h-center-v-center">
+				<button
+					className="basket-item__quantity-details__increment-btn global-flex-h-center-v-center"
+					onClick={handleIncrementProductQuantity}
+				>
 					+
 				</button>
 				<div className="basket-item__quantity-details__quantity global-flex-h-center-v-center">

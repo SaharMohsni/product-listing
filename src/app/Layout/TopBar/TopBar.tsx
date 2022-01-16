@@ -4,10 +4,10 @@ import { useSelector } from 'react-redux';
 import { Skeleton } from 'antd';
 import './top-bar.css';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
-import { basketTotalPrice } from '../../../features/selectors/products.selectors';
+import { selectBasketTotalPrice } from '../../../features/selectors/products.selectors';
 
 const TopBar = () => {
-	const totalPrice = useSelector(basketTotalPrice);
+	const totalPrice = useSelector(selectBasketTotalPrice);
 	return (
 		<div className="top-bar global-flex-h-between-v-center global-page-padding-left-right">
 			<div className="top-bar__logo global-flex-h-end-v-center">

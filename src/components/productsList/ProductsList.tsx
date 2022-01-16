@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
+import { isEmpty } from 'lodash';
+import { Empty } from 'antd';
 import ProductCard from './productCard/ProductCard';
 import './product-list.css';
 import { selectLoading, selectSearchProductsResult } from '../../features/selectors/products.selectors';
@@ -15,9 +16,17 @@ const ProductsList = () => {
 			return <ProductCard product={product} key={Math.random()} />;
 		});
 	};
+	let isEmptyData = isEmpty(data);
 	return (
-		<div className={`${loading.fetchingProductByPage && 'without-background'} product-list`}>
-			{renderProductsList()}
+		<div
+			className={`${loading.fetchingProductByPage && 'without-background'} ${isEmptyData &&
+				'is-empty global-flex-h-center-v-any'} product-list`}
+		>
+			{!isEmptyData ? (
+				renderProductsList()
+			) : (
+				<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No products with this filter " />
+			)}
 		</div>
 	);
 };

@@ -1,6 +1,10 @@
 .footer {
 	color: #1ea4ce;
 	height: 50px;
+	bottom: 0;
+	width: 100%;
+	position: relative;
+	height: calc(20% -76.64px);
 }
 .footer__copy-rights {
 	padding-right: 10px;

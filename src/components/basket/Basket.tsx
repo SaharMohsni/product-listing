@@ -9,12 +9,6 @@ import { basket } from '../../features/selectors/products.selectors';
 const Basket = () => {
 	const basketProducts = useSelector(basket);
 
-	const products = [
-		{ id: 1, name: 'camera1', price: 2500, unit: '$' },
-		{ id: 1, name: 'camera1', price: 2500, unit: '$' },
-		{ id: 1, name: 'camera1', price: 2500, unit: '$' },
-		{ id: 1, name: 'camera1', price: 2500, unit: '$' }
-	];
 	return (
 		<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(false)}>
 			<div className="basket section-block ">

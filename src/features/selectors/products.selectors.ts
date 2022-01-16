@@ -31,3 +31,7 @@ export const basket = createSelector(
 	(state: any): object => state.products,
 	(products: any): IBasket => products.data.basket
 );
+export const basketTotalPrice = createSelector(
+	(state: any): object => state.products,
+	(products: any): number => products.data.basket.totalPrice
+);

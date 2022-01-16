@@ -1,10 +1,13 @@
 import React, { lazy } from 'react';
 import { ShoppingOutlined } from '@ant-design/icons';
+import { useSelector } from 'react-redux';
 import { Skeleton } from 'antd';
 import './top-bar.css';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
+import { basketTotalPrice } from '../../../features/selectors/products.selectors';
 
 const TopBar = () => {
+	const totalPrice = useSelector(basketTotalPrice);
 	return (
 		<div className="top-bar global-flex-h-between-v-center global-page-padding-left-right">
 			<div className="top-bar__logo global-flex-h-end-v-center">
@@ -15,7 +18,7 @@ const TopBar = () => {
 					<ShoppingOutlined />
 					<div className="top-bar__basket__total-price">
 						<span className="top-bar__basket__total-price__unit">$</span>
-						<span className="top-bar__basket__total-price__amount">39.97</span>
+						<span className="top-bar__basket__total-price__amount">{totalPrice}</span>
 					</div>
 				</div>
 			</Skeleton>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { IInBasketProduct, IProduct } from '../../../features/types/products.types';
+import { useDispatch } from 'react-redux';
+import { IInBasketProduct } from '../../../features/types/products.types';
 import './basket-item.css';
 
 interface IOwnProps {

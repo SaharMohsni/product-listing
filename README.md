@@ -19,7 +19,7 @@ This project is finished: development and documentation.
 
 ## Installation and Setup Instructions
 
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+Clone down this repository and the back-end repository. You will need `node` and `npm` installed globally on your machine.  
 
 Installation:
 

@@ -4,7 +4,7 @@
 	bottom: 0;
 	width: 100%;
 	position: relative;
-	height: calc(20% -76.64px);
+	height: 50px;
 }
 .footer__copy-rights {
 	padding-right: 10px;

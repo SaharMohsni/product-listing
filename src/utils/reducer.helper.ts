@@ -4,6 +4,7 @@
  *
  */
 import { IInBasketProduct, IProduct, ISearchProductsPayload } from '../features/types/products.types';
+import { MIN_PRODUCT_QUANTITY_IN_BASKET } from './constants';
 
 // Change search params state
 export const handleSearchParams = (localSearchParams: ISearchProductsPayload, params: ISearchProductsPayload) => {
@@ -41,7 +42,7 @@ export const handleAddProduct = (localState: any, data: IProduct) => {
 		...localState.productsList,
 		{
 			productData: data,
-			quantity: 1
+			quantity: MIN_PRODUCT_QUANTITY_IN_BASKET
 		}
 	];
 	let totPrice = handleBasketTotalPrice(productsList);

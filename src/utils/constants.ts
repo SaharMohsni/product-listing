@@ -11,7 +11,9 @@ export const sortDataMessages = {
 	[NEW_ADDED]: 'New to old',
 	[OLD_ADDED]: 'Old to new'
 };
-export const fakeData = Array.from({ length: 16 }).map(() => {}).map((el, i) => ({
+
+export const MIN_PRODUCT_QUANTITY_IN_BASKET = 1;
+export const FAKE_DATA = Array.from({ length: 16 }).map(() => {}).map((el, i) => ({
 	tags: [ '' ],
 	price: i,
 	name: 'string',

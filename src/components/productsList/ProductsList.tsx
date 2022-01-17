@@ -9,12 +9,12 @@ import { Empty } from 'antd';
 import ProductCard from './productCard/ProductCard';
 import './product-list.css';
 import { selectLoading, selectSearchProductsResult } from '../../features/selectors/products.selectors';
-import { fakeData } from '../../utils/constants';
+import { FAKE_DATA } from '../../utils/constants';
 
 const ProductsList = () => {
 	const productsList = useSelector(selectSearchProductsResult);
 	const loading = useSelector(selectLoading);
-	const data = loading.fetchingProductByPage ? fakeData : productsList;
+	const data = loading.fetchingProductByPage ? FAKE_DATA : productsList;
 	const renderProductsList = () => {
 		return data.map((product) => {
 			return <ProductCard product={product} key={Math.random()} />;

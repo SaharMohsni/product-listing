@@ -1,5 +1,6 @@
 .market-page {
-	height: calc(100% - 126.64px);
+	/* height: calc(100% - 126.64px); */
+	min-height: calc(100vh - 126.64px);
 	display: grid;
 	grid-template-columns: 23.325% 49.35% 23.325%;
 	column-gap: 2%;

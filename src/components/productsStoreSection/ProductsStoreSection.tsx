@@ -11,14 +11,22 @@ import TagFilter from '../../shared/components/tagFilter/TagFilter';
 import ProductsList from '../productsList/ProductsList';
 import PaginationSection from '../../shared/components/pagination/PaginationSection';
 import * as skeleton from '../../utils/loading.skeleton.helper';
-import { selectLoading, selectProductsTypes, selectSearchParams } from '../../features/selectors/products.selectors';
+import {
+	selectLoading,
+	selectProductsTypes,
+	selectSearchParams,
+	selectSearchProductsResult
+} from '../../features/selectors/products.selectors';
 import { formatArrayData } from '../../utils/helper';
+import { isEmpty } from 'lodash';
 
 const ProductsStoreSection = () => {
 	const loading = useSelector(selectLoading);
 	const searchParams = useSelector(selectSearchParams);
 	const [ activeTagKey, setActiveTagKey ] = useState('');
 	const itemsTypeList = useSelector(selectProductsTypes);
+	const productsList = useSelector(selectSearchProductsResult);
+
 	useEffect(
 		() => {
 			if (searchParams.itemType) {
@@ -49,11 +57,13 @@ const ProductsStoreSection = () => {
 			<div className="products-store-section__products-list-container">
 				<ProductsList />
 			</div>
-			<Skeleton {...skeleton.fullRowItemSkeleton(loading.fetchingProductByPage)}>
-				<div className="products-store-section__pagination-container">
-					<PaginationSection />
-				</div>
-			</Skeleton>
+			{!isEmpty(productsList) && (
+				<Skeleton {...skeleton.fullRowItemSkeleton(loading.fetchingProductByPage)}>
+					<div className="products-store-section__pagination-container">
+						<PaginationSection />
+					</div>
+				</Skeleton>
+			)}
 		</div>
 	);
 };

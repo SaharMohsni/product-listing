@@ -15,7 +15,7 @@ This project is finished: development and documentation.
 
 ## Project Screen shot
 
-![Alt text](url("../src/assets/productListingPage.png../src/assets/productListingPage.png") "Product Listing Single page application")
+![Alt text](./src/assets/productListingPage.png../src/assets/productListingPage.png") "Product Listing Single page application")
 
 ## Installation and Setup Instructions
 

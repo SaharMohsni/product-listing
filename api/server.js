@@ -32,18 +32,26 @@ const getAllTypes = () => {
 	getAllTypes();
 })();
 
+
+/**** Apis added that we don't need to fetch all products : huge number of products ****/
+
+// Products total count
 server.get('/total-items-count', (req, res, next) => {
 	var itemsCount = db.items.length;
 	res.jsonp(itemsCount);
 });
 
+// Products types count
 server.get('/products-types', (req, res) => {
 	res.jsonp(itemsTypes);
 });
 
+// Products tags count
 server.get('/tags', (req, res) => {
 	res.jsonp(itemsTags);
 });
+
+/**********************************************/
 
 server.use(router);
 

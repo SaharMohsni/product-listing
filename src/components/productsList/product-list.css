@@ -9,16 +9,7 @@
 .is-empty {
 	min-height: 300px;
 }
-@media screen and (width: 1440px) {
-	.is-empty {
-		/* height: 1008px; */
-	}
-}
-@media screen and (min-width: 320px) and (max-width: 992px) {
-	.is-empty {
-		/* min-height: 300px; */
-	}
-}
+
 @media screen and (max-width: 1439px) {
 	.product-list {
 		grid-template-columns: 1fr 1fr 1fr;

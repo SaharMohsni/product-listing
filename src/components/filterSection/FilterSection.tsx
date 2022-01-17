@@ -47,8 +47,8 @@ const FilterSection: React.FC<IOwnProps> = ({
 	};
 
 	const handleSubmit = () => {
-		let navigationQuery = handleNavigationQuery(searchParams);
-		navigate(navigationQuery);
+		let navigationQuery = handleNavigationQuery(searchParams); // generate navigation query of data from the store
+		navigate(navigationQuery); // push new route with all search keys collected
 		dispatch(searchProducts(searchParams));
 
 		if (!loading.getSearchParams && isEmpty(errors.fetchingProductByPage)) {
@@ -60,46 +60,62 @@ const FilterSection: React.FC<IOwnProps> = ({
 		setFilterModalVisible(false);
 	};
 
-
 	const renderFilterSection = () => {
-	    if(isMobileVersion) {
-	        return (
+		if (isMobileVersion) {
+			return (
 				<div className="filter-section__on-mobile custom-button-on-mobile">
 					<Skeleton {...skeleton.fullRowItemSkeleton(false)}>
 						<Button type="primary" onClick={showFilterModal}>
-						<span>Filter</span>
-						<FilterOutlined />
+							<span>Filter</span>
+							<FilterOutlined />
 						</Button>
 					</Skeleton>
 					{filterModalVisible && (
 						<CustomModal
-						title="Filter"
-						modalVisible = {filterModalVisible}
-						handleSubmit= {handleSubmit}
-						handleCancel = {handleCancel}
-						loading={loading.fetchingProductByPage}
+							title="Filter"
+							modalVisible={filterModalVisible}
+							handleSubmit={handleSubmit}
+							handleCancel={handleCancel}
+							loading={loading.fetchingProductByPage}
 						>
-							<FilterComponent  loading= {loading.fetchingProductByPage} title={firstFilterTitle} optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)} setSearchedValue = {setFirstFilterSearchedValue} filterKey = "manufacturer"/>
-							<FilterComponent  loading = {loading.fetchingProductByPage} title={secondFilterTitle} optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)} setSearchedValue={setSecondFilterSearchedValue} filterKey="tags"/>
+							<FilterComponent
+								loading={loading.fetchingProductByPage}
+								title={firstFilterTitle}
+								optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)}
+								setSearchedValue={setFirstFilterSearchedValue}
+								filterKey="manufacturer"
+							/>
+							<FilterComponent
+								loading={loading.fetchingProductByPage}
+								title={secondFilterTitle}
+								optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)}
+								setSearchedValue={setSecondFilterSearchedValue}
+								filterKey="tags"
+							/>
 						</CustomModal>
-					)
-					}
-
+					)}
 				</div>
-
-	        )
-	    }
-	     return (
-	        <>
-	            <FilterComponent loading= {loading.fetchingProductByPage} title="Brands" optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)} setSearchedValue = {setFirstFilterSearchedValue} filterKey="manufacturer"  />
-		        <FilterComponent loading = {loading.fetchingProductByPage} title="Tags" optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)} setSearchedValue = {setSecondFilterSearchedValue} filterKey="tags"/>
-	        </>
-	    )
-	}
-
-
-
-
+			);
+		}
+		return (
+			<div>
+				<FilterComponent
+					loading={loading.fetchingProductByPage}
+					title="Brands"
+					optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)}
+					setSearchedValue={setFirstFilterSearchedValue}
+					filterKey="manufacturer"
+				/>
+				<FilterComponent
+					loading={loading.fetchingProductByPage}
+					title="Tags"
+					optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)}
+					setSearchedValue={setSecondFilterSearchedValue}
+					filterKey="tags"
+				/>
+			</div>
+		);
+	};
 
 	return <div className="filter-section "> {renderFilterSection()} </div>;
 };

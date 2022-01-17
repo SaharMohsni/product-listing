@@ -33,8 +33,8 @@ const SortingSection = () => {
 		setSortModalVisible(true);
 	};
 	const handleSubmit = () => {
-		let navigationQuery = handleNavigationQuery(searchParams);
-		navigate(navigationQuery);
+		let navigationQuery = handleNavigationQuery(searchParams); // generate navigation query of data from the store
+		navigate(navigationQuery); // push new route with all search keys collected
 		dispatch(searchProducts(searchParams));
 		if (!loading.getSearchParams && isEmpty(errors.fetchingProductByPage)) {
 			setSortModalVisible(false);

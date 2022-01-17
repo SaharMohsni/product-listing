@@ -40,8 +40,8 @@ const MarketPage = () => {
 	useEffect(
 		() => {
 			if (!isMobileVersion) {
-				let navigationQuery = handleNavigationQuery(searchParams);
-				navigate(navigationQuery);
+				let navigationQuery = handleNavigationQuery(searchParams); // generate navigation query of data from the store
+				navigate(navigationQuery); // push new route with all search keys collected
 				dispatch(searchProducts(searchParams));
 			}
 		},

@@ -1,46 +1,54 @@
-# Getting Started with Create React App
+##Product Listing
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### Description
 
-## Available Scripts
+A single page application presenting a product store used to add products to the basket to buy them. You can search products using different filter keys: company name, tags and product type. You can also sort products by date or by price.
+This project makes you able to manage product quantity in the basket and you can have the total cost as a result.
+When the quantity reaches 0 the product will be automatically deleted from the basket.
+This project is built with React, Redux saga, TypeScript, and CSS.
 
-In the project directory, you can run:
+Responsive project.
 
-### `npm start`
+##Project Status
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This project is finished: development and documentation.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Project Screen shot
 
-### `npm test`
+![Alt text](../src/assets/productListingPage.png "Product Listing Single page application")
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation and Setup Instructions
 
-### `npm run build`
+Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Installation:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+`npm install`  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To Run Test Suite:  
 
-### `npm run eject`
+`npm test`  
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To Start Server:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+`npm start`  
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To Visit App:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`localhost:3000`  
 
-## Learn More
+## Reflection
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This was a 2 week long project built during my technical test for the Front-End Developer position with "Getir" Turkish start-up. Project goals development of a single page responsive application using react TypeScript, redux-saga, CSS and JSON-server for data. The design of the page was a Figma file.  
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The main role of this application is being a store. It allow users to add products to the basket depending on their needs. So they can filter and sort products to facilitate their search. I started this process by using the `create-react-app typescript` boilerplate, then adding `react-router-6. 2. 1` and `redux-saga`.  
+
+One of the main challenges I ran into was the use of TypeScript because this my first project with it. This leaded me to spend a few days on a research spike into typescript syntax, interfaces, and types. Due to project time constraints, I used libraries to facilitate the work and gain time. I started using fake data, then fetch the real ones.
+
+Managing time was my biggest challenge in this project because I was working on another at the same time.
+
+At the end of the project, the technologies implemented was TypeScript, React, React-Router 6.2.1, Redux-saga, LoDash, anted, and a significant amount of VanillaJS and CSS for the front-end part. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes.
+For the data I used JSON-server.
+I used express js to add more APIs needed to optimize the work.
+In the next iteration the front-end part could be optimized on different devices.
+

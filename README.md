@@ -9,7 +9,7 @@ This project is built with React, Redux saga, TypeScript, and CSS.
 
 Responsive project.
 
-##Project Status
+## Project Status
 
 This project is finished: development and documentation.
 

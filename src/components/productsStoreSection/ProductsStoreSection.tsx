@@ -12,7 +12,7 @@ import ProductsList from '../productsList/ProductsList';
 import PaginationSection from '../../shared/components/pagination/PaginationSection';
 import * as skeleton from '../../utils/loading.skeleton.helper';
 import { selectLoading, selectProductsTypes, selectSearchParams } from '../../features/selectors/products.selectors';
-import { formatData } from '../../utils/helper';
+import { formatArrayData } from '../../utils/helper';
 
 const ProductsStoreSection = () => {
 	const loading = useSelector(selectLoading);
@@ -34,7 +34,7 @@ const ProductsStoreSection = () => {
 			</Skeleton>
 			<Skeleton {...skeleton.tagSkeleton(loading.fetchingProductByPage)}>
 				<div className="products-store-section__tags-filter-list global-scroll global-flex-h-any-v-center">
-					{formatData(itemsTypeList).map((itemType: any) => {
+					{formatArrayData(itemsTypeList).map((itemType: any) => {
 						return (
 							<TagFilter
 								itemType={itemType}

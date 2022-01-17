@@ -11,7 +11,7 @@ import './market-page-customization-section.css';
 import FilterSection from '../filterSection/FilterSection';
 import { useMobile } from '../../utils/useMobile';
 import { selectBrandsList, selectTags } from '../../features/selectors/products.selectors';
-import { formatData } from '../../utils/helper';
+import { formatArrayData } from '../../utils/helper';
 
 const MarketPageCustomizationSection = () => {
 	const brandsList = useSelector(selectBrandsList);
@@ -24,8 +24,8 @@ const MarketPageCustomizationSection = () => {
 			<FilterSection
 				firstFilterTitle="Brands"
 				secondFilterTitle="Tags"
-				firstFilterOptionsList={formatData(brandsList)}
-				secondFilterOptionsList={formatData(tags)}
+				firstFilterOptionsList={formatArrayData(brandsList)}
+				secondFilterOptionsList={formatArrayData(tags)}
 			/>
 		</div>
 	);

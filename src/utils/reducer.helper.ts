@@ -5,6 +5,7 @@
  */
 import { IInBasketProduct, IProduct, ISearchProductsPayload } from '../features/types/products.types';
 
+// Change search params state
 export const handleSearchParams = (localSearchParams: ISearchProductsPayload, params: ISearchProductsPayload) => {
 	let { page, limit, sortVariable, sortType, manufacturer, tags, itemType } = localSearchParams;
 
@@ -20,9 +21,12 @@ export const handleSearchParams = (localSearchParams: ISearchProductsPayload, pa
 	};
 };
 
+// Calculate product cost
 export const calculateProductCost = (quantity: number, unitPrice: number) => {
 	return Number((quantity * unitPrice).toFixed(3));
 };
+
+// Calculate total cost
 export const handleBasketTotalPrice = (productsList: any) => {
 	let totalPrice = 0;
 	productsList.forEach((product: IInBasketProduct) => {
@@ -31,6 +35,7 @@ export const handleBasketTotalPrice = (productsList: any) => {
 	return Number(totalPrice.toFixed(3));
 };
 
+/*********Add product to the basket *********/
 export const handleAddProduct = (localState: any, data: IProduct) => {
 	let productsList = [
 		...localState.productsList,
@@ -45,6 +50,8 @@ export const handleAddProduct = (localState: any, data: IProduct) => {
 		totalPrice: totPrice
 	};
 };
+/***************************/
+
 const incrementQuantity = (quantity: number) => {
 	return (quantity += 1);
 };
@@ -54,6 +61,8 @@ const decrementQuantity = (quantity: number) => {
 	}
 	return 0;
 };
+
+// Increment quantity function
 export const handleIncrementQuantity = (localState: any, payload: string) => {
 	let newProductsList = localState.productsList.map((product: IInBasketProduct) => {
 		let newProductData = {};
@@ -69,6 +78,7 @@ export const handleIncrementQuantity = (localState: any, payload: string) => {
 	return { newProductsList, totPrice };
 };
 
+// Decrement quantity function
 export const handleDecrementQuantity = (localState: any, payload: string) => {
 	let newProductsList = localState.productsList.map((product: IInBasketProduct) => {
 		let newProductData = { quantity: 0 };

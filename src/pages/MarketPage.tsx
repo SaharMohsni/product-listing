@@ -41,7 +41,7 @@ const MarketPage = () => {
 		() => {
 			if (!isMobileVersion) {
 				let navigationQuery = handleNavigationQuery(searchParams); // generate navigation query of data from the store
-				navigate(navigationQuery); // push new route with all search keys collected
+				navigate(navigationQuery); // making the search product works using the route path ( case of sinding product with specific search query)
 				dispatch(searchProducts(searchParams));
 			}
 		},

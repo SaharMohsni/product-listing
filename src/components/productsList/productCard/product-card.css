@@ -17,7 +17,7 @@
 	border: 1.17666px solid #f3f0fe;
 	border-radius: 12px;
 	margin-bottom: 8px;
-	height: 50%;
+	height: 100%;
 }
 .product-card__price {
 	height: 10%;
@@ -33,9 +33,6 @@
 	.product-card {
 		height: unset;
 	}
-	.product-card__image {
-		height: unset;
-	}
 }
 .product-card__image img {
 	width: 80%;
@@ -49,12 +46,12 @@
 @media screen and (min-width: 320px) and (max-width: 992px) {
 	.product-card__image img {
 		width: 100%;
+		border-radius: 12px;
 	}
 }
 
 .product-card__button {
 	width: 100%;
-	/* color: #ffffff; */
 
 	margin-top: 8px;
 }

@@ -44,7 +44,7 @@ const ProductCard: React.FC<IOwnProps> = ({ product }) => {
 	};
 
 	return (
-		<div className="product-card global-flex-column-h-any-v-between" key={product.slug}>
+		<div className="product-card " key={product.slug}>
 			<Skeleton avatar={{ shape: 'square' }} {...skeleton.imageSkeleton(loading.fetchingProductByPage)}>
 				<div className="product-card__image global-flex-h-center-v-center">
 					<img
@@ -59,9 +59,16 @@ const ProductCard: React.FC<IOwnProps> = ({ product }) => {
 					<span className="product-price__price">{product.price}</span>
 				</div>
 				<div className="product-card__name product-name">{product.name}</div>
-				<Button type="primary" className="product-card__button" onClick={handleAdd} disabled={disableButton}>
-					Add
-				</Button>
+				<div className="product-card__button global-flex-h-any-v-end">
+					<Button
+						type="primary"
+						className="product-card__button "
+						onClick={handleAdd}
+						disabled={disableButton}
+					>
+						Add
+					</Button>
+				</div>
 			</Skeleton>
 		</div>
 	);

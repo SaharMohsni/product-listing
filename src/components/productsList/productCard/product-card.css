@@ -40,14 +40,9 @@
 }
 
 .product-card .ant-skeleton-avatar {
-	width: 100% !important;
 	height: 141px !important;
-	margin-bottom: 10px;
 }
 
-.product-card .ant-skeleton-header {
-	padding-right: unset !important;
-}
 /* media query */
 @media screen and (width: 1440px) {
 	.product-card {

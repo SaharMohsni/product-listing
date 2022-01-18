@@ -19,3 +19,9 @@
 	height: 51.1px;
 	border-radius: 2px;
 }
+.empty-section {
+	border: unset;
+}
+.empty-section .ant-skeleton-avatar {
+	height: 280px !important;
+}

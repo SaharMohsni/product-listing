@@ -14,27 +14,31 @@
 	.section-block-header {
 		font-size: 12px;
 	}
-	.ant-checkbox-wrapper,
-	.ant-radio-wrapper {
+	.market-page-customization-section .ant-checkbox-wrapper,
+	.market-page-customization-section .ant-radio-wrapper {
 		font-size: 12px !important;
 	}
 }
 
-.ant-space-item,
-.ant-checkbox-wrapper {
+.market-page-customization-section .ant-space-item,
+.market-page-customization-section .ant-checkbox-wrapper {
 	margin-bottom: 15px !important;
 }
 
-.ant-radio-checked::after,
-.ant-checkbox-checked::after {
+.market-page-customization-section .ant-radio-checked::after,
+.market-page-customization-section .ant-checkbox-checked::after {
 	border: 1px solid #1ea4ce !important;
 }
-.ant-radio-inner::after,
-.ant-checkbox-checked .ant-checkbox-inner {
+.market-page-customization-section .ant-radio-inner::after,
+.market-page-customization-section .ant-checkbox-checked .ant-checkbox-inner {
 	background-color: #1ea4ce !important;
 }
-.ant-radio-checked .ant-radio-inner,
-.ant-checkbox-wrapper:hover .ant-checkbox-inner,
-.ant-checkbox:hover .ant-checkbox-inner {
+.market-page-customization-section .ant-radio-checked .ant-radio-inner,
+.market-page-customization-section .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+.market-page-customization-section .ant-checkbox:hover .ant-checkbox-inner {
 	border-color: #1ea4ce !important;
+}
+
+.market-page-customization-section .ant-skeleton-avatar {
+	height: 160px !important;
 }

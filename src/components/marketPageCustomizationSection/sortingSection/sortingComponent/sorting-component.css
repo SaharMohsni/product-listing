@@ -6,6 +6,6 @@
 	height: 90%;
 }
 
-.ant-space {
+.sorting-component .ant-space {
 	gap: unset !important;
 }

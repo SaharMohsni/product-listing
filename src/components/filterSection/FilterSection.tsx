@@ -59,7 +59,6 @@ const FilterSection: React.FC<IOwnProps> = ({
 	const handleCancel = () => {
 		setFilterModalVisible(false);
 	};
-
 	const renderFilterSection = () => {
 		if (isMobileVersion) {
 			return (

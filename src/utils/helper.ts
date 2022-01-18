@@ -24,26 +24,32 @@ export const isObject = (data: any) => typeof data === 'object';
 export const createNewStructureData = (queryValues: any) => {
 	let objectKey = {};
 	let key = '';
+	let res = [];
 	for (var el of queryValues) {
 		for (var subEl of el) {
-			if (isObject(subEl)) {
-				key = el[0];
-				objectKey = { key: el[0], data: el[1] };
-			}
+			key = el[0];
+			objectKey = { key: el[0], data: el[1] };
 		}
+		res.push({
+			objectKey,
+			key
+		});
 	}
-	return {
-		objectKey,
-		key
-	};
+
+	return res;
 };
 
 export const convertObjectKey = (query: any) => {
 	let queryValues = Object.entries(query);
-	let { key, objectKey } = createNewStructureData(queryValues);
+
+	let newStructure = createNewStructureData(queryValues);
 	let newObj = { ...query };
-	newObj[key] = newObj['objectKey'];
-	newObj[key] = objectKey;
+	for (let el of newStructure) {
+		let { key, objectKey } = el;
+		newObj[key] = newObj['objectKey'];
+		newObj[key] = objectKey;
+	}
+
 	return newObj;
 };
 export const serialize = function(obj: any) {

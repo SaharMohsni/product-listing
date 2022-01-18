@@ -30,6 +30,7 @@ const MarketPage = () => {
 	const location = useLocation();
 	const isMobileVersion = useMobile();
 	let query = generateQueryFromPathname(location.pathname);
+
 	useEffect(() => {
 		dispatch(getSearchParams(convertObjectKey(query)));
 		dispatch(fetchCompanies());

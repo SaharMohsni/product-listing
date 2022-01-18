@@ -30,7 +30,6 @@ const MarketPage = () => {
 	const location = useLocation();
 	const isMobileVersion = useMobile();
 	let query = generateQueryFromPathname(location.pathname);
-	console.log('🚀 ~ file: MarketPage.tsx ~ line 33 ~ MarketPage ~ query', query);
 
 	useEffect(() => {
 		dispatch(getSearchParams(convertObjectKey(query)));

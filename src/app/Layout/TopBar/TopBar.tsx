@@ -3,7 +3,7 @@
  * Page topBar
  *
  */
-
+ import React from 'react';
 import { ShoppingOutlined } from '@ant-design/icons';
 import { useSelector } from 'react-redux';
 import { Skeleton } from 'antd';

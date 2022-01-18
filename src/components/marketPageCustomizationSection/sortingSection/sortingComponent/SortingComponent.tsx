@@ -3,7 +3,7 @@
  * Sorting component
  *
  */
-
+ import React from 'react';
 import { Radio, Space, Skeleton, Empty } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import './sorting-component.css';

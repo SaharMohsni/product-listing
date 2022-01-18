@@ -3,7 +3,6 @@
  * Services constants : URL
  *
  */
-
 import { ISearchProductsPayload } from '../types/products.types';
 import {
 	addFilterByArrayListToUrl,
@@ -13,7 +12,8 @@ import {
 } from '../../utils/service.helper';
 
 const URL = {
-	baseApiUrl: () => 'http://localhost:4000',
+	baseApiUrl: () =>  process.env.NODE_ENV ==="development" ?  'http://localhost:4000' : '',
+	// baseApiUrl: () =>  'http://localhost:4000',
 	products: {
 		itemsCount: '/total-items-count',
 		searchProducts: (payload: ISearchProductsPayload) => {

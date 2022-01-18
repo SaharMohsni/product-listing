@@ -3,7 +3,7 @@
  * Products store section : containing the types filter, the products List and the pagination section
  *
  */
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './products-store-section.css';
 import { Skeleton } from 'antd';

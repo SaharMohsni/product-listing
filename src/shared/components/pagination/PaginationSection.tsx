@@ -3,6 +3,7 @@
  * Pagination section
  *
  */
+import React from 'react';
 import { Pagination } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';

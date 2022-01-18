@@ -3,7 +3,7 @@
  * The drawer used to show the basket on the mobile version
  *
  */
-import { useState } from 'react';
+import React,{ useState } from 'react';
 import { Drawer, Button, Space, Skeleton } from 'antd';
 import './basket-drawer.css';
 import Basket from '../basket/Basket';

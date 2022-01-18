@@ -3,6 +3,7 @@
  * Products list
  *
  */
+ import React from 'react';
 import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { Empty } from 'antd';

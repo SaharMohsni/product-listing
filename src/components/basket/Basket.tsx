@@ -3,6 +3,7 @@
  * The basket component
  *
  */
+ import React from 'react';
 import { Skeleton, Empty } from 'antd';
 import { useSelector } from 'react-redux';
 

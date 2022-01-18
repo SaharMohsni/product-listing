@@ -15,6 +15,9 @@ export const handleSearch = (data: any, searchedValue: string) => {
 };
 
 export const getCheckboxCurrentValues = (searchParams: any, filterKey: string) => {
+	if (!searchParams[filterKey].data) {
+		return [ searchParams[filterKey] ];
+	}
 	let res = searchParams[filterKey].data;
 	if (isString(res)) {
 		return [ res ];

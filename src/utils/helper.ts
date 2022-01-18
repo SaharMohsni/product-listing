@@ -13,6 +13,8 @@ export const getURLCleanPath = (pathname: string) => pathname.split('/')[1];
 
 // generate a query from pathname
 export const generateQueryFromPathname = (pathName: string) => {
+	console.log('pathName', pathName);
+	// if()
 	return queryString.parse(getURLCleanPath(pathName));
 };
 
@@ -27,8 +29,10 @@ export const createNewStructureData = (queryValues: any) => {
 	let res = [];
 	for (var el of queryValues) {
 		for (var subEl of el) {
-			key = el[0];
-			objectKey = { key: el[0], data: el[1] };
+			if (typeof subEl !== 'string') {
+				key = el[0];
+				objectKey = { key: el[0], data: el[1] };
+			}
 		}
 		res.push({
 			objectKey,
@@ -40,6 +44,7 @@ export const createNewStructureData = (queryValues: any) => {
 };
 
 export const convertObjectKey = (query: any) => {
+	console.log('🚀 ~ file: helper.ts ~ line 45 ~ convertObjectKey ~ query', query);
 	let queryValues = Object.entries(query);
 
 	let newStructure = createNewStructureData(queryValues);
@@ -73,6 +78,7 @@ export const serialize = function(obj: any) {
 
 // serialize the navigation query params
 export const handleNavigationQuery = (params: ISearchProductsPayload) => {
+	console.log('🚀 ~ file: helper.ts ~ line 79 ~ handleNavigationQuery ~ params', params);
 	return `${serialize(params)}`;
 };
 

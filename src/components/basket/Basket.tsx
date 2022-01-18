@@ -16,7 +16,7 @@ const Basket = () => {
 	const loading = useSelector(selectLoading);
 
 	return (
-		<div className={`${isEmpty(basketProducts.productsList) && 'empty-section'} basket section-block`}>
+		<div className={`${loading.fetchingProductByPage && 'loading-section'} basket section-block`}>
 			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading.fetchingProductByPage)}>
 				{isEmpty(basketProducts.productsList) ? (
 					<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No products in your basket " />

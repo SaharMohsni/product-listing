@@ -5,7 +5,7 @@
  */
 
 import React, { useState } from 'react';
-import { Checkbox, Skeleton, Input } from 'antd';
+import { Checkbox, Skeleton, Input, Empty } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 
 import './filter-component.css';
@@ -14,6 +14,7 @@ import * as skeleton from '../../../utils/loading.skeleton.helper';
 import { getSearchParams } from '../../../features/actions/products.actions';
 import { selectSearchParams } from '../../../features/selectors/products.selectors';
 import { createCheckedAllDataStructure, formatFilterDataStructure, getCheckboxCurrentValues } from './helper';
+import { isEmpty } from 'lodash';
 
 interface IOwnProps {
 	loading: boolean;
@@ -48,32 +49,38 @@ const FilterComponent: React.FC<IOwnProps> = ({ loading, title, optionsList, set
 			</Skeleton>
 			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading)}>
 				<div className="filter-component__data section-block">
-					<div className="filter-component_search-bar-container">
-						<Input
-							className="filter-component_search-bar-container__search-bar"
-							placeholder={`search ${title}`}
-							onChange={handleSearchInputChange}
-						/>
-					</div>
-					<div className="filter-component__filter-options-container box global-scroll">
-						<Checkbox onChange={onCheckAllChange} checked={checkAll}>
-							All
-						</Checkbox>
-						<Checkbox.Group
-							style={{ width: '100%' }}
-							onChange={(e) => handleChange(e)}
-							className="global-flex-column-h-start-v-start "
-							value={getCheckboxCurrentValues(searchParams, filterKey)}
-						>
-							{optionsList.map((option: any) => {
-								return (
-									<Checkbox key={option.id} value={option.id}>
-										{option.value}
-									</Checkbox>
-								);
-							})}
-						</Checkbox.Group>
-					</div>
+					{isEmpty(optionsList) ? (
+						<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No data" />
+					) : (
+						<div>
+							<div className="filter-component_search-bar-container">
+								<Input
+									className="filter-component_search-bar-container__search-bar"
+									placeholder={`search ${title}`}
+									onChange={handleSearchInputChange}
+								/>
+							</div>
+							<div className="filter-component__filter-options-container box global-scroll">
+								<Checkbox onChange={onCheckAllChange} checked={checkAll}>
+									All
+								</Checkbox>
+								<Checkbox.Group
+									style={{ width: '100%' }}
+									onChange={(e) => handleChange(e)}
+									className="global-flex-column-h-start-v-start "
+									value={getCheckboxCurrentValues(searchParams, filterKey)}
+								>
+									{optionsList.map((option: any) => {
+										return (
+											<Checkbox key={option.id} value={option.id}>
+												{option.value}
+											</Checkbox>
+										);
+									})}
+								</Checkbox.Group>
+							</div>
+						</div>
+					)}
 				</div>
 			</Skeleton>
 		</div>

@@ -1,64 +1,33 @@
 .product-card {
-	height: 300px;
-}
-@media screen and (width: 1440px) {
-	.product-card {
-		height: 225px;
-		width: 124px;
-	}
-}
-@media screen and (max-width: 1120px) {
-	.product-card {
-		height: 227px;
-	}
+	height: 290px;
+	display: grid;
+	grid-template-rows: 62% 10% 15% auto;
+	gap: 4px;
 }
 
 .product-card__image {
 	border: 1.17666px solid #f3f0fe;
 	border-radius: 12px;
-	margin-bottom: 8px;
 	height: 100%;
 }
 .product-card__price {
-	height: 10%;
+	height: 100%;
 }
 .product-card__name {
-	height: 20%;
+	height: 100%;
 }
-.product-card__button {
-	height: 20%;
-}
-
-@media screen and (min-width: 320px) and (max-width: 992px) {
-	.product-card {
-		height: unset;
-	}
-}
-.product-card__image img {
-	width: 80%;
-	height: auto;
-}
-@media screen and (width: 1440px) {
-	.product-card__image img {
-		width: 80%;
-	}
-}
-@media screen and (min-width: 320px) and (max-width: 992px) {
-	.product-card__image img {
-		width: 100%;
-		border-radius: 12px;
-	}
-}
-
 .product-card__button {
 	width: 100%;
-
-	margin-top: 8px;
 }
+
+.product-card__image img {
+	width: 80%;
+}
+
 .ant-btn-primary {
 	background-color: #1ea4ce !important;
 }
-.ant-btn {
+.product-card .ant-btn {
 	font-weight: 600 !important;
 	border-color: unset !important;
 	border-width: unset !important;
@@ -67,14 +36,48 @@
 	font-size: 12px !important;
 	line-height: 20px !important;
 	padding: 1px 1px !important;
+	height: 25px !important;
 }
 
-.ant-skeleton-avatar {
+.product-card .ant-skeleton-avatar {
 	width: 100% !important;
 	height: 141px !important;
 	margin-bottom: 10px;
 }
 
-.ant-skeleton-header {
+.product-card .ant-skeleton-header {
 	padding-right: unset !important;
+}
+/* media query */
+@media screen and (width: 1440px) {
+	.product-card {
+		display: grid;
+		grid-template-rows: 124px 23px 40px auto;
+		width: 124px;
+		height: 225px;
+	}
+	.product-card .ant-btn {
+		height: 22px !important;
+	}
+	.product-card__image img {
+		height: 92px;
+	}
+	.product-card__name {
+		height: 40px;
+	}
+}
+@media screen and (max-width: 1120px) {
+	.product-card {
+		height: 285px;
+	}
+}
+@media screen and (min-width: 320px) and (max-width: 899px) {
+	.product-card {
+		height: 320px;
+	}
+	.product-card__image img {
+		border-radius: 12px;
+		width: 100%;
+		height: 100%;
+	}
 }

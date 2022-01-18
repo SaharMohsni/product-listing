@@ -10,7 +10,7 @@
 	min-height: 300px;
 }
 
-@media screen and (max-width: 1439px) {
+@media screen and (max-width: 899px) {
 	.product-list {
 		grid-template-columns: 1fr 1fr 1fr;
 	}

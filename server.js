@@ -74,6 +74,4 @@ server.get('/tags', (req, res) => {
 
 server.use(router);
 
-server.listen(4000, () => {
-	console.log('JSON Server is running');
-});
+server.listen(process.env.PORT || 4000)

@@ -3,7 +3,7 @@
  * Sorting component
  *
  */
- import React from 'react';
+import React from 'react';
 import { Radio, Space, Skeleton, Empty } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import './sorting-component.css';
@@ -31,10 +31,10 @@ const SortingComponent = () => {
 
 	return (
 		<div className="sorting-component ">
-			<Skeleton {...skeleton.labelSkeleton(loading.fetchingProductByPage)}>
+			<Skeleton {...skeleton.labelSkeleton(loading.fetchingCompanies)}>
 				<div className="section-block-header">Sorting</div>
 			</Skeleton>
-			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading.fetchingProductByPage)}>
+			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading.fetchingCompanies)}>
 				<div className="sorting-component__data section-block box global-scroll">
 					{isEmpty(productsList) ? (
 						<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No data" />

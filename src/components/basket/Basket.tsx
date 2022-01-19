@@ -3,7 +3,7 @@
  * The basket component
  *
  */
- import React from 'react';
+import React from 'react';
 import { Skeleton, Empty } from 'antd';
 import { useSelector } from 'react-redux';
 
@@ -18,7 +18,7 @@ const Basket = () => {
 
 	return (
 		<div className={`${loading.fetchingProductByPage && 'loading-section'} basket section-block`}>
-			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading.fetchingProductByPage)}>
+			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading.addingProduct)}>
 				{isEmpty(basketProducts.productsList) ? (
 					<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No products in your basket " />
 				) : (

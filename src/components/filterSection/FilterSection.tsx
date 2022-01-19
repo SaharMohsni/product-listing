@@ -77,14 +77,14 @@ const FilterSection: React.FC<IOwnProps> = ({
 							loading={loading.fetchingProductByPage}
 						>
 							<FilterComponent
-								loading={loading.fetchingProductByPage}
+								loading={loading.fetchingCompanies}
 								title={firstFilterTitle}
 								optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)}
 								setSearchedValue={setFirstFilterSearchedValue}
 								filterKey="manufacturer"
 							/>
 							<FilterComponent
-								loading={loading.fetchingProductByPage}
+								loading={loading.fetchingTags}
 								title={secondFilterTitle}
 								optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)}
 								setSearchedValue={setSecondFilterSearchedValue}
@@ -98,14 +98,14 @@ const FilterSection: React.FC<IOwnProps> = ({
 		return (
 			<div>
 				<FilterComponent
-					loading={loading.fetchingProductByPage}
+					loading={loading.fetchingCompanies}
 					title="Brands"
 					optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)}
 					setSearchedValue={setFirstFilterSearchedValue}
 					filterKey="manufacturer"
 				/>
 				<FilterComponent
-					loading={loading.fetchingProductByPage}
+					loading={loading.fetchingTags}
 					title="Tags"
 					optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)}
 					setSearchedValue={setSecondFilterSearchedValue}

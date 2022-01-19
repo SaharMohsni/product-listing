@@ -8,7 +8,16 @@
 	}
 }
 .basket__products {
-	height: 80%;
+	height: 220px;
+}
+@media screen and (min-width: 320px) and (max-width: 992px) {
+	.basket {
+		height: 500px;
+	}
+
+	.basket__products {
+		height: 400px;
+	}
 }
 .basket__total-price-container {
 	margin-top: 13px;

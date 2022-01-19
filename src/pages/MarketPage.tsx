@@ -57,7 +57,11 @@ const MarketPage = () => {
 				<ErrorComponent />
 			) : (
 				<div className="market-page global-page-padding-left-right">
-					<div className={`${isMobileVersion ? 'global-flex-h-between-v-any' : ''}`}>
+					<div
+						className={`market-page-customization-section-container ${isMobileVersion
+							? 'global-flex-h-between-v-any'
+							: ''}`}
+					>
 						<MarketPageCustomizationSection />
 						{isMobileVersion && (
 							<div>

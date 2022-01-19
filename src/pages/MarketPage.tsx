@@ -27,7 +27,6 @@ import { ErrorComponent } from '../shared/components/errors/ErrorComponent';
 const MarketPage = () => {
 	const searchParams = useSelector(selectSearchParams);
 	const hasError = useSelector(selectHasError);
-	console.log('🚀 ~ file: MarketPage.tsx ~ line 32 ~ MarketPage ~ hasError', hasError);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();

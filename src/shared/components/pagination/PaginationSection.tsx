@@ -42,9 +42,6 @@ const PaginationSection = () => {
 		}
 		return originalElement;
 	}
-	let totPage = productsCount / 16;
-	console.log('🚀 ~ file: PaginationSection.tsx ~ line 46 ~ PaginationSection ~ productsCount', productsCount);
-	console.log('🚀 ~ file: PaginationSection.tsx ~ line 46 ~ PaginationSection ~ totPage', Math.round(totPage));
 	return (
 		<div className="pagination-section">
 			<Pagination

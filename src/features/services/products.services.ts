@@ -8,7 +8,9 @@ import { ISearchProductsPayload } from '../types/products.types';
 
 export const searchProducts = async (body: ISearchProductsPayload): Promise<any> => {
 	const result = await axios.get(URL.baseApiUrl() + URL.products.searchProducts(body), requestHeader({}));
-	return result.data;
+	let productsCount = result.headers['x-total-count']; // getting products number result search from header
+	let res = { data: result.data, productsCount };
+	return res;
 };
 
 export const getProductsCount = async (): Promise<any> => {

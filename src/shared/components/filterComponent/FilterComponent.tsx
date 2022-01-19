@@ -49,17 +49,17 @@ const FilterComponent: React.FC<IOwnProps> = ({ loading, title, optionsList, set
 			</Skeleton>
 			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading)}>
 				<div className="filter-component__data section-block">
-					{isEmpty(optionsList) ? (
-						<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No data" />
-					) : (
-						<div>
-							<div className="filter-component_search-bar-container">
-								<Input
-									className="filter-component_search-bar-container__search-bar"
-									placeholder={`search ${title}`}
-									onChange={handleSearchInputChange}
-								/>
-							</div>
+					<div>
+						<div className="filter-component_search-bar-container">
+							<Input
+								className="filter-component_search-bar-container__search-bar"
+								placeholder={`search ${title}`}
+								onChange={handleSearchInputChange}
+							/>
+						</div>
+						{isEmpty(optionsList) ? (
+							<Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description="No data" />
+						) : (
 							<div className="filter-component__filter-options-container box global-scroll">
 								<Checkbox onChange={onCheckAllChange} checked={checkAll}>
 									All
@@ -79,8 +79,8 @@ const FilterComponent: React.FC<IOwnProps> = ({ loading, title, optionsList, set
 									})}
 								</Checkbox.Group>
 							</div>
-						</div>
-					)}
+						)}
+					</div>
 				</div>
 			</Skeleton>
 		</div>

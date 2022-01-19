@@ -22,7 +22,7 @@ import {
 } from '../features/actions/products.actions';
 import { selectHasError, selectSearchParams } from '../features/selectors/products.selectors';
 import { generateQueryFromPathname, handleNavigationQuery, convertObjectKey } from '../utils/helper';
-import { ErrorComponent } from '../shared/components/errors/ErrorComponent';
+import ErrorComponent from '../shared/components/errors/ErrorComponent';
 
 const MarketPage = () => {
 	const searchParams = useSelector(selectSearchParams);

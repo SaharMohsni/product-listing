@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { selectHasError } from '../../../features/selectors/products.selectors';
 import errorImage from '../../../assets/serverError.png';
 import './error-component.css';
-export const ErrorComponent = () => {
+const ErrorComponent = () => {
 	const hasError = useSelector(selectHasError);
 
 	useEffect(
@@ -31,3 +31,4 @@ export const ErrorComponent = () => {
 		</div>
 	);
 };
+export default ErrorComponent;

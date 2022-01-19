@@ -41,7 +41,7 @@ const getAllTypes = () => {
 
 
 
-/**** *************** Using Express ******************* ****/
+ 
 server.use(express.static(path.join(__dirname, 'build')));
  
 

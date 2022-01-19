@@ -77,8 +77,8 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 				draft.local.loading.fetchingProductByPage = false;
 				draft.local.hasError = false;
 				draft.local.errors.fetchingProductByPage = '';
-				draft.data.productsList = action.data;
-				draft.data.itemsCount = action.productsCount;
+				draft.data.productsList = action.data.data;
+				draft.data.itemsCount = action.data.productsCount;
 				break;
 			case ActionTypes.SEARCH_PRODUCTS.failure:
 				draft.local.loading.fetchingProductByPage = false;

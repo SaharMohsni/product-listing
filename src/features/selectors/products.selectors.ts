@@ -56,3 +56,7 @@ export const selectModalStatusAfterSearch = createSelector(
 	(state: any): object => state.products,
 	(products: any): boolean => products.local.modalStatusOnMobile
 );
+export const selectHasError = createSelector(
+	(state: any): object => state.products,
+	(products: any): boolean => products.local.hasError
+);

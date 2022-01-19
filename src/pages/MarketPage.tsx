@@ -4,7 +4,7 @@
  *
  */
 
-import React,{ useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './market-page.css';
 import ProductsStoreSection from '../components/productsStoreSection/ProductsStoreSection';
@@ -20,11 +20,14 @@ import {
 	fetchTags,
 	fetchProductsTypes
 } from '../features/actions/products.actions';
-import { selectSearchParams } from '../features/selectors/products.selectors';
+import { selectHasError, selectSearchParams } from '../features/selectors/products.selectors';
 import { generateQueryFromPathname, handleNavigationQuery, convertObjectKey } from '../utils/helper';
+import { ErrorComponent } from '../shared/components/errors/ErrorComponent';
 
 const MarketPage = () => {
 	const searchParams = useSelector(selectSearchParams);
+	const hasError = useSelector(selectHasError);
+	console.log('🚀 ~ file: MarketPage.tsx ~ line 32 ~ MarketPage ~ hasError', hasError);
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const location = useLocation();
@@ -50,20 +53,26 @@ const MarketPage = () => {
 	);
 
 	return (
-		<div className="market-page global-page-padding-left-right">
-			<div className={`${isMobileVersion ? 'global-flex-h-between-v-any' : ''}`}>
-				<MarketPageCustomizationSection />
-				{isMobileVersion && (
-					<div>
-						<BasketDrawer />
+		<div>
+			{hasError ? (
+				<ErrorComponent />
+			) : (
+				<div className="market-page global-page-padding-left-right">
+					<div className={`${isMobileVersion ? 'global-flex-h-between-v-any' : ''}`}>
+						<MarketPageCustomizationSection />
+						{isMobileVersion && (
+							<div>
+								<BasketDrawer />
+							</div>
+						)}
 					</div>
-				)}
-			</div>
-			<ProductsStoreSection />
+					<ProductsStoreSection />
 
-			{!isMobileVersion && (
-				<div>
-					<Basket />
+					{!isMobileVersion && (
+						<div>
+							<Basket />
+						</div>
+					)}
 				</div>
 			)}
 		</div>

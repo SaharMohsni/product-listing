@@ -49,6 +49,7 @@ export const initialState: ProductsState = {
 			calculateTotalCost: false,
 			decrementQuantity: false
 		},
+		hasError: false,
 		errors: {
 			fetchingProductByPage: '',
 			getSearchParams: '',
@@ -69,10 +70,12 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 			//Search products by page with sort and filter
 			case ActionTypes.SEARCH_PRODUCTS.request:
 				draft.local.loading.fetchingProductByPage = true;
+				draft.local.hasError = false;
 				draft.local.errors.fetchingProductByPage = '';
 				break;
 			case ActionTypes.SEARCH_PRODUCTS.success:
 				draft.local.loading.fetchingProductByPage = false;
+				draft.local.hasError = false;
 				draft.local.errors.fetchingProductByPage = '';
 				draft.data.productsList = action.data;
 				draft.data.itemsCount = action.productsCount;
@@ -82,6 +85,7 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 				try {
 					draft.local.errors.fetchingProductByPage = action.errors.response.data;
 				} catch (e) {
+					draft.local.hasError = true;
 					draft.local.errors.fetchingProductByPage = 'Server error';
 				}
 				break;
@@ -107,10 +111,12 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 			//Fetch companies
 			case ActionTypes.FETCH_COMPANIES.request:
 				draft.local.loading.fetchingCompanies = true;
+				draft.local.hasError = false;
 				draft.local.errors.fetchingCompanies = '';
 				break;
 			case ActionTypes.FETCH_COMPANIES.success:
 				draft.local.loading.fetchingCompanies = false;
+				draft.local.hasError = false;
 				draft.local.errors.fetchingCompanies = '';
 				draft.data.brandsList = action.data;
 				break;
@@ -119,16 +125,19 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 				try {
 					draft.local.errors.fetchingCompanies = action.errors.response.data;
 				} catch (e) {
+					draft.local.hasError = true;
 					draft.local.errors.fetchingCompanies = 'Server error';
 				}
 				break;
 			//Fetch tags
 			case ActionTypes.FETCH_TAGS.request:
 				draft.local.loading.fetchingTags = true;
+				draft.local.hasError = false;
 				draft.local.errors.fetchingTags = '';
 				break;
 			case ActionTypes.FETCH_TAGS.success:
 				draft.local.loading.fetchingTags = false;
+				draft.local.hasError = false;
 				draft.local.errors.fetchingTags = '';
 				draft.data.tags = action.data;
 				break;
@@ -137,16 +146,19 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 				try {
 					draft.local.errors.fetchingTags = action.errors.response.data;
 				} catch (e) {
+					draft.local.hasError = true;
 					draft.local.errors.fetchingTags = 'Server error';
 				}
 				break;
 			//Fetch products types
 			case ActionTypes.FETCH_PRODUCTS_TYPES.request:
 				draft.local.loading.fetchingProductsTypes = true;
+				draft.local.hasError = false;
 				draft.local.errors.fetchingProductsTypes = '';
 				break;
 			case ActionTypes.FETCH_PRODUCTS_TYPES.success:
 				draft.local.loading.fetchingProductsTypes = false;
+				draft.local.hasError = false;
 				draft.local.errors.fetchingProductsTypes = '';
 				draft.data.productsTypes = action.data;
 				break;
@@ -155,6 +167,7 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 				try {
 					draft.local.errors.fetchingProductsTypes = action.errors.response.data;
 				} catch (e) {
+					draft.local.hasError = true;
 					draft.local.errors.fetchingProductsTypes = 'Server error';
 				}
 				break;

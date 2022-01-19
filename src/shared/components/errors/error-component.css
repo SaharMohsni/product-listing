@@ -1,0 +1,15 @@
+.error-component {
+	min-height: calc(100vh - 126.64px);
+	background-color: #ffffff !important;
+}
+.error-component img {
+	width: 50%;
+	height: auto;
+}
+
+@media screen and (min-width: 320px) and (max-width: 992px) {
+	.error-component img {
+		width: 100%;
+		height: auto;
+	}
+}

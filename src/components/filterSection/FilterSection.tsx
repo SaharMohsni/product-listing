@@ -15,7 +15,7 @@ import CustomModal from '../../shared/components/customModal/CustomModal';
 import * as skeleton from '../../utils/loading.skeleton.helper';
 import { useMobile } from '../../utils/useMobile';
 import { handleSearch } from '../../shared/components/filterComponent/helper';
-import { selectErrors, selectLoading, selectSearchParams } from '../../features/selectors/products.selectors';
+import { selectLoading, selectSearchParams } from '../../features/selectors/products.selectors';
 import { handleNavigationQuery } from '../../utils/helper';
 import { searchProducts } from '../../features/actions/products.actions';
 interface IOwnProps {
@@ -36,7 +36,6 @@ const FilterSection: React.FC<IOwnProps> = ({
 	const [ filterModalVisible, setFilterModalVisible ] = useState(false);
 	const isMobileVersion = useMobile();
 	const loading = useSelector(selectLoading);
-	const errors = useSelector(selectErrors);
 	const searchParams = useSelector(selectSearchParams);
 
 	const dispatch = useDispatch();
@@ -51,7 +50,7 @@ const FilterSection: React.FC<IOwnProps> = ({
 		navigate(navigationQuery); // making the search product works using the route path ( case of sinding product with specific search query)
 		dispatch(searchProducts(searchParams));
 
-		if (!loading.getSearchParams && isEmpty(errors.fetchingProductByPage)) {
+		if (!loading.getSearchParams) {
 			setFilterModalVisible(false);
 		}
 	};

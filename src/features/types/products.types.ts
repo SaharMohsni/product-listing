@@ -27,6 +27,7 @@ interface Local {
 		calculateTotalCost: boolean;
 		decrementQuantity: boolean;
 	};
+	hasError: boolean;
 	errors: {
 		fetchingProductByPage: string;
 		getSearchParams: string;

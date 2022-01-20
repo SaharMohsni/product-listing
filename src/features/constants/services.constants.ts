@@ -14,7 +14,6 @@ import {
 const URL = {
 	baseApiUrl: () => (process.env.NODE_ENV === 'development' ? 'http://localhost:4000' : ''),
 	products: {
-		itemsCount: '/total-items-count',
 		searchProducts: (payload: ISearchProductsPayload) => {
 			return `/items?_page=${payload.page}&_limit=16${addSortToUrl(
 				payload.sortVariable,

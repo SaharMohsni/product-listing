@@ -53,11 +53,6 @@ server.get('/market', function (req, res) {
 /*****************************************/
 
 /**** Apis added that we don't need to fetch all products : huge number of products ****/
-// Products total count
-server.get('/total-items-count', (req, res, next) => {
-	var itemsCount = db.items.length;
-	res.jsonp(itemsCount);
-});
 
 // Products types count
 server.get('/products-types', (req, res) => {

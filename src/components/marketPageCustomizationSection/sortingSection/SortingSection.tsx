@@ -45,7 +45,7 @@ const SortingSection = () => {
 		if (isMobileVersion) {
 			return (
 				<div className="sorting-section__on-mobile custom-button-on-mobile">
-					<Skeleton {...skeleton.fullRowItemSkeleton(loading.fetchingProductByPage)}>
+					<Skeleton {...skeleton.fullRowItemSkeleton(loading.fetchingCompanies)}>
 						<Button type="primary" onClick={showSortModal}>
 							Sort
 							<ColumnHeightOutlined />
@@ -55,7 +55,7 @@ const SortingSection = () => {
 						<CustomModal
 							title="Sorting"
 							modalVisible={sortModalVisible}
-							loading={loading.fetchingProductByPage}
+							loading={loading.fetchingCompanies}
 							handleSubmit={handleSubmit}
 							handleCancel={handleCancel}
 						>

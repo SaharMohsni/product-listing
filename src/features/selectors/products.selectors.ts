@@ -2,7 +2,8 @@
  * Products selectors
  */
 import { createSelector } from 'reselect';
-import { IBasket, ISearchProductsPayload } from '../types/products.types';
+import { createBasketProductsIdsList } from '../../utils/reducer.helper';
+import { IBasket, IInBasketProduct, ISearchProductsPayload } from '../types/products.types';
 
 export const selectSearchProductsResult = createSelector(
 	(state: any): object => state.products,
@@ -40,7 +41,7 @@ export const selectBasketTotalPrice = createSelector(
 );
 export const selectBasketProducts = createSelector(
 	(state: any): object => state.products,
-	(products: any): any => products.data.basket.productsList
+	(products: any): IInBasketProduct => products.data.basket.productsList
 );
 
 export const selectLoading = createSelector(
@@ -59,4 +60,13 @@ export const selectModalStatusAfterSearch = createSelector(
 export const selectHasError = createSelector(
 	(state: any): object => state.products,
 	(products: any): boolean => products.local.hasError
+);
+
+export const selectAddButtonDisabledId = createSelector(
+	(state: any): object => state.products,
+	(products: any): string => products.local.addButtonDisabledId
+);
+export const selectBasketProductsIdsList = createSelector(
+	(state: any): object => state.products,
+	(products: any): string[] => products.local.basketProductsIdsList
 );

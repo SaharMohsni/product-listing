@@ -96,3 +96,7 @@ export const handleDecrementQuantity = (localState: any, payload: string) => {
 	let totPrice = handleBasketTotalPrice(data);
 	return { productsList: data, totalPrice: totPrice };
 };
+
+export const createBasketProductsIdsList = (basketProductsIdsList: string[], slug: string) => {
+	return [ ...basketProductsIdsList, slug ];
+};

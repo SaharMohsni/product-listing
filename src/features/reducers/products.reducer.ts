@@ -11,7 +11,8 @@ import {
 	handleAddProduct,
 	handleIncrementQuantity,
 	handleSearchParams,
-	handleDecrementQuantity
+	handleDecrementQuantity,
+	createBasketProductsIdsList
 } from '../../utils/reducer.helper';
 
 // The initial state of the reducer
@@ -37,7 +38,6 @@ export const initialState: ProductsState = {
 			tags: {},
 			itemType: ''
 		},
-
 		loading: {
 			fetchingProductByPage: false,
 			getSearchParams: false,
@@ -49,6 +49,7 @@ export const initialState: ProductsState = {
 			calculateTotalCost: false,
 			decrementQuantity: false
 		},
+		basketProductsIdsList: [ '' ],
 		hasError: false,
 		errors: {
 			fetchingProductByPage: '',
@@ -180,6 +181,10 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 				draft.local.loading.addingProduct = false;
 				draft.local.errors.addingProduct = '';
 				draft.data.basket = handleAddProduct(state.data.basket, action.payload);
+				draft.local.basketProductsIdsList = createBasketProductsIdsList(
+					state.local.basketProductsIdsList,
+					action.payload.slug
+				);
 				break;
 			case ActionTypes.ADD_PRODUCT.failure:
 				draft.local.loading.addingProduct = false;

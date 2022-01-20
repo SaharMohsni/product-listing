@@ -5,13 +5,12 @@
  */
 import React, { useState, useEffect } from 'react';
 import { Button, Skeleton } from 'antd';
-import { isEmpty } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import './product-card.css';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
 import { addProduct } from '../../../features/actions/products.actions';
-import { IInBasketProduct, IProduct } from '../../../features/types/products.types';
-import { selectBasketProducts } from '../../../features/selectors/products.selectors';
+import { IProduct } from '../../../features/types/products.types';
+import { selectBasketProductsIdsList } from '../../../features/selectors/products.selectors';
 
 interface IOwnProps {
 	product: IProduct;
@@ -21,26 +20,23 @@ interface IOwnProps {
 const ProductCard: React.FC<IOwnProps> = ({ product, loading }) => {
 	const [ disableButton, setDisableButton ] = useState(false);
 	const dispatch = useDispatch();
-	const basketProductsData = useSelector(selectBasketProducts);
+	const basketProductsIdsList = useSelector(selectBasketProductsIdsList);
 
 	useEffect(
 		() => {
 			handleDisableAddButton();
 		},
-		[ basketProductsData ]
+		[ basketProductsIdsList ]
 	);
 
 	const handleAdd = () => {
 		dispatch(addProduct(product));
-		setDisableButton(true);
 	};
 	const handleDisableAddButton = () => {
-		let findedProduct: never[] = basketProductsData.filter(
-			(basketProduct: IInBasketProduct) => basketProduct.productData.slug === product.slug
-		);
-		if (!isEmpty(findedProduct)) {
+		let findedProduct: string | undefined = basketProductsIdsList.find((slug: string) => slug === product.slug);
+		if (findedProduct) {
 			setDisableButton(true);
-		}
+		} else setDisableButton(false);
 	};
 
 	return (

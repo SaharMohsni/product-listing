@@ -27,6 +27,7 @@ interface Local {
 		calculateTotalCost: boolean;
 		decrementQuantity: boolean;
 	};
+	basketProductsIdsList: string[];
 	hasError: boolean;
 	errors: {
 		fetchingProductByPage: string;

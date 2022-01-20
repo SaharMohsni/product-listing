@@ -3,28 +3,32 @@
  * Products list
  *
  */
- import React from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { isEmpty } from 'lodash';
 import { Empty } from 'antd';
 import ProductCard from './productCard/ProductCard';
 import './product-list.css';
-import { selectLoading, selectSearchProductsResult } from '../../features/selectors/products.selectors';
+import { selectSearchProductsResult } from '../../features/selectors/products.selectors';
 import { FAKE_DATA } from '../../utils/constants';
 
-const ProductsList = () => {
+export interface IOwnProps {
+	loading: boolean;
+}
+
+const ProductsList: React.FC<IOwnProps> = ({ loading }) => {
 	const productsList = useSelector(selectSearchProductsResult);
-	const loading = useSelector(selectLoading);
-	const data = loading.fetchingProductByPage ? FAKE_DATA : productsList;
+	const data = loading ? FAKE_DATA : productsList;
+
 	const renderProductsList = () => {
 		return data.map((product) => {
-			return <ProductCard product={product} key={Math.random()} />;
+			return <ProductCard product={product} key={Math.random()} loading={loading} />;
 		});
 	};
 	let isEmptyData = isEmpty(data);
 	return (
 		<div
-			className={`${loading.fetchingProductByPage && 'without-background'} ${isEmptyData &&
+			className={`${loading && 'without-background'} ${isEmptyData &&
 				'is-empty global-flex-h-center-v-any'} product-list`}
 		>
 			{!isEmptyData ? (

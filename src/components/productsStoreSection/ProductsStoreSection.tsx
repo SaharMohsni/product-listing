@@ -24,8 +24,18 @@ const ProductsStoreSection = () => {
 	const loading = useSelector(selectLoading);
 	const searchParams = useSelector(selectSearchParams);
 	const [ activeTagKey, setActiveTagKey ] = useState('');
+	const [ fetchLoadingStatus, setFetchLoadingStatus ] = useState(true);
 	const itemsTypeList = useSelector(selectProductsTypes);
 	const productsList = useSelector(selectSearchProductsResult);
+
+	useEffect(
+		() => {
+			setTimeout(function() {
+				setFetchLoadingStatus(loading.fetchingProductByPage);
+			}, 3000);
+		},
+		[ loading ]
+	);
 
 	useEffect(
 		() => {
@@ -35,12 +45,13 @@ const ProductsStoreSection = () => {
 		},
 		[ searchParams ]
 	);
+
 	return (
 		<div className="products-store-section">
-			<Skeleton {...skeleton.labelSkeleton(loading.fetchingProductByPage)}>
+			<Skeleton {...skeleton.labelSkeleton(fetchLoadingStatus)}>
 				<div className="products-store-section__header">Products</div>
 			</Skeleton>
-			<Skeleton {...skeleton.tagSkeleton(loading.fetchingProductsTypes)}>
+			<Skeleton {...skeleton.tagSkeleton(fetchLoadingStatus)}>
 				<div className="products-store-section__tags-filter-list global-scroll global-flex-h-any-v-center">
 					{formatArrayData(itemsTypeList).map((itemType: any) => {
 						return (
@@ -55,10 +66,10 @@ const ProductsStoreSection = () => {
 				</div>
 			</Skeleton>
 			<div className="products-store-section__products-list-container">
-				<ProductsList />
+				<ProductsList loading={fetchLoadingStatus} />
 			</div>
 			{!isEmpty(productsList) && (
-				<Skeleton {...skeleton.fullRowItemSkeleton(loading.fetchingProductByPage)}>
+				<Skeleton {...skeleton.fullRowItemSkeleton(fetchLoadingStatus)}>
 					<div className="products-store-section__pagination-container">
 						<PaginationSection />
 					</div>

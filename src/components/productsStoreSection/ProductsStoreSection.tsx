@@ -34,7 +34,7 @@ const ProductsStoreSection = () => {
 				setFetchLoadingStatus(loading.fetchingProductByPage);
 			}, 3000);
 		},
-		[ loading ]
+		[ loading.fetchingProductByPage ]
 	);
 
 	useEffect(
@@ -48,10 +48,10 @@ const ProductsStoreSection = () => {
 
 	return (
 		<div className="products-store-section">
-			<Skeleton {...skeleton.labelSkeleton(fetchLoadingStatus)}>
+			<Skeleton {...skeleton.labelSkeleton(loading.fetchingCompanies)}>
 				<div className="products-store-section__header">Products</div>
 			</Skeleton>
-			<Skeleton {...skeleton.tagSkeleton(fetchLoadingStatus)}>
+			<Skeleton {...skeleton.tagSkeleton(loading.fetchingProductsTypes)}>
 				<div className="products-store-section__tags-filter-list global-scroll global-flex-h-any-v-center">
 					{formatArrayData(itemsTypeList).map((itemType: any) => {
 						return (

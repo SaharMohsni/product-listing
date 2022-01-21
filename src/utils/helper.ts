@@ -82,21 +82,21 @@ export const serializeNavigationQuery = (params: ISearchProductsPayload) => {
 
 // Generate the navigation query from new params
 export const generateNavigationQuery = (query: object, newSearchParams: object) => {
-	let lastQuery = convertObjectKey(query);
-	return handleSearchParams({ ...lastQuery, ...newSearchParams });
+	let lastQuery = generateQueryBaseStructure(query);
+	return handleSearchParams(lastQuery, newSearchParams);
 };
 
 // Generate the navigation query from URL
 export const generateNavigationQueryFromPathName = (location: any) => {
 	let lastQuery = convertObjectKey(generateQueryFromPathname(location.pathname));
-	return handleSearchParams(lastQuery);
+	return lastQuery;
 };
 
-// Navigate
+// Generate the navigation query params
 export const handleNavigation = (query: object, newSearchParams: object, navigate: any) => {
 	let searchParamsResult = generateNavigationQuery(query, newSearchParams);
 	let navigationQuery = serializeNavigationQuery(searchParamsResult); // generate navigation query
-	navigate(navigationQuery); // making the search product works using the route path
+	navigate(navigationQuery);
 };
 
 // Format data of type array to get id value object
@@ -110,8 +110,27 @@ export const formatArrayData = (data: any) => {
 	});
 };
 
+// Manage search params query
+const addSearchParamsToQuery = (query: any, params: any) => {
+	return {
+		...query,
+		page: params.page ? params.page : query.page,
+		limit: params.limit ? params.limit : query.limit,
+		sortVariable: params.sortVariable || isEmpty(params.sortVariable) ? params.sortVariable : query.sortVariable,
+		sortType: params.sortType || isEmpty(params.sortType) ? params.sortType : query.sortType,
+		manufacturer: params.manufacturer ? params.manufacturer : query.manufacturer,
+		tags: params.tags ? params.tags : query.tags,
+		itemType: params.itemType || isEmpty(params.itemType) ? params.itemType : query.itemType
+	};
+};
+
 // Change search params state
-export const handleSearchParams = (params: any) => {
+export const handleSearchParams = (query: any, params: any) => {
+	return addSearchParamsToQuery(query, params);
+};
+
+// Change base search URL structure
+export const generateQueryBaseStructure = (params: any) => {
 	let searchParams = {
 		page: '',
 		limit: '',
@@ -121,15 +140,5 @@ export const handleSearchParams = (params: any) => {
 		tags: {},
 		itemType: ''
 	};
-
-	return {
-		...searchParams,
-		page: params.page ? params.page : searchParams.page,
-		limit: params.limit ? params.limit : searchParams.limit,
-		sortVariable: params.sortVariable ? params.sortVariable : searchParams.sortVariable,
-		sortType: params.sortType ? params.sortType : searchParams.sortType,
-		manufacturer: params.manufacturer ? params.manufacturer : searchParams.manufacturer,
-		tags: params.tags ? params.tags : searchParams.tags,
-		itemType: params.itemType ? params.itemType : searchParams.itemType
-	};
+	return addSearchParamsToQuery(searchParams, params);
 };

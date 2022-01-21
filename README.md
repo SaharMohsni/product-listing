@@ -52,5 +52,5 @@ Managing time was my biggest challenge in this project because I was working on 
 At the end of the project, the technologies implemented was TypeScript, React, React-Router 6.2.1, Redux-saga, LoDash, anted, and a significant amount of VanillaJS and CSS for the front-end part. I chose to use the `create-react-app` boilerplate to minimize initial setup and invest more time in diving into weird technological rabbit holes.
 For the back-end part i used json-server and express.
 
-In the next iteration the front-end part could be optimized on different devices and the application will better after adding the unit tests.
+In the next iteration the front-end part could be optimized on different devices and the application will became better after adding the unit tests and fixing the problems that will be detected.
 

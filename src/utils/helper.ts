@@ -80,14 +80,19 @@ export const serializeNavigationQuery = (params: ISearchProductsPayload) => {
 	return `${serialize(params)}`;
 };
 
+// Generate the navigation query from new params
 export const generateNavigationQuery = (query: object, newSearchParams: object) => {
 	let lastQuery = convertObjectKey(query);
 	return handleSearchParams({ ...lastQuery, ...newSearchParams });
 };
+
+// Generate the navigation query from URL
 export const generateNavigationQueryFromPathName = (location: any) => {
 	let lastQuery = convertObjectKey(generateQueryFromPathname(location.pathname));
 	return handleSearchParams(lastQuery);
 };
+
+// Navigate
 export const handleNavigation = (query: object, newSearchParams: object, navigate: any) => {
 	let searchParamsResult = generateNavigationQuery(query, newSearchParams);
 	let navigationQuery = serializeNavigationQuery(searchParamsResult); // generate navigation query

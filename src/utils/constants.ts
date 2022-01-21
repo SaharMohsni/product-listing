@@ -7,7 +7,6 @@ export const OLD_ADDED = 3;
 export const LIMIT_PRODUCTS_BY_Page = 16;
 
 export const sortDataMessages = {
-	[DEFAULT]: 'Default',
 	[ASC_PRICE]: 'Price low to high',
 	[DESC_PRICE]: 'Price high to low',
 	[NEW_ADDED]: 'New to old',

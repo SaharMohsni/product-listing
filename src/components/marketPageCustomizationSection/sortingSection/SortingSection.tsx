@@ -31,7 +31,7 @@ const SortingSection = () => {
 	};
 	const handleSubmit = () => {
 		dispatch(searchProducts(convertObjectKey(lastQuery)));
-		if (!loading.getSearchParams) {
+		if (!loading.fetchingProducts) {
 			setSortModalVisible(false);
 		}
 	};

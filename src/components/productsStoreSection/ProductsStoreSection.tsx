@@ -21,12 +21,12 @@ import {
 import { formatArrayData, generateNavigationQueryFromPathName, handleNavigation } from '../../utils/helper';
 
 const ProductsStoreSection = () => {
-	const loading = useSelector(selectLoading);
-	const [ activeTagKey, setActiveTagKey ] = useState('');
-	const itemsTypeList = useSelector(selectProductsTypes);
-	const productsList = useSelector(selectSearchProductsResult);
 	const location = useLocation();
 	let searchQuery = generateNavigationQueryFromPathName(location);
+	const loading = useSelector(selectLoading);
+	const [ activeTagKey, setActiveTagKey ] = useState(searchQuery.itemType);
+	const itemsTypeList = useSelector(selectProductsTypes);
+	const productsList = useSelector(selectSearchProductsResult);
 	const navigate = useNavigate();
 
 	useEffect(

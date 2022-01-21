@@ -3,14 +3,13 @@
  * Sorting local helper
  *
  */
+
 import { isEmpty } from 'lodash';
 import { ISearchProductsPayload } from '../../../../features/types/products.types';
-import { ASC_PRICE, DEFAULT, DESC_PRICE, NEW_ADDED, OLD_ADDED } from '../../../../utils/constants';
+import { ASC_PRICE, DESC_PRICE, NEW_ADDED, OLD_ADDED } from '../../../../utils/constants';
 
 export const handleRadioButtonValues = (value: number) => {
 	switch (value) {
-		case DEFAULT:
-			return {};
 		case ASC_PRICE:
 			return { sortVariable: 'price', sortType: 'asc' };
 		case DESC_PRICE:
@@ -29,7 +28,7 @@ export const handleRadioButtonValues = (value: number) => {
 export const handleRadioGroupValue = (searchParams: ISearchProductsPayload) => {
 	const { sortVariable, sortType } = searchParams;
 	if (isEmpty(sortVariable)) {
-		return 4;
+		return;
 	}
 	if (sortVariable === 'price') {
 		if (sortType === 'asc') return 0;

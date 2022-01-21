@@ -116,11 +116,11 @@ const addSearchParamsToQuery = (query: any, params: any) => {
 		...query,
 		page: params.page ? params.page : query.page,
 		limit: params.limit ? params.limit : query.limit,
-		sortVariable: params.sortVariable || isEmpty(params.sortVariable) ? params.sortVariable : query.sortVariable,
-		sortType: params.sortType || isEmpty(params.sortType) ? params.sortType : query.sortType,
+		sortVariable: params.sortVariable ? params.sortVariable : query.sortVariable,
+		sortType: params.sortType ? params.sortType : query.sortType,
 		manufacturer: params.manufacturer ? params.manufacturer : query.manufacturer,
 		tags: params.tags ? params.tags : query.tags,
-		itemType: params.itemType || isEmpty(params.itemType) ? params.itemType : query.itemType
+		itemType: params.itemType ? params.itemType : query.itemType
 	};
 };
 

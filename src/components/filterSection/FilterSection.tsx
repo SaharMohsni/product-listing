@@ -3,11 +3,10 @@
  * The filter section : containing two filter section by company name and by tag
  *
  */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Button, Skeleton } from 'antd';
-import { isEmpty } from 'lodash';
 import { FilterOutlined } from '@ant-design/icons';
 import './filter-section.css';
 import FilterComponent from '../../shared/components/filterComponent/FilterComponent';
@@ -15,8 +14,8 @@ import CustomModal from '../../shared/components/customModal/CustomModal';
 import * as skeleton from '../../utils/loading.skeleton.helper';
 import { useMobile } from '../../utils/useMobile';
 import { handleSearch } from '../../shared/components/filterComponent/helper';
-import { selectLoading, selectSearchParams } from '../../features/selectors/products.selectors';
-import { handleNavigationQuery } from '../../utils/helper';
+import { selectLoading } from '../../features/selectors/products.selectors';
+import { convertObjectKey, generateNavigationQueryFromPathName, handleNavigation } from '../../utils/helper';
 import { searchProducts } from '../../features/actions/products.actions';
 interface IOwnProps {
 	firstFilterTitle: string;
@@ -34,23 +33,32 @@ const FilterSection: React.FC<IOwnProps> = ({
 	const [ firstFilterSearchedValue, setFirstFilterSearchedValue ] = useState('');
 	const [ secondFilterSearchedValue, setSecondFilterSearchedValue ] = useState('');
 	const [ filterModalVisible, setFilterModalVisible ] = useState(false);
+	const [ brandsFilterData, setBrandsFilterData ] = useState({});
+	const [ tagsFilterData, setTagsFilterData ] = useState({});
 	const isMobileVersion = useMobile();
 	const loading = useSelector(selectLoading);
-	const searchParams = useSelector(selectSearchParams);
-
+	const location = useLocation();
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
-
+	let lastQuery = generateNavigationQueryFromPathName(location);
 	const showFilterModal = () => {
 		setFilterModalVisible(true);
 	};
 
-	const handleSubmit = () => {
-		let navigationQuery = handleNavigationQuery(searchParams); // generate navigation query of data from the store
-		navigate(navigationQuery); // making the search product works using the route path ( case of sinding product with specific search query)
-		dispatch(searchProducts(searchParams));
+	useEffect(
+		() => {
+			handleSearchProductsQuery();
+		},
+		[ brandsFilterData, tagsFilterData ]
+	);
 
-		if (!loading.getSearchParams) {
+	const handleSearchProductsQuery = () => {
+		let newSearchParams = { ...brandsFilterData, ...tagsFilterData };
+		handleNavigation(lastQuery, newSearchParams, navigate);
+	};
+	const handleSubmit = () => {
+		dispatch(searchProducts(convertObjectKey(lastQuery)));
+		if (!loading.fetchingProductByPage) {
 			setFilterModalVisible(false);
 		}
 	};
@@ -82,6 +90,7 @@ const FilterSection: React.FC<IOwnProps> = ({
 								optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)}
 								setSearchedValue={setFirstFilterSearchedValue}
 								filterKey="manufacturer"
+								setFilterData={setBrandsFilterData}
 							/>
 							<FilterComponent
 								loading={loading.fetchingTags}
@@ -89,6 +98,7 @@ const FilterSection: React.FC<IOwnProps> = ({
 								optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)}
 								setSearchedValue={setSecondFilterSearchedValue}
 								filterKey="tags"
+								setFilterData={setTagsFilterData}
 							/>
 						</CustomModal>
 					)}
@@ -103,6 +113,7 @@ const FilterSection: React.FC<IOwnProps> = ({
 					optionsList={handleSearch(firstFilterOptionsList, firstFilterSearchedValue)}
 					setSearchedValue={setFirstFilterSearchedValue}
 					filterKey="manufacturer"
+					setFilterData={setBrandsFilterData}
 				/>
 				<FilterComponent
 					loading={loading.fetchingTags}
@@ -110,6 +121,7 @@ const FilterSection: React.FC<IOwnProps> = ({
 					optionsList={handleSearch(secondFilterOptionsList, secondFilterSearchedValue)}
 					setSearchedValue={setSecondFilterSearchedValue}
 					filterKey="tags"
+					setFilterData={setTagsFilterData}
 				/>
 			</div>
 		);

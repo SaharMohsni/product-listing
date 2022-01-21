@@ -3,7 +3,7 @@
  * The component responsible of all the search customization : filter by company , filter by tags and sorting
  *
  */
- import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import SortingSection from './sortingSection/SortingSection';
 import './market-page-customization-section.css';

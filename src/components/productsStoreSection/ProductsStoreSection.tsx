@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import './products-store-section.css';
 import { Skeleton } from 'antd';
+import { useLocation } from 'react-router-dom';
 import TagFilter from '../../shared/components/tagFilter/TagFilter';
 import ProductsList from '../productsList/ProductsList';
 import PaginationSection from '../../shared/components/pagination/PaginationSection';
@@ -14,36 +15,36 @@ import * as skeleton from '../../utils/loading.skeleton.helper';
 import {
 	selectLoading,
 	selectProductsTypes,
-	selectSearchParams,
 	selectSearchProductsResult
 } from '../../features/selectors/products.selectors';
-import { formatArrayData } from '../../utils/helper';
+import { formatArrayData, generateNavigationQueryFromPathName } from '../../utils/helper';
 import { isEmpty } from 'lodash';
 
 const ProductsStoreSection = () => {
 	const loading = useSelector(selectLoading);
-	const searchParams = useSelector(selectSearchParams);
 	const [ activeTagKey, setActiveTagKey ] = useState('');
 	const [ fetchLoadingStatus, setFetchLoadingStatus ] = useState(true);
 	const itemsTypeList = useSelector(selectProductsTypes);
 	const productsList = useSelector(selectSearchProductsResult);
+	const location = useLocation();
+
+	let searchQuery = generateNavigationQueryFromPathName(location);
+	// useEffect(
+	// 	() => {
+	// 		setTimeout(function() {
+	// 			setFetchLoadingStatus(loading.fetchingProductByPage);
+	// 		}, 3000);
+	// 	},
+	// 	[ loading.fetchingProductByPage ]
+	// );
 
 	useEffect(
 		() => {
-			setTimeout(function() {
-				setFetchLoadingStatus(loading.fetchingProductByPage);
-			}, 3000);
-		},
-		[ loading.fetchingProductByPage ]
-	);
-
-	useEffect(
-		() => {
-			if (searchParams.itemType) {
-				setActiveTagKey(searchParams.itemType);
+			if (searchQuery.itemType) {
+				setActiveTagKey(searchQuery.itemType);
 			}
 		},
-		[ searchParams ]
+		[ searchQuery ]
 	);
 
 	return (
@@ -66,10 +67,10 @@ const ProductsStoreSection = () => {
 				</div>
 			</Skeleton>
 			<div className="products-store-section__products-list-container">
-				<ProductsList loading={fetchLoadingStatus} />
+				<ProductsList loading={loading.fetchingProductByPage} />
 			</div>
 			{!isEmpty(productsList) && (
-				<Skeleton {...skeleton.fullRowItemSkeleton(fetchLoadingStatus)}>
+				<Skeleton {...skeleton.fullRowItemSkeleton(loading.fetchingProductByPage)}>
 					<div className="products-store-section__pagination-container">
 						<PaginationSection />
 					</div>

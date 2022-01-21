@@ -2,8 +2,7 @@
  * Products selectors
  */
 import { createSelector } from 'reselect';
-import { createBasketProductsIdsList } from '../../utils/reducer.helper';
-import { IBasket, IInBasketProduct, ISearchProductsPayload } from '../types/products.types';
+import { IBasket, IInBasketProduct } from '../types/products.types';
 
 export const selectSearchProductsResult = createSelector(
 	(state: any): object => state.products,
@@ -12,10 +11,6 @@ export const selectSearchProductsResult = createSelector(
 export const selectSearchProductsCount = createSelector(
 	(state: any): object => state.products,
 	(products: any): number => products.data.itemsCount
-);
-export const selectSearchParams = createSelector(
-	(state: any): object => state.products,
-	(products: any): ISearchProductsPayload => products.local.searchParams
 );
 
 export const selectBrandsList = createSelector(

@@ -6,15 +6,14 @@
 
 import React, { useState } from 'react';
 import { Checkbox, Skeleton, Input, Empty } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 import './filter-component.css';
 
 import * as skeleton from '../../../utils/loading.skeleton.helper';
-import { getSearchParams } from '../../../features/actions/products.actions';
-import { selectSearchParams } from '../../../features/selectors/products.selectors';
 import { createCheckedAllDataStructure, formatFilterDataStructure, getCheckboxCurrentValues } from './helper';
 import { isEmpty } from 'lodash';
+import { convertObjectKey, generateQueryFromPathname, handleSearchParams } from '../../../utils/helper';
 
 interface IOwnProps {
 	loading: boolean;
@@ -22,21 +21,32 @@ interface IOwnProps {
 	optionsList: { id: number; value: string }[];
 	setSearchedValue: (value: string) => void;
 	filterKey: string;
+	setFilterData: (value: object) => void;
 }
-const FilterComponent: React.FC<IOwnProps> = ({ loading, title, optionsList, setSearchedValue, filterKey }) => {
+const FilterComponent: React.FC<IOwnProps> = ({
+	loading,
+	title,
+	optionsList,
+	setSearchedValue,
+	filterKey,
+	setFilterData
+}) => {
 	const [ checkAll, setCheckAll ] = useState(false);
-	const dispatch = useDispatch();
-	const searchParams = useSelector(selectSearchParams);
+	const location = useLocation();
+	let query = generateQueryFromPathname(location.pathname);
+	let searchQuery = handleSearchParams(convertObjectKey(query));
 
+	const handleSearch = (data: any) => {
+		let filterData = formatFilterDataStructure(filterKey, data);
+		setFilterData(filterData);
+	};
 	const handleChange = (e: any) => {
-		let filterData = formatFilterDataStructure(filterKey, e);
-		return dispatch(getSearchParams(filterData));
+		handleSearch(e);
 	};
 	const onCheckAllChange = (e: any) => {
 		setCheckAll(e.target.checked);
 		let afterCheckAllData = e.target.checked ? createCheckedAllDataStructure(optionsList) : [];
-		let filterData = formatFilterDataStructure(filterKey, afterCheckAllData);
-		return dispatch(getSearchParams(filterData));
+		handleSearch(afterCheckAllData);
 	};
 
 	const handleSearchInputChange = (e: any) => {
@@ -68,7 +78,7 @@ const FilterComponent: React.FC<IOwnProps> = ({ loading, title, optionsList, set
 									style={{ width: '100%' }}
 									onChange={(e) => handleChange(e)}
 									className="global-flex-column-h-start-v-start "
-									value={getCheckboxCurrentValues(searchParams, filterKey)}
+									value={getCheckboxCurrentValues(searchQuery, filterKey)}
 								>
 									{optionsList.map((option: any) => {
 										return (

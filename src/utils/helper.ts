@@ -40,6 +40,8 @@ export const createNewStructureData = (queryValues: any) => {
 
 	return res;
 };
+const filterObjectByEmptyKey = (data: object) =>
+	Object.fromEntries(Object.entries(data).filter(([ key, value ]) => key !== ''));
 
 export const convertObjectKey = (query: any) => {
 	let queryValues = Object.entries(query);
@@ -52,7 +54,7 @@ export const convertObjectKey = (query: any) => {
 		newObj[key] = objectKey;
 	}
 
-	return newObj;
+	return filterObjectByEmptyKey(newObj);
 };
 export const serialize = function(obj: any) {
 	var str = [];
@@ -74,8 +76,22 @@ export const serialize = function(obj: any) {
 /********/
 
 // serialize the navigation query params
-export const handleNavigationQuery = (params: ISearchProductsPayload) => {
+export const serializeNavigationQuery = (params: ISearchProductsPayload) => {
 	return `${serialize(params)}`;
+};
+
+export const generateNavigationQuery = (query: object, newSearchParams: object) => {
+	let lastQuery = convertObjectKey(query);
+	return handleSearchParams({ ...lastQuery, ...newSearchParams });
+};
+export const generateNavigationQueryFromPathName = (location: any) => {
+	let lastQuery = convertObjectKey(generateQueryFromPathname(location.pathname));
+	return handleSearchParams(lastQuery);
+};
+export const handleNavigation = (query: object, newSearchParams: object, navigate: any) => {
+	let searchParamsResult = generateNavigationQuery(query, newSearchParams);
+	let navigationQuery = serializeNavigationQuery(searchParamsResult); // generate navigation query
+	navigate(navigationQuery); // making the search product works using the route path
 };
 
 // Format data of type array to get id value object
@@ -87,4 +103,28 @@ export const formatArrayData = (data: any) => {
 		}
 		return { id: el.slug, value: el.name };
 	});
+};
+
+// Change search params state
+export const handleSearchParams = (params: any) => {
+	let searchParams = {
+		page: '',
+		limit: '',
+		sortVariable: '',
+		sortType: '',
+		manufacturer: {},
+		tags: {},
+		itemType: ''
+	};
+
+	return {
+		...searchParams,
+		page: params.page ? params.page : searchParams.page,
+		limit: params.limit ? params.limit : searchParams.limit,
+		sortVariable: params.sortVariable ? params.sortVariable : searchParams.sortVariable,
+		sortType: params.sortType ? params.sortType : searchParams.sortType,
+		manufacturer: params.manufacturer ? params.manufacturer : searchParams.manufacturer,
+		tags: params.tags ? params.tags : searchParams.tags,
+		itemType: params.itemType ? params.itemType : searchParams.itemType
+	};
 };

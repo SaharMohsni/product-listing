@@ -5,22 +5,28 @@
  */
 import React from 'react';
 import { Radio, Space, Skeleton } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useNavigate, useLocation } from 'react-router-dom';
 import './sorting-component.css';
+import { handleRadioButtonValues, handleRadioGroupValue } from './helper';
 import * as skeleton from '../../../../utils/loading.skeleton.helper';
 import { ASC_PRICE, DESC_PRICE, NEW_ADDED, OLD_ADDED, sortDataMessages } from '../../../../utils/constants';
-import { handleRadioButtonValues, handleRadioGroupValue } from './helper';
-import { getSearchParams } from '../../../../features/actions/products.actions';
-import { selectLoading, selectSearchParams } from '../../../../features/selectors/products.selectors';
+import { selectLoading } from '../../../../features/selectors/products.selectors';
+import { generateNavigationQueryFromPathName, handleNavigation } from '../../../../utils/helper';
 
 const SortingComponent = () => {
-	const searchParams = useSelector(selectSearchParams);
 	const loading = useSelector(selectLoading);
-
-	const dispatch = useDispatch();
+	const navigate = useNavigate();
+	const location = useLocation();
+	let lastQuery = generateNavigationQueryFromPathName(location);
 	const handleChange = (e: any) => {
 		let sortData = handleRadioButtonValues(e.target.value);
-		dispatch(getSearchParams({ sortVariable: sortData.sortVariable, sortType: sortData.sortType }));
+
+		let newSearchParams = {
+			sortVariable: sortData.sortVariable,
+			sortType: sortData.sortType
+		};
+		handleNavigation(lastQuery, newSearchParams, navigate);
 	};
 
 	return (
@@ -31,7 +37,7 @@ const SortingComponent = () => {
 			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading.fetchingCompanies)}>
 				<div className="sorting-component__data section-block box global-scroll">
 					<div>
-						<Radio.Group onChange={(e) => handleChange(e)} value={handleRadioGroupValue(searchParams)}>
+						<Radio.Group onChange={(e) => handleChange(e)} value={handleRadioGroupValue(lastQuery)}>
 							<Space direction="vertical">
 								<Radio value={ASC_PRICE}>{sortDataMessages[ASC_PRICE]}</Radio>
 								<Radio value={DESC_PRICE}>{sortDataMessages[DESC_PRICE]}</Radio>

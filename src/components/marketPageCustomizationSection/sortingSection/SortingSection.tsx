@@ -6,7 +6,7 @@
 
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Button, Skeleton } from 'antd';
 import { ColumnHeightOutlined } from '@ant-design/icons';
 import './sorting-section.css';
@@ -14,26 +14,23 @@ import SortingComponent from './sortingComponent/SortingComponent';
 import CustomModal from '../../../shared/components/customModal/CustomModal';
 import { useMobile } from '../../../utils/useMobile';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
-import { selectLoading, selectSearchParams } from '../../../features/selectors/products.selectors';
-import { handleNavigationQuery } from '../../../utils/helper';
+import { selectLoading } from '../../../features/selectors/products.selectors';
+import { convertObjectKey, generateNavigationQueryFromPathName } from '../../../utils/helper';
 import { searchProducts } from '../../../features/actions/products.actions';
 
 const SortingSection = () => {
 	const [ sortModalVisible, setSortModalVisible ] = useState(false);
 	const isMobileVersion = useMobile();
 	const loading = useSelector(selectLoading);
-
+	const location = useLocation();
 	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const searchParams = useSelector(selectSearchParams);
+	let lastQuery = generateNavigationQueryFromPathName(location);
 
 	const showSortModal = () => {
 		setSortModalVisible(true);
 	};
 	const handleSubmit = () => {
-		let navigationQuery = handleNavigationQuery(searchParams); // generate navigation query of data from the store
-		navigate(navigationQuery); // making the search product works using the route path ( case of sinding product with specific search query)
-		dispatch(searchProducts(searchParams));
+		dispatch(searchProducts(convertObjectKey(lastQuery)));
 		if (!loading.getSearchParams) {
 			setSortModalVisible(false);
 		}

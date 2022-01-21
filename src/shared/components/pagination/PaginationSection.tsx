@@ -5,21 +5,28 @@
  */
 import React from 'react';
 import { Pagination } from 'antd';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeftOutlined, ArrowRightOutlined } from '@ant-design/icons';
 import './pagination-section.css';
-
-import { getSearchParams } from '../../../features/actions/products.actions';
-import { selectSearchParams, selectSearchProductsCount } from '../../../features/selectors/products.selectors';
 import { handlePaginationValue } from './helper';
+import { selectSearchProductsCount } from '../../../features/selectors/products.selectors';
+import {
+	convertObjectKey,
+	generateQueryFromPathname,
+	handleSearchParams,
+	handleNavigation
+} from '../../../utils/helper';
 
 const PaginationSection = () => {
-	const searchParams = useSelector(selectSearchParams);
+	const location = useLocation();
+	const navigate = useNavigate();
 
-	const dispatch = useDispatch();
+	let query = generateQueryFromPathname(location.pathname);
+	let searchQuery = handleSearchParams(convertObjectKey(query));
 
 	const onChange = (page: number) => {
-		dispatch(getSearchParams({ page: page.toString() }));
+		handleNavigation(query, { page: page.toString() }, navigate);
 	};
 
 	const productsCount = useSelector(selectSearchProductsCount);
@@ -51,7 +58,7 @@ const PaginationSection = () => {
 				total={productsCount}
 				pageSize={16}
 				itemRender={itemRender}
-				current={handlePaginationValue(searchParams)}
+				current={handlePaginationValue(searchQuery)}
 			/>
 		</div>
 	);

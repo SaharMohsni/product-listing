@@ -5,10 +5,10 @@
  */
 
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { getSearchParams } from '../../../features/actions/products.actions';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import './tag-filter.css';
+import { generateNavigationQueryFromPathName, handleNavigation } from '../../../utils/helper';
 interface IOwnProps {
 	itemType: { id: string; value: string };
 	activeTagKey: string;
@@ -16,10 +16,14 @@ interface IOwnProps {
 }
 
 const TagFilter: React.FC<IOwnProps> = ({ itemType, activeTagKey, setActiveTagKey }) => {
-	const dispatch = useDispatch();
+	const location = useLocation();
+	const navigate = useNavigate();
+	let lastQuery = generateNavigationQueryFromPathName(location);
+
 	const handleActivationTag = () => {
 		setActiveTagKey(itemType.id);
-		dispatch(getSearchParams({ itemType: itemType.id }));
+		let newSearchParams = { itemType: itemType.id };
+		handleNavigation(lastQuery, newSearchParams, navigate);
 	};
 	return (
 		<div

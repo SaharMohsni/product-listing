@@ -29,6 +29,9 @@
 	}
 }
 @media screen and (min-width: 993px) and (max-width: 1060px) {
+	.basket-item__details {
+		width: 40%;
+	}
 	.basket-item__quantity-details {
 		font-size: 12px !important;
 		width: 55px;

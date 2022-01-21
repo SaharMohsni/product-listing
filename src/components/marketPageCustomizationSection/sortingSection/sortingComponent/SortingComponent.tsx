@@ -7,6 +7,7 @@ import React from 'react';
 import { Radio, Space, Skeleton } from 'antd';
 import { useSelector } from 'react-redux';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { isEmpty } from 'lodash';
 import './sorting-component.css';
 import { handleRadioButtonValues, handleRadioGroupValue } from './helper';
 import * as skeleton from '../../../../utils/loading.skeleton.helper';
@@ -18,15 +19,19 @@ const SortingComponent = () => {
 	const loading = useSelector(selectLoading);
 	const navigate = useNavigate();
 	const location = useLocation();
-	let lastQuery = generateNavigationQueryFromPathName(location);
+	let query = generateNavigationQueryFromPathName(location);
+
 	const handleChange = (e: any) => {
 		let sortData = handleRadioButtonValues(e.target.value);
-
-		let newSearchParams = {
-			sortVariable: sortData.sortVariable,
-			sortType: sortData.sortType
-		};
-		handleNavigation(lastQuery, newSearchParams, navigate);
+		if (isEmpty(sortData)) {
+			handleNavigation(query, {}, navigate);
+		} else {
+			let newSearchParams = {
+				sortVariable: sortData.sortVariable,
+				sortType: sortData.sortType
+			};
+			handleNavigation(query, newSearchParams, navigate);
+		}
 	};
 
 	return (
@@ -37,7 +42,7 @@ const SortingComponent = () => {
 			<Skeleton avatar={{ shape: 'square' }} {...skeleton.shapeSquareBoxSkeleton(loading.fetchingCompanies)}>
 				<div className="sorting-component__data section-block box global-scroll">
 					<div>
-						<Radio.Group onChange={(e) => handleChange(e)} value={handleRadioGroupValue(lastQuery)}>
+						<Radio.Group onChange={(e) => handleChange(e)} value={handleRadioGroupValue(query)}>
 							<Space direction="vertical">
 								<Radio value={ASC_PRICE}>{sortDataMessages[ASC_PRICE]}</Radio>
 								<Radio value={DESC_PRICE}>{sortDataMessages[DESC_PRICE]}</Radio>

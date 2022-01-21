@@ -13,7 +13,7 @@ import './filter-component.css';
 import * as skeleton from '../../../utils/loading.skeleton.helper';
 import { createCheckedAllDataStructure, formatFilterDataStructure, getCheckboxCurrentValues } from './helper';
 import { isEmpty } from 'lodash';
-import { convertObjectKey, generateQueryFromPathname, handleSearchParams } from '../../../utils/helper';
+import { convertObjectKey, generateQueryBaseStructure, generateQueryFromPathname } from '../../../utils/helper';
 
 interface IOwnProps {
 	loading: boolean;
@@ -34,7 +34,7 @@ const FilterComponent: React.FC<IOwnProps> = ({
 	const [ checkAll, setCheckAll ] = useState(false);
 	const location = useLocation();
 	let query = generateQueryFromPathname(location.pathname);
-	let searchQuery = handleSearchParams(convertObjectKey(query));
+	let searchQuery = generateQueryBaseStructure(convertObjectKey(query));
 
 	const handleSearch = (data: any) => {
 		let filterData = formatFilterDataStructure(filterKey, data);

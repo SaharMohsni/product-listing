@@ -26,17 +26,19 @@ const ProductsStoreSection = () => {
 	const itemsTypeList = useSelector(selectProductsTypes);
 	const productsList = useSelector(selectSearchProductsResult);
 	const location = useLocation();
-
 	let searchQuery = generateNavigationQueryFromPathName(location);
 	const navigate = useNavigate();
 
 	useEffect(
 		() => {
-			let newSearchParams = { itemType: activeTagKey };
-			handleNavigation(searchQuery, newSearchParams, navigate);
+			handleSearchProductsQuery();
 		},
 		[ activeTagKey ]
 	);
+	const handleSearchProductsQuery = () => {
+		let newSearchParams = { itemType: activeTagKey };
+		handleNavigation(searchQuery, newSearchParams, navigate);
+	};
 
 	return (
 		<div className="products-store-section">

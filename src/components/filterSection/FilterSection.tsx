@@ -54,6 +54,7 @@ const FilterSection: React.FC<IOwnProps> = ({
 
 	const handleSearchProductsQuery = () => {
 		let newSearchParams = { ...brandsFilterData, ...tagsFilterData };
+
 		handleNavigation(lastQuery, newSearchParams, navigate);
 	};
 	const handleSubmit = () => {

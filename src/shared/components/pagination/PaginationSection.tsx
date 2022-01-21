@@ -14,8 +14,8 @@ import { selectSearchProductsCount } from '../../../features/selectors/products.
 import {
 	convertObjectKey,
 	generateQueryFromPathname,
-	handleSearchParams,
-	handleNavigation
+	handleNavigation,
+	generateQueryBaseStructure
 } from '../../../utils/helper';
 
 const PaginationSection = () => {
@@ -23,7 +23,7 @@ const PaginationSection = () => {
 	const navigate = useNavigate();
 
 	let query = generateQueryFromPathname(location.pathname);
-	let searchQuery = handleSearchParams(convertObjectKey(query));
+	let searchQuery = generateQueryBaseStructure(convertObjectKey(query));
 
 	const onChange = (page: number) => {
 		handleNavigation(query, { page: page.toString() }, navigate);

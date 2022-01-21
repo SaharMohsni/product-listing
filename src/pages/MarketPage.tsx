@@ -39,17 +39,6 @@ const MarketPage = () => {
 		[ lastQuery ]
 	);
 
-	// useEffect(
-	// 	() => {
-	// 		if (!isMobileVersion) {
-	// 			let navigationQuery = serializeNavigationQuery(searchParams); // generate navigation query of data from the store
-	// 			navigate(navigationQuery); // making the search product works using the route path ( case of sinding product with specific search query)
-	// 			dispatch(searchProducts(searchParams));
-	// 		}
-	// 	},
-	// 	[ searchParams ]
-	// );
-
 	return (
 		<div>
 			{hasError ? (

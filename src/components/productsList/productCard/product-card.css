@@ -72,7 +72,7 @@
 		height: 285px;
 	}
 }
-@media screen and (min-width: 320px) and (max-width: 899px) {
+@media screen and (min-width: 320px) and (max-width: 993px) {
 	.product-card {
 		height: 320px;
 	}

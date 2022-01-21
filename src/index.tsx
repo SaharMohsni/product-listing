@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import 'antd/dist/antd.css';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Provider } from 'react-redux';
 import configureStore from './features/store';
-import { BrowserRouter as Router } from 'react-router-dom';
-import 'antd/dist/antd.css';
 const store = configureStore({});
-const baseUrl = window.location.pathname;
 ReactDOM.render(
 	<Provider store={store}>
 		<Router>

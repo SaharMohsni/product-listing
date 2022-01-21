@@ -43,6 +43,7 @@ export const selectLoading = createSelector(
 	(state: any): object => state.products,
 	(products: any): any => products.local.loading
 );
+
 export const selectErrors = createSelector(
 	(state: any): object => state.products,
 	(products: any): any => products.local.errors

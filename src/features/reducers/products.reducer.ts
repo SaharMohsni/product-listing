@@ -10,7 +10,6 @@ import { ProductsActions, ProductsState } from '../types/products.types';
 import {
 	handleAddProduct,
 	handleIncrementQuantity,
-	handleSearchParams,
 	handleDecrementQuantity,
 	createBasketProductsIdsList
 } from '../../utils/reducer.helper';
@@ -29,18 +28,8 @@ export const initialState: ProductsState = {
 		}
 	},
 	local: {
-		searchParams: {
-			page: '',
-			limit: '',
-			sortVariable: '',
-			sortType: '',
-			manufacturer: {},
-			tags: {},
-			itemType: ''
-		},
 		loading: {
-			fetchingProductByPage: false,
-			getSearchParams: false,
+			fetchingProducts: false,
 			fetchingCompanies: false,
 			fetchingTags: false,
 			fetchingProductsTypes: false,
@@ -52,8 +41,7 @@ export const initialState: ProductsState = {
 		basketProductsIdsList: [ '' ],
 		hasError: false,
 		errors: {
-			fetchingProductByPage: '',
-			getSearchParams: '',
+			fetchingProducts: '',
 			fetchingCompanies: '',
 			fetchingTags: '',
 			fetchingProductsTypes: '',
@@ -70,45 +58,27 @@ const productListingReducer = (state: ProductsState = initialState, action: Prod
 		switch (action.type) {
 			//Search products by page with sort and filter
 			case ActionTypes.SEARCH_PRODUCTS.request:
-				draft.local.loading.fetchingProductByPage = true;
+				draft.local.loading.fetchingProducts = true;
 				draft.local.hasError = false;
-				draft.local.errors.fetchingProductByPage = '';
+				draft.local.errors.fetchingProducts = '';
 				break;
 			case ActionTypes.SEARCH_PRODUCTS.success:
-				draft.local.loading.fetchingProductByPage = false;
+				draft.local.loading.fetchingProducts = false;
 				draft.local.hasError = false;
-				draft.local.errors.fetchingProductByPage = '';
+				draft.local.errors.fetchingProducts = '';
 				draft.data.productsList = action.data.data;
 				draft.data.itemsCount = action.data.productsCount;
 				break;
 			case ActionTypes.SEARCH_PRODUCTS.failure:
-				draft.local.loading.fetchingProductByPage = false;
+				draft.local.loading.fetchingProducts = false;
 				try {
-					draft.local.errors.fetchingProductByPage = action.errors.response.data;
+					draft.local.errors.fetchingProducts = action.errors.response.data;
 				} catch (e) {
 					draft.local.hasError = true;
-					draft.local.errors.fetchingProductByPage = 'Server error';
+					draft.local.errors.fetchingProducts = 'Server error';
 				}
 				break;
-			//Search products by page with sort and filter
-			case ActionTypes.GET_SEARCH_PARAMS.request:
-				draft.local.loading.getSearchParams = true;
-				draft.local.errors.getSearchParams = '';
-				break;
-			case ActionTypes.GET_SEARCH_PARAMS.success:
-				draft.local.loading.getSearchParams = false;
-				draft.local.errors.getSearchParams = '';
-				draft.local.searchParams = handleSearchParams(state.local.searchParams, action.payload);
 
-				break;
-			case ActionTypes.GET_SEARCH_PARAMS.failure:
-				draft.local.loading.getSearchParams = false;
-				try {
-					draft.local.errors.getSearchParams = action.errors.response.data;
-				} catch (e) {
-					draft.local.errors.getSearchParams = 'Server error';
-				}
-				break;
 			//Fetch companies
 			case ActionTypes.FETCH_COMPANIES.request:
 				draft.local.loading.fetchingCompanies = true;

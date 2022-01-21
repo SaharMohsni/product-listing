@@ -3,24 +3,8 @@
  * Reducer helper
  *
  */
-import { IInBasketProduct, IProduct, ISearchProductsPayload } from '../features/types/products.types';
+import { IInBasketProduct, IProduct } from '../features/types/products.types';
 import { MIN_PRODUCT_QUANTITY_IN_BASKET } from './constants';
-
-// Change search params state
-export const handleSearchParams = (localSearchParams: ISearchProductsPayload, params: ISearchProductsPayload) => {
-	let { page, limit, sortVariable, sortType, manufacturer, tags, itemType } = localSearchParams;
-
-	return {
-		...localSearchParams,
-		page: params.page ? params.page : page,
-		limit: params.limit ? params.limit : limit,
-		sortVariable: params.sortVariable ? params.sortVariable : sortVariable,
-		sortType: params.sortType ? params.sortType : sortType,
-		manufacturer: params.manufacturer ? params.manufacturer : manufacturer,
-		tags: params.tags ? params.tags : tags,
-		itemType: params.itemType ? params.itemType : itemType
-	};
-};
 
 // Calculate product cost
 export const calculateProductCost = (quantity: number, unitPrice: number) => {

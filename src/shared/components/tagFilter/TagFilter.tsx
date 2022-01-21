@@ -5,10 +5,8 @@
  */
 
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 import './tag-filter.css';
-import { generateNavigationQueryFromPathName, handleNavigation } from '../../../utils/helper';
 interface IOwnProps {
 	itemType: { id: string; value: string };
 	activeTagKey: string;
@@ -16,14 +14,12 @@ interface IOwnProps {
 }
 
 const TagFilter: React.FC<IOwnProps> = ({ itemType, activeTagKey, setActiveTagKey }) => {
-	const location = useLocation();
-	const navigate = useNavigate();
-	let lastQuery = generateNavigationQueryFromPathName(location);
-
 	const handleActivationTag = () => {
-		setActiveTagKey(itemType.id);
-		let newSearchParams = { itemType: itemType.id };
-		handleNavigation(lastQuery, newSearchParams, navigate);
+		if (activeTagKey === itemType.id) {
+			setActiveTagKey('');
+		} else {
+			setActiveTagKey(itemType.id);
+		}
 	};
 	return (
 		<div

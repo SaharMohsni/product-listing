@@ -58,7 +58,7 @@ const FilterSection: React.FC<IOwnProps> = ({
 	};
 	const handleSubmit = () => {
 		dispatch(searchProducts(convertObjectKey(lastQuery)));
-		if (!loading.fetchingProductByPage) {
+		if (!loading.fetchingProducts) {
 			setFilterModalVisible(false);
 		}
 	};
@@ -82,7 +82,7 @@ const FilterSection: React.FC<IOwnProps> = ({
 							modalVisible={filterModalVisible}
 							handleSubmit={handleSubmit}
 							handleCancel={handleCancel}
-							loading={loading.fetchingProductByPage}
+							loading={loading.fetchingProducts}
 						>
 							<FilterComponent
 								loading={loading.fetchingCompanies}

@@ -10,8 +10,6 @@ const root = 'app/Products/';
 
 const SEARCH_PRODUCTS = generateActionTypes(root, 'SEARCH_PRODUCTS'); //fetch products by key search
 
-const GET_SEARCH_PARAMS = generateActionTypes(root, 'GET_SEARCH_PARAMS'); // Get search params for fetching products
-
 const FETCH_COMPANIES = generateActionTypes(root, 'FETCH_COMPANIES'); //Fetch companies
 
 const FETCH_TAGS = generateActionTypes(root, 'FETCH_TAGS'); //Fetch tags: added
@@ -26,7 +24,6 @@ const DECREMENT_PRODUCT_QUANTITY = generateActionTypes(root, 'DECREMENT_PRODUCT_
 
 const constants = {
 	SEARCH_PRODUCTS,
-	GET_SEARCH_PARAMS,
 	FETCH_COMPANIES,
 	FETCH_TAGS,
 	FETCH_PRODUCTS_TYPES,

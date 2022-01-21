@@ -15,10 +15,8 @@ interface Data {
 }
 
 interface Local {
-	searchParams: ISearchProductsPayload;
 	loading: {
-		fetchingProductByPage: boolean;
-		getSearchParams: boolean;
+		fetchingProducts: boolean;
 		fetchingCompanies: boolean;
 		fetchingTags: boolean;
 		fetchingProductsTypes: boolean;
@@ -30,8 +28,7 @@ interface Local {
 	basketProductsIdsList: string[];
 	hasError: boolean;
 	errors: {
-		fetchingProductByPage: string;
-		getSearchParams: string;
+		fetchingProducts: string;
 		fetchingCompanies: string;
 		fetchingTags: string;
 		fetchingProductsTypes: string;

@@ -23,3 +23,4 @@ export const FAKE_DATA = Array.from({ length: 16 }).map(() => {}).map((el, i) =>
 	manufacturer: i,
 	itemType: 'string'
 }));
+export const DELAY_TIME = 3000;

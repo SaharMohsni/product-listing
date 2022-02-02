@@ -47,9 +47,8 @@ export function* fetchCompaniesWatcher() {
 }
 
 export function* fetchTags(action: IActionWithoutPayload) {
-	const results: IResponseGenerator = yield call(api.fetchTags);
-
 	try {
+		const results: IResponseGenerator = yield call(api.fetchTags);
 		yield put({
 			type: ActionTypes.FETCH_TAGS.success,
 			data: results

@@ -1,0 +1,803 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should render the basic template 1`] = `
+<div>
+  <div
+    class="App"
+  >
+    <div
+      class="top-bar global-flex-h-between-v-center global-page-padding-left-right"
+    >
+      <div
+        class="top-bar__logo global-flex-h-end-v-center"
+      >
+        <span
+          class="top-bar__logo__text"
+        >
+          Market
+        </span>
+      </div>
+      <div
+        class="top-bar__basket global-flex-h-center-v-center"
+      >
+        <span
+          aria-label="shopping"
+          class="anticon anticon-shopping"
+          role="img"
+        >
+          <svg
+            aria-hidden="true"
+            data-icon="shopping"
+            fill="currentColor"
+            focusable="false"
+            height="1em"
+            viewBox="64 64 896 896"
+            width="1em"
+          >
+            <path
+              d="M832 312H696v-16c0-101.6-82.4-184-184-184s-184 82.4-184 184v16H192c-17.7 0-32 14.3-32 32v536c0 17.7 14.3 32 32 32h640c17.7 0 32-14.3 32-32V344c0-17.7-14.3-32-32-32zm-432-16c0-61.9 50.1-112 112-112s112 50.1 112 112v16H400v-16zm392 544H232V384h96v88c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-88h224v88c0 4.4 3.6 8 8 8h56c4.4 0 8-3.6 8-8v-88h96v456z"
+            />
+          </svg>
+        </span>
+        <div
+          class="top-bar__basket__total-price"
+        >
+          <span
+            class="top-bar__basket__total-price__unit"
+          >
+            $
+          </span>
+          <span
+            class="top-bar__basket__total-price__amount"
+          >
+            0
+          </span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div
+        class="market-page global-page-padding-left-right"
+      >
+        <div
+          class="market-page-customization-section-container "
+        >
+          <div
+            class="market-page-customization-section "
+          >
+            <div
+              class="sorting-section "
+            >
+              <div
+                class="sorting-component "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li
+                        style="width: 20%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="filter-section "
+            >
+               
+              <div>
+                <div
+                  class="filter-component "
+                >
+                  <div
+                    class="ant-skeleton ant-skeleton-active"
+                  >
+                    <div
+                      class="ant-skeleton-content"
+                    >
+                      <ul
+                        class="ant-skeleton-paragraph"
+                      >
+                        <li
+                          style="width: 20%;"
+                        />
+                      </ul>
+                    </div>
+                  </div>
+                  <div
+                    class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                  >
+                    <div
+                      class="ant-skeleton-header"
+                    >
+                      <span
+                        class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="filter-component "
+                >
+                  <div
+                    class="ant-skeleton ant-skeleton-active"
+                  >
+                    <div
+                      class="ant-skeleton-content"
+                    >
+                      <ul
+                        class="ant-skeleton-paragraph"
+                      >
+                        <li
+                          style="width: 20%;"
+                        />
+                      </ul>
+                    </div>
+                  </div>
+                  <div
+                    class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                  >
+                    <div
+                      class="ant-skeleton-header"
+                    >
+                      <span
+                        class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+               
+            </div>
+          </div>
+        </div>
+        <div
+          class="products-store-section"
+        >
+          <div
+            class="ant-skeleton ant-skeleton-active"
+          >
+            <div
+              class="ant-skeleton-content"
+            >
+              <ul
+                class="ant-skeleton-paragraph"
+              >
+                <li
+                  style="width: 20%;"
+                />
+              </ul>
+            </div>
+          </div>
+          <div
+            class="ant-skeleton ant-skeleton-active"
+          >
+            <div
+              class="ant-skeleton-content"
+            >
+              <ul
+                class="ant-skeleton-paragraph"
+              >
+                <li
+                  style="width: 61%;"
+                />
+              </ul>
+            </div>
+          </div>
+          <div
+            class="products-store-section__products-list-container"
+          >
+            <div
+              class="without-background false product-list"
+            >
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="product-card "
+              >
+                <div
+                  class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-header"
+                  >
+                    <span
+                      class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="ant-skeleton ant-skeleton-active"
+                >
+                  <div
+                    class="ant-skeleton-content"
+                  >
+                    <ul
+                      class="ant-skeleton-paragraph"
+                    >
+                      <li />
+                      <li />
+                      <li
+                        style="width: 100%;"
+                      />
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            class="undefined basket section-block"
+          >
+            <div
+              class="ant-empty ant-empty-normal"
+            >
+              <div
+                class="ant-empty-image"
+              >
+                <svg
+                  class="ant-empty-img-simple"
+                  height="41"
+                  viewBox="0 0 64 41"
+                  width="64"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g
+                    fill="none"
+                    fill-rule="evenodd"
+                    transform="translate(0 1)"
+                  >
+                    <ellipse
+                      class="ant-empty-img-simple-ellipse"
+                      cx="32"
+                      cy="33"
+                      rx="32"
+                      ry="7"
+                    />
+                    <g
+                      class="ant-empty-img-simple-g"
+                      fill-rule="nonzero"
+                    >
+                      <path
+                        d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"
+                      />
+                      <path
+                        class="ant-empty-img-simple-path"
+                        d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+                      />
+                    </g>
+                  </g>
+                </svg>
+              </div>
+              <div
+                class="ant-empty-description"
+              >
+                No products in your basket 
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="footer global-page-padding-left-right global-flex-h-center-v-center"
+    >
+      <div
+        class="footer__copy-rights"
+      >
+        ©2019 Market
+      </div>
+      <div
+        class="dot global-flex-h-center-v-center"
+      >
+        <span>
+          .
+        </span>
+      </div>
+      <div
+        class="footer__policy"
+      >
+        Privacy Policy
+      </div>
+    </div>
+  </div>
+</div>
+`;

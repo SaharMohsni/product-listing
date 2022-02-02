@@ -11,8 +11,11 @@
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",
     "@types/react-redux": "^7.1.22",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@types/jest": "^27.0.1",
     "antd": "^4.18.3",
     "axios": "^0.24.0",
+    "babel-polyfill": "^6.26.0",
     "connected-react-router": "^6.9.2",
     "express": "^4.17.2",
     "history": "^5.2.0",
@@ -30,21 +33,21 @@
     "redux-saga": "^1.1.3",
     "typesafe-actions": "^5.1.0",
     "typescript": "^4.5.4",
+    "ts-jest": "^27.1.3",
     "web-vitals": "^2.1.3"
   },
   "scripts": {
     "start:dev": "react-scripts start",
     "start": "node server.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test:watch": "jest --watch",
+		"test": "jest --detectOpenHandles --runInBand --forceExit src/*",
     "eject": "react-scripts eject",
     "cypress:open": "cypress open",
     "test:e2e": "start-server-and-test start:dev http://localhost:3000 cypress:open"
   },
   "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
+    "extends": [ "react-app", "react-app/jest" ]
   },
   "browserslist": {
     "production": [
@@ -73,6 +76,32 @@
     "prettier": "^2.5.1",
     "start-server-and-test": "^1.14.0",
     "ts-node": "^10.4.0",
-    "webpack": "^5.66.0"
-  }
+    "webpack": "^5.66.0",
+    "jest": "^27.4.7"
+  },
+  "babel": {
+		"presets": [ "@babel/preset-env", "@babel/preset-react" ]
+	},
+	"jest": {
+		"testEnvironment": "jsdom",
+		"setupFilesAfterEnv": [ "babel-polyfill", "@testing-library/jest-dom/extend-expect" ],
+		"collectCoverageFrom": [ "src/**/*.js", "!src/**/*.test.{js,jsx}" ],
+		"moduleDirectories": [ "node_modules" ],
+		"transform": {
+			"\\.tsx?$": "ts-jest",
+			"\\.jsx?$": "babel-jest",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+      "<rootDir>/fileTransformer.js"
+		},
+   
+		"globals": {
+			"ts-jest": {
+				"tsConfig": "<rootDir>/tsconfig.json"
+			}
+		},
+		"transformIgnorePatterns": [ "[/\\\\]node_modules[/\\\\](?!lodash-es/).+\\.js$" ],
+		"moduleNameMapper": {
+			"^.+\\.(css|less)$": "<rootDir>/CSSStub.ts"
+		}
+	}
 }

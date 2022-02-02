@@ -7,7 +7,7 @@
 import React from 'react';
 
 import './tag-filter.css';
-interface IOwnProps {
+export interface IOwnProps {
 	itemType: { id: string; value: string };
 	activeTagKey: string;
 	setActiveTagKey: (value: string) => void;

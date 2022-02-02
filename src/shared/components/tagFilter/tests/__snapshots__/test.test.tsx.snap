@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render TagFilter should render the basic template 1`] = `
+<div>
+  <div
+    class="active-tag tag-filter-section global-flex-h-center-v-center"
+  />
+</div>
+`;

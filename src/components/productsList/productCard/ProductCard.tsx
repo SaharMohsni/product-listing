@@ -12,7 +12,7 @@ import { addProduct } from '../../../features/actions/products.actions';
 import { IProduct } from '../../../features/types/products.types';
 import { selectBasketProductsIdsList } from '../../../features/selectors/products.selectors';
 
-interface IOwnProps {
+export interface IOwnProps {
 	product: IProduct;
 	loading: boolean;
 }

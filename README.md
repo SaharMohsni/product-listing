@@ -33,9 +33,27 @@ To Start Server:
 
 `npm start`  
 
+To Start the Front End :
+
+`npm run start:dev`  
+
 To Visit App:
 
 `localhost:3000`  
+
+Don't forget to run the server before running the front end part.
+
+## Cypress Test
+
+Please make sure that the project is running on port 3000. Open the terminal and run the project:
+
+To start cypress test:
+
+`npm run cypress:open`  
+
+If you didn't start the project running on port 3000 you can use to start the project : back and front and the cypress test in the same time by:
+
+`npm run test:e2e` 
 
 ## Reflection
 
@@ -45,7 +63,7 @@ The main role of this application is being a store. It allow users to add produc
 
 One of the main challenges I ran into was the use of TypeScript because this my first project with it. This leaded me to spend a few days on a research spike into typescript syntax, interfaces, and types.Due to project time constraints, I used libraries to facilitate the work and gain time. I started using fake data, then fetch the real ones.
 
-I couldn't be able to add the unit tests because i needed to deliver the project so i tried to add 2 basic end to end tests just as a beginning and  i will considered the test process as a future feature.
+Because i needed to deliver the project so i tried to add two basic end to end tests just as a beginning and unit test for the render of all the components on the project and for the App. I will considered the test process as a future feature because I can work more on it.
 
 Managing time was my biggest challenge in this project because I was working on another at the same time.
 

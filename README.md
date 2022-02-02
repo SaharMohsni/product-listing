@@ -15,7 +15,7 @@ This project is finished: development and documentation.
 
 ## Project Screen shot
 
-[![Application screenShot](https://photos.app.goo.gl/SXYJdAUr8QikHYBJ7)](https://postimg.cc/HjfrPfzC)
+[![Application screenShot](https://photos.app.goo.gl/SXYJdAUr8QikHYBJ7)]
 
 ## Installation and Setup Instructions
 

@@ -1,0 +1,128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SortingSection should render the basic template 1`] = `
+<div>
+  <div
+    class="sorting-section "
+  >
+    <div
+      class="sorting-component "
+    >
+      <div
+        class="section-block-header"
+      >
+        Sorting
+      </div>
+      <div
+        class="sorting-component__data section-block box global-scroll"
+      >
+        <div>
+          <div
+            class="ant-radio-group ant-radio-group-outline"
+          >
+            <div
+              class="ant-space ant-space-vertical"
+            >
+              <div
+                class="ant-space-item"
+                style="margin-bottom: 8px;"
+              >
+                <label
+                  class="ant-radio-wrapper"
+                >
+                  <span
+                    class="ant-radio"
+                  >
+                    <input
+                      class="ant-radio-input"
+                      type="radio"
+                      value="0"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    Price low to high
+                  </span>
+                </label>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-bottom: 8px;"
+              >
+                <label
+                  class="ant-radio-wrapper"
+                >
+                  <span
+                    class="ant-radio"
+                  >
+                    <input
+                      class="ant-radio-input"
+                      type="radio"
+                      value="1"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    Price high to low
+                  </span>
+                </label>
+              </div>
+              <div
+                class="ant-space-item"
+                style="margin-bottom: 8px;"
+              >
+                <label
+                  class="ant-radio-wrapper"
+                >
+                  <span
+                    class="ant-radio"
+                  >
+                    <input
+                      class="ant-radio-input"
+                      type="radio"
+                      value="2"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    New to old
+                  </span>
+                </label>
+              </div>
+              <div
+                class="ant-space-item"
+              >
+                <label
+                  class="ant-radio-wrapper"
+                >
+                  <span
+                    class="ant-radio"
+                  >
+                    <input
+                      class="ant-radio-input"
+                      type="radio"
+                      value="3"
+                    />
+                    <span
+                      class="ant-radio-inner"
+                    />
+                  </span>
+                  <span>
+                    Old to new
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

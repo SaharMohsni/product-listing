@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorComponent should render the basic template 1`] = `
+<div>
+  <div
+    class="error-component global-flex-h-center-v-center"
+  >
+    <img
+      alt="server error"
+      src="serverError.png"
+    />
+  </div>
+</div>
+`;

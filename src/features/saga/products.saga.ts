@@ -63,8 +63,8 @@ export function* fetchTagsWatcher() {
 }
 
 export function* fetchProductsTypes(action: IActionWithoutPayload) {
-	const results: IResponseGenerator = yield call(api.fetchProductsTypes);
 	try {
+		const results: IResponseGenerator = yield call(api.fetchProductsTypes);
 		yield put({
 			type: ActionTypes.FETCH_PRODUCTS_TYPES.success,
 			data: results

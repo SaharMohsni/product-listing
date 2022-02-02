@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 
-exports[`Render FilterComponent should render the basic template 1`] = `
+exports[`FilterComponent should render the basic template 1`] = `
 <div>
   <div
     class="filter-component "

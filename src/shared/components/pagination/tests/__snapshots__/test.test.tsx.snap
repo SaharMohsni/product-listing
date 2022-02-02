@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Render Pagination section should render the basic template 1`] = `
+exports[`Pagination section should render the basic template 1`] = `
 <div>
   <div
     class="pagination-section"

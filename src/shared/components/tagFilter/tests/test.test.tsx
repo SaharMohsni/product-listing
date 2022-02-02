@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '../../../../utils/testing';
 import TagFilter, { IOwnProps } from '../TagFilter';
 
-describe('Render TagFilter', () => {
+describe('TagFilter', () => {
 	const defaultProps: IOwnProps = {
 		itemType: { id: '', value: '' },
 		activeTagKey: '',

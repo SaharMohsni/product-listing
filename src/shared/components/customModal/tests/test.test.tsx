@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '../../../../utils/testing';
 import CustomModal, { IOwnProps } from '../CustomModal';
 
-describe('Render CustomModal', () => {
+describe('CustomModal', () => {
 	const defaultProps: IOwnProps = {
 		title: '',
 		loading: false,

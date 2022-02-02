@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from '../../../../utils/testing';
 import FilterComponent, { IOwnProps } from '../FilterComponent';
 
-describe('Render FilterComponent', () => {
+describe('FilterComponent', () => {
 	const defaultProps: IOwnProps = {
 		setSearchedValue() {
 			return;

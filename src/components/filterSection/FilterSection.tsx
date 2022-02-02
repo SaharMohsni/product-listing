@@ -17,7 +17,7 @@ import { handleSearch } from '../../shared/components/filterComponent/helper';
 import { selectLoading } from '../../features/selectors/products.selectors';
 import { convertObjectKey, generateNavigationQueryFromPathName, handleNavigation } from '../../utils/helper';
 import { searchProducts } from '../../features/actions/products.actions';
-interface IOwnProps {
+export interface IOwnProps {
 	firstFilterTitle: string;
 	secondFilterTitle: string;
 	firstFilterOptionsList: { id: number; value: string }[];

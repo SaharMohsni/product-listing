@@ -3,7 +3,7 @@ import { Modal } from 'antd';
 
 import './custom-modal.css';
 
-interface IOwnProps {
+export interface IOwnProps {
 	title: string;
 	loading: boolean;
 	modalVisible: boolean;

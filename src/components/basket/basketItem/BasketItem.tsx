@@ -9,7 +9,7 @@ import { decrementProductQuantity, incrementProductQuantity } from '../../../fea
 import { IInBasketProduct } from '../../../features/types/products.types';
 import './basket-item.css';
 
-interface IOwnProps {
+export interface IOwnProps {
 	item: IInBasketProduct;
 }
 

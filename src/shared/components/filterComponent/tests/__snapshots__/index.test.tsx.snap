@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateOrUpdateFacility should render the basic template 1`] = `
+<div>
+  <div
+    class="filter-component "
+  >
+    <div
+      class="ant-skeleton ant-skeleton-active"
+    >
+      <div
+        class="ant-skeleton-content"
+      >
+        <ul
+          class="ant-skeleton-paragraph"
+        >
+          <li
+            style="width: 20%;"
+          />
+        </ul>
+      </div>
+    </div>
+    <div
+      class="ant-skeleton ant-skeleton-with-avatar ant-skeleton-active"
+    >
+      <div
+        class="ant-skeleton-header"
+      >
+        <span
+          class="ant-skeleton-avatar ant-skeleton-avatar-lg ant-skeleton-avatar-square"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

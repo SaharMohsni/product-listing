@@ -4,6 +4,7 @@
  *
  */
 
+import { isEmpty } from 'lodash';
 import { isString } from '../../../utils/helper';
 
 export const handleSearch = (data: any, searchedValue: string) => {
@@ -15,10 +16,10 @@ export const handleSearch = (data: any, searchedValue: string) => {
 };
 
 export const getCheckboxCurrentValues = (searchParams: any, filterKey: string) => {
-	if (!searchParams[filterKey].data) {
+	if (!isEmpty(searchParams[filterKey]) && !searchParams[filterKey].data) {
 		return [ searchParams[filterKey] ];
 	}
-	let res = searchParams[filterKey].data;
+	let res = !isEmpty(searchParams[filterKey]) && searchParams[filterKey].data;
 	if (isString(res)) {
 		return [ res ];
 	}

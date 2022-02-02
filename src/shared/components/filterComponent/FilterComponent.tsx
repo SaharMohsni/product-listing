@@ -15,7 +15,7 @@ import { createCheckedAllDataStructure, formatFilterDataStructure, getCheckboxCu
 import { isEmpty } from 'lodash';
 import { convertObjectKey, generateQueryBaseStructure, generateQueryFromPathname } from '../../../utils/helper';
 
-interface IOwnProps {
+export interface IOwnProps {
 	loading: boolean;
 	title: string;
 	optionsList: { id: number; value: string }[];
